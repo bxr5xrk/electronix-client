@@ -10,20 +10,20 @@ export default function Filters() {
     const [showFilters, setShowFilters] = useState(false);
 
     return (
-        <aside className="flex flex-col gap-2 h-full">
+        <aside className="flex flex-col gap-2 h-full pt-1">
             {/* header */}
             <div
                 className={cl(
                     'flex',
                     showFilters
                         ? 'items-center justify-between'
-                        : 'flex-col gap-2'
+                        : 'flex-col gap-2 items-start'
                 )}
             >
                 <p>Filters</p>
 
                 <button
-                    className="flex items-center justify-center p-2 rounded-lg text-black bg-white"
+                    className="flex items-center justify-center rounded-lg text-black bg-white"
                     onClick={() => setShowFilters((prev) => !prev)}
                 >
                     {showFilters ? (

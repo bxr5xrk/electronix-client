@@ -1,7 +1,7 @@
 import { HeartIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
 import Button from '../../../../../../components/Button';
 
-export default function Product() {
+export default function ProductItem() {
     return (
         <div className="flex rounded-lg flex-col">
             <div className="w-14 h-14 bg-gray-400"></div>
