@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { HeartIcon } from '@heroicons/react/24/outline';
+import { useAppSelector } from '../../../../app/store';
+import { selectProducts } from '../../../../features/products/productsSlice';
+import { useGetProducts } from '../../../../features/products/productsService';
 
-export default function Header() {
+function Header() {
+    const { currentPage, query } = useAppSelector(selectProducts);
+    const { data } = useGetProducts({
+        page: currentPage,
+        query
+    });
+
+    const totalItems = useMemo(() => data?.totalCount, [data]);
+
     return (
-        <div className="flex items-center justify-between w-full">
-            <p>count items</p>
+        <div className="flex items-end justify-between w-full">
+            <p>{totalItems} results found</p>
 
             <Link
                 className="flex items-center justify-center rounded-lg bg-primary-500 p-2"
@@ -16,3 +27,5 @@ export default function Header() {
         </div>
     );
 }
+
+export default memo(Header);

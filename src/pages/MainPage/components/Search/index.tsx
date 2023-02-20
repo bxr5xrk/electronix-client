@@ -29,7 +29,11 @@ function Search() {
             />
 
             {debouncedValue.length > 0 ? (
-                <XMarkIcon className="w-5 h-5" aria-hidden />
+                <XMarkIcon
+                    onClick={() => setSearchValue('')}
+                    className="w-5 h-5 cursor-pointer"
+                    aria-hidden
+                />
             ) : null}
         </div>
     );

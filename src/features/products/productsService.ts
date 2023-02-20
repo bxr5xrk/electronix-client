@@ -12,7 +12,7 @@ export const productsApi = createApi({
             { products: IProduct[]; totalCount: number },
             { page: number; query: string }
         >({
-            query: ({ page, query }: { page: number; query: string }) =>
+            query: ({ page, query }) =>
                 `products?q=${query ?? ''}&_page=${page}&_limit=${limit}`,
             transformResponse(apiResponse: IProduct[], meta) {
                 return {
@@ -22,8 +22,18 @@ export const productsApi = createApi({
                     )
                 };
             }
+        }),
+        getBrands: builder.query<string[], unknown>({
+            query: () => 'brands'
+        }),
+        getCategories: builder.query<string[], unknown>({
+            query: () => 'categories'
         })
     })
 });
 
-export const { useGetPaginatedProductsQuery: useGetProducts } = productsApi;
+export const {
+    useGetPaginatedProductsQuery: useGetProducts,
+    useGetBrandsQuery: useGetBrands,
+    useGetCategoriesQuery: useGetCategories
+} = productsApi;
