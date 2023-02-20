@@ -1,11 +1,10 @@
-import './App.css';
 import { RouterProvider } from 'react-router-dom';
 import { routes } from './routes';
 import { Suspense } from 'react';
 
 function App() {
     return (
-        <div className="App">
+        <div className="font-inter">
             <Suspense fallback={<></>}>
                 <RouterProvider router={routes} />
             </Suspense>
