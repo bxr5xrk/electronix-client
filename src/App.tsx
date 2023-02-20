@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 
 function App() {
     return (
-        <div className="font-inter">
+        <div className="font-montserrat p-3">
             <Suspense fallback={<></>}>
                 <RouterProvider router={routes} />
             </Suspense>

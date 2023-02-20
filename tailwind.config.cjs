@@ -1,11 +1,17 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors');
+
 module.exports = {
     content: ['./src/**/*.{html,js}', './src/**/*.{html,js,tsx}'],
-    darkMode: 'media', // or 'media' or 'class'
+    darkMode: 'class',
     theme: {
+        colors: {
+            primary: colors.indigo
+        },
         extend: {
             fontFamily: {
-                inter: ['Inter', 'sans-serif']
+                montserrat: ['Montserrat', 'sans-serif']
             }
         }
     },
