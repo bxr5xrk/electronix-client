@@ -8,16 +8,18 @@ import ProductItem from './components/ProductItem';
 
 export default function ProductsList() {
     const { currentPage } = useAppSelector(selectProducts);
-    const { data, isLoading, isSuccess } = useGetProducts({
+    const { data, isLoading, isFetching, isSuccess } = useGetProducts({
         page: currentPage
     });
 
     const products = useMemo(() => data?.products, [data]);
 
-    return (
-        <section className="grid grid-cols-3 gap-3 h-1/2 overflow-y-scroll flex-grow">
-            {isLoading ? <CenterSpinner /> : null}
+    if (isLoading || isFetching) {
+        return <CenterSpinner />;
+    }
 
+    return (
+        <section className="grid grid-cols-3 gap-3 overflow-y-scroll flex-grow">
             {isSuccess
                 ? products?.map((product) => (
                       <ProductItem

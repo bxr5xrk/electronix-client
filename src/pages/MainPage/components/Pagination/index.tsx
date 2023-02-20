@@ -54,8 +54,10 @@ function PageItem({
             disabled={isDisabled}
             type="button"
             className={cl(
-                'flex items-center justify-center p-2 rounded-full cursor-pointer font-medium hover:z-10',
-                isDisabled !== undefined && !!isDisabled && 'opacity-75',
+                'flex items-center justify-center w-10 h-10 rounded-full cursor-pointer font-medium hover:z-10',
+                isDisabled !== undefined &&
+                    !!isDisabled &&
+                    'opacity-50 text-opacity-50',
                 isActive !== undefined && !!isActive
                     ? 'bg-primary-500 text-white hover:bg-primary-600'
                     : 'bg-gray-100 text-black hover:bg-gray-200'
@@ -79,13 +81,14 @@ export default function Pagination() {
     );
 
     return (
-        <div className="flex w-full justify-center items-center">
+        <div className="w-full flex justify-center gap-2">
             <PageItem
+                isDisabled={currentPage === 1}
                 toPrevious
                 icon={<ChevronLeftIcon className="w-5 h-5" aria-hidden />}
             />
 
-            <div className="flex items-center gap-2 bg-gray-100">
+            <div className="flex items-center gap-2 bg-gray-100 rounded-full">
                 {pagesArr.map((page) => (
                     <PageItem
                         key={page}
@@ -96,6 +99,7 @@ export default function Pagination() {
             </div>
 
             <PageItem
+                isDisabled={currentPage === totalItems}
                 toNext
                 icon={<ChevronRightIcon className="w-5 h-5" aria-hidden />}
             />
