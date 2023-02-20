@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { IProduct } from './products.interfaces';
 
 const API_URL = 'https://e-commerce-server-kappa.vercel.app';
-const limit = 9;
+export const limit = 9;
 
 export const productsApi = createApi({
     reducerPath: 'productsService',

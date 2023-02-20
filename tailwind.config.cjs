@@ -11,6 +11,9 @@ module.exports = {
             ...colors
         },
         extend: {
+            gridTemplateRows: {
+                autoFr: 'auto 1fr'
+            },
             fontFamily: {
                 montserrat: ['Montserrat', 'sans-serif']
             }

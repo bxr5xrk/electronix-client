@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 // import { productsApi } from './productsService';
 
@@ -16,7 +17,7 @@ export const productsSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        setCurrentPage: (state, action) => {
+        setCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload;
         }
     }

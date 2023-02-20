@@ -20,13 +20,13 @@ export default function Button({
         <button
             onClick={onClick}
             className={cl(
-                'flex uppercase items-center justify-center p-2 gap-2 cursor-pointer border',
+                'flex uppercase items-center justify-center p-2 gap-2 cursor-pointer border truncate',
                 fullWidth === true ? 'w-full' : 'w-fit',
                 typeof rounded === 'string'
                     ? `rounded-${rounded}-lg`
                     : 'rounded-lg',
                 type === 'primary'
-                    ? 'bg-indigo-500 text-white'
+                    ? 'bg-indigo-500 border-indigo-500 text-white'
                     : 'bg-white text-black'
             )}
         >

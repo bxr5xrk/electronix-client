@@ -6,10 +6,10 @@ import Search from './components/Search';
 
 export default function MainPage() {
     return (
-        <main className="h-full w-full flex gap-4">
+        <main className="flex gap-4 overflow-y-hidden">
             <Filters />
 
-            <section className="flex flex-col flex-grow h-full w-full gap-4">
+            <section className="flex flex-col w-full h-full gap-4">
                 <Header />
 
                 <Search />
