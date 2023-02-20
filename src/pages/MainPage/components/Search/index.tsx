@@ -1,16 +1,11 @@
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { memo, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../app/store';
-import {
-    selectProducts,
-    setCurrentPage,
-    setQuery
-} from '../../../../features/products/productsSlice';
+import { useAppDispatch } from '../../../../app/store';
+import { setQuery } from '../../../../features/products/productsSlice';
 import { useDebounce } from '../../../../hooks/useDebounce';
 
 function Search() {
     const dispatch = useAppDispatch();
-    const { currentPage } = useAppSelector(selectProducts);
     const [searchValue, setSearchValue] = useState('');
 
     const debouncedValue = useDebounce(searchValue, 500);
@@ -19,10 +14,6 @@ function Search() {
         const query = debouncedValue.trim();
 
         dispatch(setQuery(query));
-
-        if (currentPage !== 1) {
-            dispatch(setCurrentPage(1));
-        }
     }, [debouncedValue]);
 
     return (
@@ -37,7 +28,9 @@ function Search() {
                 onChange={(e) => setSearchValue(e.target.value)}
             />
 
-            <XMarkIcon className="w-5 h-5" aria-hidden />
+            {debouncedValue.length > 0 ? (
+                <XMarkIcon className="w-5 h-5" aria-hidden />
+            ) : null}
         </div>
     );
 }

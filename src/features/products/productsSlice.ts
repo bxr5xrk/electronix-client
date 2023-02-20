@@ -22,6 +22,10 @@ export const productsSlice = createSlice({
         },
         setQuery: (state, action: PayloadAction<string>) => {
             state.query = action.payload;
+
+            if (state.currentPage !== 1) {
+                state.currentPage = 1;
+            }
         }
     }
 

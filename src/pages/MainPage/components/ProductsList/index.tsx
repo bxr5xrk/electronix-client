@@ -19,10 +19,13 @@ export default function ProductsList() {
         return <CenterSpinner />;
     }
 
-    if (query.length > 2 && isSuccess && products?.length === 0) {
-        <div className="w-full h-full flex items-center justify-center">
-            <h1>No found</h1>
-        </div>;
+    if (query.length > 0 && isSuccess && products?.length === 0) {
+        return (
+            <div className="w-full h-full flex flex-col items-center justify-center">
+                <h1 className="text-2xl">Nothing found</h1>
+                <h3>Try again</h3>
+            </div>
+        );
     }
 
     return (
