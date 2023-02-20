@@ -7,15 +7,22 @@ import { selectProducts } from '../../../../features/products/productsSlice';
 import ProductItem from './components/ProductItem';
 
 export default function ProductsList() {
-    const { currentPage } = useAppSelector(selectProducts);
+    const { currentPage, query } = useAppSelector(selectProducts);
     const { data, isLoading, isFetching, isSuccess } = useGetProducts({
-        page: currentPage
+        page: currentPage,
+        query
     });
 
     const products = useMemo(() => data?.products, [data]);
 
     if (isLoading || isFetching) {
         return <CenterSpinner />;
+    }
+
+    if (query.length > 2 && isSuccess && products?.length === 0) {
+        <div className="w-full h-full flex items-center justify-center">
+            <h1>No found</h1>
+        </div>;
     }
 
     return (

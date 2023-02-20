@@ -10,10 +10,10 @@ export const productsApi = createApi({
     endpoints: (builder) => ({
         getPaginatedProducts: builder.query<
             { products: IProduct[]; totalCount: number },
-            { page: number }
+            { page: number; query: string }
         >({
-            query: ({ page }: { page: number }) =>
-                `products?_page=${page}&_limit=${limit}`,
+            query: ({ page, query }: { page: number; query: string }) =>
+                `products?q=${query ?? ''}&_page=${page}&_limit=${limit}`,
             transformResponse(apiResponse: IProduct[], meta) {
                 return {
                     products: apiResponse,

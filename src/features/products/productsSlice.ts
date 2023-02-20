@@ -5,12 +5,12 @@ import type { RootState } from '../../app/store';
 
 export interface productsState {
     currentPage: number;
-    // totalItemsCount: number;
+    query: string;
 }
 
 const initialState: productsState = {
-    currentPage: 1
-    // totalItemsCount: 1
+    currentPage: 1,
+    query: ''
 };
 
 export const productsSlice = createSlice({
@@ -19,6 +19,9 @@ export const productsSlice = createSlice({
     reducers: {
         setCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload;
+        },
+        setQuery: (state, action: PayloadAction<string>) => {
+            state.query = action.payload;
         }
     }
 
@@ -32,7 +35,7 @@ export const productsSlice = createSlice({
     // }
 });
 
-export const { setCurrentPage } = productsSlice.actions;
+export const { setCurrentPage, setQuery } = productsSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products;
 

@@ -70,8 +70,8 @@ function PageItem({
 }
 
 export default function Pagination() {
-    const { currentPage } = useAppSelector(selectProducts);
-    const { data } = useGetProducts({ page: currentPage });
+    const { currentPage, query } = useAppSelector(selectProducts);
+    const { data } = useGetProducts({ page: currentPage, query });
 
     const totalItems = useMemo(() => data?.totalCount, [data]);
 
@@ -82,27 +82,35 @@ export default function Pagination() {
 
     return (
         <div className="w-full flex justify-center gap-2">
-            <PageItem
-                isDisabled={currentPage === 1}
-                toPrevious
-                icon={<ChevronLeftIcon className="w-5 h-5" aria-hidden />}
-            />
-
-            <div className="flex items-center gap-2 bg-gray-100 rounded-full">
-                {pagesArr.map((page) => (
+            {pagesArr.length > 1 ? (
+                <>
                     <PageItem
-                        key={page}
-                        page={page}
-                        isActive={page === currentPage}
+                        isDisabled={currentPage === 1}
+                        toPrevious
+                        icon={
+                            <ChevronLeftIcon className="w-5 h-5" aria-hidden />
+                        }
                     />
-                ))}
-            </div>
 
-            <PageItem
-                isDisabled={currentPage === totalItems}
-                toNext
-                icon={<ChevronRightIcon className="w-5 h-5" aria-hidden />}
-            />
+                    <div className="flex items-center gap-2 bg-gray-100 rounded-full">
+                        {pagesArr.map((page) => (
+                            <PageItem
+                                key={page}
+                                page={page}
+                                isActive={page === currentPage}
+                            />
+                        ))}
+                    </div>
+
+                    <PageItem
+                        isDisabled={currentPage === totalItems}
+                        toNext
+                        icon={
+                            <ChevronRightIcon className="w-5 h-5" aria-hidden />
+                        }
+                    />
+                </>
+            ) : null}
         </div>
     );
 }

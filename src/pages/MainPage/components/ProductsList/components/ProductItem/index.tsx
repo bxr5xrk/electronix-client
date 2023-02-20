@@ -12,7 +12,7 @@ export default function ProductItem({
     rating
 }: ProductItemProps) {
     return (
-        <div className="grid rounded-lg border shadow-xl w-full h-full py-2 px-4">
+        <div className="grid rounded-lg border shadow-xl w-full h-full p-4 pt-2">
             <div className="flex items-center justify-center bg-center bg-contain h-72 bg-clip-content w-full">
                 <img
                     src={images[0]}
@@ -34,7 +34,7 @@ export default function ProductItem({
                     onClick={() => ({})}
                     type="white"
                     fullWidth
-                    rounded="bl"
+                    rounded="rounded-bl-lg"
                 >
                     <HeartIcon className="w-5 h-5" aria-hidden />
                     <span>add to watchList</span>
@@ -43,7 +43,7 @@ export default function ProductItem({
                     onClick={() => ({})}
                     type="primary"
                     fullWidth
-                    rounded="br"
+                    rounded="rounded-br-lg"
                 >
                     <ShoppingBagIcon className="w-5 h-5" aria-hidden />
                     <span>add to cart</span>
