@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../../../../../app/store';
+import Button from '../../../../../../components/Button';
 import {
     useGetBrands,
     useGetCategories
@@ -6,7 +7,8 @@ import {
 import {
     selectProducts,
     setActiveBrands,
-    setActiveCategories
+    setActiveCategories,
+    setClearFilters
 } from '../../../../../../features/products/productsSlice';
 
 interface SectionProps {
@@ -59,7 +61,7 @@ function FiltersList() {
     const { data: categories } = useGetCategories({});
 
     return (
-        <section className="flex flex-col w-80 h-full border shadow-md rounded-lg bg-white gap-7 py-2 px-4">
+        <div className="flex flex-col w-80 h-full border shadow-md rounded-lg bg-white gap-7 py-2 px-4">
             {categories !== undefined ? (
                 <Section
                     title="Category"
@@ -79,7 +81,15 @@ function FiltersList() {
                     onClick={(items) => dispatch(setActiveBrands(items))}
                 />
             ) : null}
-        </section>
+
+            <Button
+                type="primary"
+                fullWidth
+                onClick={() => dispatch(setClearFilters())}
+            >
+                <p>Clear all filters</p>
+            </Button>
+        </div>
     );
 }
 

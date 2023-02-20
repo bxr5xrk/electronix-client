@@ -36,6 +36,10 @@ export const productsSlice = createSlice({
         },
         setActiveCategories: (state, action: PayloadAction<string[]>) => {
             state.activeCategories = action.payload;
+        },
+        setClearFilters: (state) => {
+            state.activeBrands = [];
+            state.activeCategories = [];
         }
     }
 
@@ -53,7 +57,8 @@ export const {
     setCurrentPage,
     setQuery,
     setActiveBrands,
-    setActiveCategories
+    setActiveCategories,
+    setClearFilters
 } = productsSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products;
