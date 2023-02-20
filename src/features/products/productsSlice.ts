@@ -6,11 +6,15 @@ import type { RootState } from '../../app/store';
 export interface productsState {
     currentPage: number;
     query: string;
+    activeBrands: string[];
+    activeCategories: string[];
 }
 
 const initialState: productsState = {
     currentPage: 1,
-    query: ''
+    query: '',
+    activeBrands: [],
+    activeCategories: []
 };
 
 export const productsSlice = createSlice({
@@ -26,6 +30,12 @@ export const productsSlice = createSlice({
             if (state.currentPage !== 1) {
                 state.currentPage = 1;
             }
+        },
+        setActiveBrands: (state, action: PayloadAction<string[]>) => {
+            state.activeBrands = action.payload;
+        },
+        setActiveCategories: (state, action: PayloadAction<string[]>) => {
+            state.activeCategories = action.payload;
         }
     }
 
@@ -39,7 +49,12 @@ export const productsSlice = createSlice({
     // }
 });
 
-export const { setCurrentPage, setQuery } = productsSlice.actions;
+export const {
+    setCurrentPage,
+    setQuery,
+    setActiveBrands,
+    setActiveCategories
+} = productsSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products;
 
