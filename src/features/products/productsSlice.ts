@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-// import { productsApi } from './productsService';
 
 export interface productsState {
     currentPage: number;
@@ -42,15 +41,6 @@ export const productsSlice = createSlice({
             state.activeCategories = [];
         }
     }
-
-    // extraReducers: (builder) => {
-    //     builder.addMatcher(
-    //         productsApi.endpoints.getPaginatedProducts.matchFulfilled,
-    //         (state, { payload }) => {
-    //             state.totalItemsCount = payload.totalCount;
-    //         }
-    //     );
-    // }
 });
 
 export const {
