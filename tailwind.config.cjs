@@ -7,7 +7,8 @@ module.exports = {
     darkMode: 'class',
     theme: {
         colors: {
-            primary: colors.indigo
+            primary: colors.indigo,
+            ...colors
         },
         extend: {
             fontFamily: {
