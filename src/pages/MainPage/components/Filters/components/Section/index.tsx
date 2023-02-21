@@ -26,8 +26,8 @@ export default function Section({
 
     return (
         <div>
-            <h2 className="font-semibold">{title}</h2>
-            <div className="flex flex-col gap-1 mt-2">
+            <h2 className="font-semibold mb-2">{title}</h2>
+            <div className="flex flex-col gap-1">
                 {items?.map((item) => (
                     <div className="flex items-center gap-2" key={item}>
                         <div className="w-fit rounded border flex items-center justify-center">

@@ -11,6 +11,9 @@ module.exports = {
             ...colors
         },
         extend: {
+            width: {
+                50: '12.5rem'
+            },
             gridTemplateRows: {
                 autoFr: 'auto 1fr'
             },

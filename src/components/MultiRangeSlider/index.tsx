@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState, useRef, memo } from 'react';
 import type { IPriceRange } from '../../features/products/products.interfaces';
 import { useDebounce } from '../../hooks/useDebounce';
-import './multiRangeSlider.css';
+import '../../styles/multiRangeSlider.css';
 
 interface MultiRangeSliderProps {
     min: number;
@@ -52,7 +52,7 @@ function MultiRangeSlider({ min, max, step, onChange }: MultiRangeSliderProps) {
     }, [onChange, debouncedMax, debouncedMin]);
 
     return (
-        <div className="container">
+        <div className="relative flex w-full justify-center p-5">
             <input
                 type="range"
                 min={min}
@@ -87,11 +87,15 @@ function MultiRangeSlider({ min, max, step, onChange }: MultiRangeSliderProps) {
                 className="thumb thumb--right"
             />
 
-            <div className="slider">
+            <div className="relative w-50">
                 <div className="slider__track" />
-                <div ref={range} className="slider__range" />
-                <div className="slider__left-value">{minVal}</div>
-                <div className="slider__right-value">{maxVal}</div>
+                <div ref={range} className="slider__range  bg-primary-500" />
+                <div className="slider__left-value text-black font-medium">
+                    {minVal}
+                </div>
+                <div className="slider__right-value text-black font-medium">
+                    {maxVal}
+                </div>
             </div>
         </div>
     );

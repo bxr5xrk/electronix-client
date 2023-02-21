@@ -20,7 +20,7 @@ export default function Button({
         <button
             onClick={onClick}
             className={cl(
-                'flex uppercase items-center justify-center p-2 gap-2 cursor-pointer border truncate',
+                'flex uppercase items-center justify-center p-5 gap-2 cursor-pointer border truncate',
                 fullWidth === true ? 'w-full' : 'w-fit',
                 rounded,
                 type === 'primary'
