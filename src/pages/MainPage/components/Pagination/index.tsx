@@ -38,6 +38,7 @@ function Pagination() {
         <div className="w-full flex justify-center gap-2">
             {pagesArr.length > 1 ? (
                 <>
+                    {/* previous */}
                     <PageItem
                         isDisabled={currentPage === 1}
                         toPrevious
@@ -46,6 +47,7 @@ function Pagination() {
                         }
                     />
 
+                    {/* numbers */}
                     <div className="flex items-center gap-2 bg-gray-100 rounded-full">
                         {pagesArr.map((page) => (
                             <PageItem
@@ -56,6 +58,7 @@ function Pagination() {
                         ))}
                     </div>
 
+                    {/* next */}
                     <PageItem
                         isDisabled={currentPage === totalItems}
                         toNext

@@ -1,6 +1,4 @@
 import React, { memo, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { HeartIcon } from '@heroicons/react/24/outline';
 import { useAppSelector } from '../../../../app/store';
 import { selectProducts } from '../../../../features/products/productsSlice';
 import { useGetProducts } from '../../../../features/products/productsService';

@@ -20,12 +20,15 @@ function MultiRangeSlider({
 }: MultiRangeSliderProps) {
     const { min: minSaved, max: maxSaved } = savedValues;
 
+    // pre-populate values on mount
     const [minVal, setMinVal] = useState(minSaved ?? min);
     const [maxVal, setMaxVal] = useState(maxSaved ?? max);
     const minValRef = useRef<number>(minSaved ?? min);
     const maxValRef = useRef<number>(maxSaved ?? max);
+
     const debouncedMin = useDebounce(minVal, 500);
     const debouncedMax = useDebounce(maxVal, 500);
+
     const range = useRef<HTMLDivElement>(null);
 
     // Convert to percentage
@@ -34,6 +37,7 @@ function MultiRangeSlider({
         [min, max]
     );
 
+    // update values when sidebar closed
     useEffect(() => {
         if (minVal !== minSaved) {
             setMinVal(minSaved);

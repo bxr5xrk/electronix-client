@@ -11,7 +11,7 @@ import {
     stringifyPriceToParam
 } from '../../../../utils';
 
-export default function ProductsList() {
+export default function List() {
     const {
         currentPage,
         query,

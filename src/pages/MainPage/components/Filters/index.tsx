@@ -3,7 +3,7 @@ import {
     ChevronDoubleRightIcon
 } from '@heroicons/react/24/outline';
 import { useState } from 'react';
-import { cl } from '../../../../utils/cl';
+import { cl } from '../../../../utils';
 import ClearFiltersButton from './components/ClearFiltersButton';
 import FiltersList from './components/FiltersList';
 

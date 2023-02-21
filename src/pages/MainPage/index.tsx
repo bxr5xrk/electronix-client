@@ -1,7 +1,7 @@
 import Filters from './components/Filters';
 import Header from './components/Header';
 import Pagination from './components/Pagination';
-import ProductsList from './components/ProductsList';
+import List from './components/List';
 import Search from './components/Search';
 
 export default function MainPage() {
@@ -14,7 +14,7 @@ export default function MainPage() {
 
                 <Search />
 
-                <ProductsList />
+                <List />
 
                 <Pagination />
             </section>

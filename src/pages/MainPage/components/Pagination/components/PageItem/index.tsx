@@ -3,7 +3,7 @@ import {
     selectProducts,
     setCurrentPage
 } from '../../../../../../features/products/productsSlice';
-import { cl } from '../../../../../../utils/cl';
+import { cl } from '../../../../../../utils';
 
 interface PageProps {
     isActive?: boolean;
@@ -27,10 +27,13 @@ export default function PageItem({
 
     const handleClick = () => {
         if (page !== undefined) {
+            // if it's page number
             dispatch(setCurrentPage(page));
         } else if (toPrevious !== undefined && !!toPrevious) {
+            // if previous
             dispatch(setCurrentPage(currentPage - 1));
         } else if (toNext !== undefined && !!toNext) {
+            // if next
             dispatch(setCurrentPage(currentPage + 1));
         }
     };

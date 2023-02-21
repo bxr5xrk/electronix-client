@@ -11,7 +11,7 @@ export default function ProductItem({ product }: ProductItemProps) {
 
     return (
         <div className="grid rounded-lg shadow border w-full h-fit p-4 pt-2">
-            <div className="flex items-center justify-center bg-center bg-contain h-72 bg-clip-content w-full">
+            <div className="flex items-center justify-center h-72 w-full">
                 <img
                     src={images[0]}
                     alt={title + ' image'}
