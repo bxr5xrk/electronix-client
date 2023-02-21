@@ -17,7 +17,7 @@ function Search() {
     }, [debouncedValue]);
 
     return (
-        <div className="flex items-center w-full relative shadow-md rounded-lg gap-2 p-1 px-2 border">
+        <div className="flex items-center w-full relative shadow rounded-lg gap-2 p-1 px-2 border">
             <MagnifyingGlassIcon className="w-5 h-5" aria-hidden />
 
             <input

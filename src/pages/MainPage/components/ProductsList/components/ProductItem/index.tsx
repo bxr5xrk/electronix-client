@@ -12,7 +12,7 @@ export default function ProductItem({
     rating
 }: ProductItemProps) {
     return (
-        <div className="grid rounded-lg border shadow-xl w-full h-fit p-4 pt-2">
+        <div className="grid rounded-lg shadow border w-full h-fit p-4 pt-2">
             <div className="flex items-center justify-center bg-center bg-contain h-72 bg-clip-content w-full">
                 <img
                     src={images[0]}
@@ -27,26 +27,28 @@ export default function ProductItem({
                 <h3>{rating}</h3>
             </div>
 
-            <h2 className="truncate">{title}</h2>
+            <h2 className="truncate" title={title}>
+                {title}
+            </h2>
 
             <div className="grid grid-cols-2 w-full h-12 place-items-end">
                 <Button
+                    title="Add to watchList"
                     onClick={() => ({})}
                     type="white"
                     fullWidth
                     rounded="rounded-bl-lg"
                 >
                     <HeartIcon className="w-5 h-5" aria-hidden />
-                    <span>add to watchList</span>
                 </Button>
                 <Button
+                    title="Add to cart"
                     onClick={() => ({})}
                     type="primary"
                     fullWidth
                     rounded="rounded-br-lg"
                 >
                     <ShoppingBagIcon className="w-5 h-5" aria-hidden />
-                    <span>add to cart</span>
                 </Button>
             </div>
         </div>

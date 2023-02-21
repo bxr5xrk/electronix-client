@@ -35,7 +35,9 @@ export default function Section({
                                 id={item}
                                 name={item}
                                 onChange={() => handleClick(item)}
-                                checked={!!activeItems.includes(item)}
+                                checked={
+                                    !!activeItems.includes(item.toLowerCase())
+                                }
                                 type="checkbox"
                                 className="h-4 w-4 rounded cursor-pointer checked:bg-primary-500"
                             />

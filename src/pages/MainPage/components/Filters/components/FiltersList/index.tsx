@@ -13,7 +13,7 @@ function FiltersList() {
     const dispatch = useAppDispatch();
 
     return (
-        <div className="flex h-fit overflow-y-scroll flex-col border shadow-md rounded-lg bg-white gap-4 py-2 px-4">
+        <div className="flex h-fit overflow-y-scroll flex-col border shadow rounded-lg bg-white gap-4 py-2 px-4">
             <div className="mb-5">
                 <h2 className="font-semibold mb-2">Price</h2>
                 <PriceRange />

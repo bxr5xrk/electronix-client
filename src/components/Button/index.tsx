@@ -7,6 +7,7 @@ interface ButtonProps {
     fullWidth?: boolean;
     rounded?: string;
     onClick: () => void;
+    title?: string;
 }
 
 export default function Button({
@@ -14,10 +15,12 @@ export default function Button({
     type,
     fullWidth,
     rounded,
-    onClick
+    onClick,
+    title
 }: ButtonProps) {
     return (
         <button
+            title={title}
             onClick={onClick}
             className={cl(
                 'flex uppercase items-center justify-center p-2 gap-2 cursor-pointer border truncate',
