@@ -1,5 +1,5 @@
 import React from 'react';
-import type { IProduct } from '../../features/products/products.interfaces';
+import type { IProduct } from '../../features/products/productsInterfaces';
 import ProductItem from './components/ProductItem';
 
 interface ProductListProps {

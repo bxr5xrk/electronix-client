@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, useRef, memo } from 'react';
-import type { IPriceRange } from '../../features/products/products.interfaces';
+import type { IPriceRange } from '../../features/products/productsInterfaces';
 import { useDebounce } from '../../hooks/useDebounce';
 import '../../styles/multiRangeSlider.css';
 

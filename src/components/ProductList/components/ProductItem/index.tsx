@@ -1,44 +1,13 @@
-import { ShoppingBagIcon } from '@heroicons/react/24/outline';
-import HeartIcon from '@heroicons/react/24/outline/HeartIcon';
-import HeartIconSolid from '@heroicons/react/24/solid/HeartIcon';
-import { useCallback, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../app/store';
-import type { IProduct } from '../../../../features/products/products.interfaces';
-import {
-    selectWatchList,
-    setWatchListItems
-} from '../../../../features/watchList/watchListSlice';
-import { addOrRemoveItemFromArr, setToLocalStorage } from '../../../../utils';
-import Button from '../../../Button';
+import type { IProduct } from '../../../../features/products/productsInterfaces';
+import CartButton from '../CartButton';
+import WatchListButton from '../WatchListButton';
 
 interface ProductItemProps {
     product: IProduct;
 }
 
 export default function ProductItem({ product }: ProductItemProps) {
-    const dispatch = useAppDispatch();
-    const { watchListItems } = useAppSelector(selectWatchList);
-
-    const { id, title, rating, images, price } = product;
-
-    const isItemInWatchList = useMemo(
-        () => watchListItems.map((i) => i.id).includes(id),
-        [watchListItems]
-    );
-
-    const handleClickWatchList = useCallback(
-        (product: IProduct) => {
-            const newWatchListArr = addOrRemoveItemFromArr(
-                watchListItems,
-                product
-            );
-
-            dispatch(setWatchListItems(newWatchListArr));
-
-            setToLocalStorage('watchList', newWatchListArr);
-        },
-        [product]
-    );
+    const { title, rating, images, price } = product;
 
     return (
         <div className="grid rounded-lg shadow border w-full h-fit p-4 pt-2">
@@ -61,28 +30,9 @@ export default function ProductItem({ product }: ProductItemProps) {
             </h2>
 
             <div className="grid grid-cols-2 w-full h-12 place-items-end">
-                <Button
-                    title="Add to watchList"
-                    onClick={() => handleClickWatchList(product)}
-                    type="white"
-                    fullWidth
-                    rounded="rounded-bl-lg"
-                >
-                    {isItemInWatchList ? (
-                        <HeartIconSolid className="w-5 h-5" aria-hidden />
-                    ) : (
-                        <HeartIcon className="w-5 h-5" aria-hidden />
-                    )}
-                </Button>
-                <Button
-                    title="Add to cart"
-                    onClick={() => ({})}
-                    type="primary"
-                    fullWidth
-                    rounded="rounded-br-lg"
-                >
-                    <ShoppingBagIcon className="w-5 h-5" aria-hidden />
-                </Button>
+                <WatchListButton product={product} />
+
+                <CartButton product={product} />
             </div>
         </div>
     );

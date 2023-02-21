@@ -4,12 +4,14 @@ import type { TypedUseSelectorHook } from 'react-redux';
 import { productsApi } from '../features/products/productsService';
 import productsSlice from '../features/products/productsSlice';
 import watchListSlice from '../features/watchList/watchListSlice';
+import cartSlice from '../features/cart/cartSlice';
 
 export const store = configureStore({
     reducer: {
         [productsApi.reducerPath]: productsApi.reducer,
         products: productsSlice,
-        watchList: watchListSlice
+        watchList: watchListSlice,
+        cart: cartSlice
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(productsApi.middleware)
