@@ -4,17 +4,27 @@ import { useAppSelector } from '../../../../app/store';
 import { limit } from '../../../../data';
 import { useGetProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
-import { arrToSearchParams, getPagesArr } from '../../../../utils';
+import {
+    getPagesArr,
+    stringifyFiltersToParam,
+    stringifyPriceToParam
+} from '../../../../utils';
 import PageItem from './components/PageItem';
 
 function Pagination() {
-    const { currentPage, query, activeBrands, activeCategories } =
-        useAppSelector(selectProducts);
+    const {
+        currentPage,
+        query,
+        activeBrands,
+        activeCategories,
+        activePriceRange
+    } = useAppSelector(selectProducts);
     const { data } = useGetProducts({
         page: currentPage,
         query,
-        brands: arrToSearchParams(activeBrands, 'brand'),
-        categories: arrToSearchParams(activeCategories, 'category')
+        brands: stringifyFiltersToParam(activeBrands, 'brand'),
+        categories: stringifyFiltersToParam(activeCategories, 'category'),
+        priceRange: stringifyPriceToParam(activePriceRange)
     });
 
     const totalItems = useMemo(() => data?.totalCount, [data]);

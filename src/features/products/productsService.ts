@@ -14,14 +14,19 @@ export const productsApi = createApi({
             IGetPaginatedProductsRes,
             IGetPaginatedProductsParams
         >({
-            query: ({ page, query, brands, categories }) => {
+            query: ({ page, query, brands, categories, priceRange }) => {
                 const _query = query.length > 0 ? `q=${query ?? ''}` : '';
+
                 const pagination = `&_page=${page}&_limit=${limit}`;
+
                 const _brands = brands.length > 0 ? `&${brands}` : '';
+
                 const _categories =
                     categories.length > 0 ? `&${categories}` : '';
 
-                return `products?${_query}${pagination}${_brands}${_categories}`;
+                const _priceRange = `&${priceRange}`;
+
+                return `products?${_query}${pagination}${_brands}${_categories}${_priceRange}`;
             },
             transformResponse(apiResponse: IProduct[], meta) {
                 return {
@@ -32,9 +37,11 @@ export const productsApi = createApi({
                 };
             }
         }),
+
         getBrands: builder.query<string[], unknown>({
             query: () => 'brands'
         }),
+
         getCategories: builder.query<string[], unknown>({
             query: () => 'categories'
         })

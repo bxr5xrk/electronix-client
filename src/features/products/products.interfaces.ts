@@ -18,6 +18,7 @@ export interface IGetPaginatedProductsParams {
     query: string;
     brands: string;
     categories: string;
+    priceRange: string;
 }
 
 export interface IPriceRange {

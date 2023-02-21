@@ -1,4 +1,9 @@
-export const arrToSearchParams = (arr: string[], label: string) =>
+import type { IPriceRange } from './../features/products/products.interfaces';
+
+export const stringifyPriceToParam = ({ min, max }: IPriceRange) =>
+    `price_gte=${min}&price_lte=${max}`;
+
+export const stringifyFiltersToParam = (arr: string[], label: string) =>
     arr.map((i, index) => `${index !== 0 ? '&' : ''}${label}=${i}`).join('');
 
 export const getPagesArr = (totalItems: number, limit: number) => {

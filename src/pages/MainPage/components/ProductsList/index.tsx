@@ -4,17 +4,26 @@ import { useAppSelector } from '../../../../app/store';
 import CenterSpinner from '../../../../components/Spinner/CenterSpinner';
 import { useGetProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
-import { arrToSearchParams } from '../../../../utils';
+import {
+    stringifyFiltersToParam,
+    stringifyPriceToParam
+} from '../../../../utils';
 import ProductItem from './components/ProductItem';
 
 export default function ProductsList() {
-    const { currentPage, query, activeBrands, activeCategories } =
-        useAppSelector(selectProducts);
+    const {
+        currentPage,
+        query,
+        activeBrands,
+        activeCategories,
+        activePriceRange
+    } = useAppSelector(selectProducts);
     const { data, isLoading, isFetching, isSuccess } = useGetProducts({
         page: currentPage,
         query,
-        brands: arrToSearchParams(activeBrands, 'brand'),
-        categories: arrToSearchParams(activeCategories, 'category')
+        brands: stringifyFiltersToParam(activeBrands, 'brand'),
+        categories: stringifyFiltersToParam(activeCategories, 'category'),
+        priceRange: stringifyPriceToParam(activePriceRange)
     });
 
     const products = useMemo(() => data?.products, [data]);
