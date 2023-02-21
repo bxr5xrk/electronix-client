@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import { useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
+import ProductList from '../../../../components/ProductList';
 import CenterSpinner from '../../../../components/Spinner/CenterSpinner';
 import { useGetProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
@@ -8,7 +9,6 @@ import {
     stringifyFiltersToParam,
     stringifyPriceToParam
 } from '../../../../utils';
-import ProductItem from './components/ProductItem';
 
 export default function ProductsList() {
     const {
@@ -41,13 +41,7 @@ export default function ProductsList() {
         );
     }
 
-    return (
-        <section className="grid grid-cols-3 gap-3 overflow-y-scroll flex-grow">
-            {isSuccess
-                ? products?.map((product) => (
-                      <ProductItem product={product} key={product.id} />
-                  ))
-                : null}
-        </section>
-    );
+    return isSuccess && products !== undefined ? (
+        <ProductList items={products} />
+    ) : null;
 }

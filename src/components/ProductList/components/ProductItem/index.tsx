@@ -1,16 +1,15 @@
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import HeartIcon from '@heroicons/react/24/outline/HeartIcon';
 import HeartIconSolid from '@heroicons/react/24/solid/HeartIcon';
-
 import { useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../../../app/store';
-import Button from '../../../../../../components/Button';
-import type { IProduct } from '../../../../../../features/products/products.interfaces';
+import { useAppDispatch, useAppSelector } from '../../../../app/store';
+import type { IProduct } from '../../../../features/products/products.interfaces';
 import {
     selectWatchList,
     setWatchListItems
-} from '../../../../../../features/watchList/watchListSlice';
-import { addOrRemoveItemFromArr } from '../../../../../../utils';
+} from '../../../../features/watchList/watchListSlice';
+import { addOrRemoveItemFromArr } from '../../../../utils';
+import Button from '../../../Button';
 
 interface ProductItemProps {
     product: IProduct;

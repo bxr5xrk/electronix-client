@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../app/store';
+import ProductList from '../../components/ProductList';
 import { selectWatchList } from '../../features/watchList/watchListSlice';
-import ProductItem from '../MainPage/components/ProductsList/components/ProductItem';
 
 export default function WatchListPage() {
     const { watchListItems } = useAppSelector(selectWatchList);
@@ -14,11 +14,7 @@ export default function WatchListPage() {
         );
     }
 
-    return (
-        <section className="grid grid-cols-3 gap-3 overflow-y-scroll flex-grow">
-            {watchListItems?.map((product) => (
-                <ProductItem product={product} key={product.id} />
-            ))}
-        </section>
-    );
+    return watchListItems !== undefined ? (
+        <ProductList items={watchListItems} />
+    ) : null;
 }
