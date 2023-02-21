@@ -17,12 +17,13 @@ export const productsApi = createApi({
             IGetPaginatedProductsParams
         >({
             query: ({ page, query, brands, categories }) => {
-                const _query = `q=${query ?? ''}`;
-                const pagination = `_page=${page}&_limit=${limit}`;
-                const _brands = `&${brands}`;
-                const _categories = `&${categories}`;
+                const _query = query.length > 0 ? `q=${query ?? ''}` : '';
+                const pagination = `&_page=${page}&_limit=${limit}`;
+                const _brands = brands.length > 0 ? `&${brands}` : '';
+                const _categories =
+                    categories.length > 0 ? `&${categories}` : '';
 
-                return `products?${_query}&${pagination}${_brands}${_categories}`;
+                return `products?${_query}${pagination}${_brands}${_categories}`;
             },
             transformResponse(apiResponse: IProduct[], meta) {
                 return {
