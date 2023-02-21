@@ -1,4 +1,6 @@
 import { useAppSelector } from '../../app/store';
+import FullScreenMessage from '../../components/FullScreenMessage';
+import PageTitle from '../../components/PageTitle';
 import ProductList from '../../components/ProductList';
 import { selectWatchList } from '../../features/watchList/watchListSlice';
 
@@ -7,14 +9,20 @@ export default function WatchListPage() {
 
     if (watchListItems.length === 0) {
         return (
-            <div className="w-full h-full flex flex-col items-center justify-center">
-                <h1 className="text-2xl">No items in your watch list</h1>
-                <h3>Add one</h3>
-            </div>
+            <FullScreenMessage
+                title="No items in your watch list"
+                description="Add one"
+            />
         );
     }
 
-    return watchListItems !== undefined ? (
-        <ProductList items={watchListItems} />
-    ) : null;
+    return (
+        <>
+            <PageTitle title="Watch list" />
+
+            {watchListItems !== undefined ? (
+                <ProductList items={watchListItems} />
+            ) : null}
+        </>
+    );
 }

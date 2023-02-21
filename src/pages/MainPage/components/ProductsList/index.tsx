@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import { useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
+import FullScreenMessage from '../../../../components/FullScreenMessage';
 import ProductList from '../../../../components/ProductList';
 import CenterSpinner from '../../../../components/Spinner/CenterSpinner';
 import { useGetProducts } from '../../../../features/products/productsService';
@@ -34,10 +35,7 @@ export default function ProductsList() {
 
     if (query.length > 0 && isSuccess && products?.length === 0) {
         return (
-            <div className="w-full h-full flex flex-col items-center justify-center">
-                <h1 className="text-2xl">Nothing found</h1>
-                <h3>Try again</h3>
-            </div>
+            <FullScreenMessage title="Nothing found" description="Try again" />
         );
     }
 
