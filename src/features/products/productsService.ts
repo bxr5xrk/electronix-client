@@ -1,12 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_URL, limit } from '../../data';
 import type {
     IGetPaginatedProductsParams,
     IGetPaginatedProductsRes,
     IProduct
 } from './products.interfaces';
-
-const API_URL = 'https://e-commerce-server-kappa.vercel.app';
-export const limit = 9;
 
 export const productsApi = createApi({
     reducerPath: 'productsService',

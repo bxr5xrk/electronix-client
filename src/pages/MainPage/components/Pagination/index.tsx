@@ -1,10 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { memo, useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
-import {
-    limit,
-    useGetProducts
-} from '../../../../features/products/productsService';
+import { limit } from '../../../../data';
+import { useGetProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
 import { arrToSearchParams, getPagesArr } from '../../../../utils';
 import PageItem from './components/PageItem';
