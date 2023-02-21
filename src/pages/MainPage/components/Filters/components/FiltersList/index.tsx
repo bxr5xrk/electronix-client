@@ -1,44 +1,24 @@
-import { useAppDispatch, useAppSelector } from '../../../../../../app/store';
+import { useAppDispatch } from '../../../../../../app/store';
 import Button from '../../../../../../components/Button';
-import {
-    useGetBrands,
-    useGetCategories
-} from '../../../../../../features/products/productsService';
-import {
-    selectProducts,
-    setActiveBrands,
-    setActiveCategories,
-    setClearFilters
-} from '../../../../../../features/products/productsSlice';
-import Section from '../Section';
+import { setClearFilters } from '../../../../../../features/products/productsSlice';
+import Brands from '../Brands';
+import Categories from '../Categories';
+import PriceRange from '../PriceRange';
 
 function FiltersList() {
     const dispatch = useAppDispatch();
-    const { activeCategories, activeBrands } = useAppSelector(selectProducts);
-    const { data: brands } = useGetBrands({});
-    const { data: categories } = useGetCategories({});
 
     return (
         <div className="flex flex-col w-80 h-full border shadow-md rounded-lg bg-white gap-7 py-2 px-4">
-            {categories !== undefined ? (
-                <Section
-                    title="Category"
-                    items={categories}
-                    activeItems={activeCategories}
-                    onClick={(items) => dispatch(setActiveCategories(items))}
-                />
-            ) : null}
+            <PriceRange />
 
             <div className="w-full h-0.5 bg-gray-200" />
 
-            {brands !== undefined ? (
-                <Section
-                    title="Brand"
-                    items={brands}
-                    activeItems={activeBrands}
-                    onClick={(items) => dispatch(setActiveBrands(items))}
-                />
-            ) : null}
+            <Categories />
+
+            <div className="w-full h-0.5 bg-gray-200" />
+
+            <Brands />
 
             <Button
                 type="primary"

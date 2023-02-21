@@ -1,19 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
+import { MAX, MIN } from '../../data';
 
 export interface productsState {
     currentPage: number;
     query: string;
     activeBrands: string[];
     activeCategories: string[];
+    activePriceRange: { min: number; max: number };
 }
 
 const initialState: productsState = {
     currentPage: 1,
     query: '',
     activeBrands: [],
-    activeCategories: []
+    activeCategories: [],
+    activePriceRange: { min: MIN, max: MAX }
 };
 
 export const productsSlice = createSlice({
