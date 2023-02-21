@@ -36,7 +36,7 @@ function WatchListButton({ product }: WatchListButtonProps) {
 
             setToLocalStorage('watchList', newWatchListArr);
         },
-        [product]
+        [product, watchListItems]
     );
 
     return (

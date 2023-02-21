@@ -11,7 +11,7 @@ export default function Filters() {
     const [showFilters, setShowFilters] = useState(false);
 
     return (
-        <aside className="sticky inset-0 top-2 left-0 h-sidebar flex flex-col gap-2 pt-1">
+        <aside className="sticky inset-0 top-2 left-0 h-sidebar flex flex-col gap-2 pt-2">
             {/* header */}
             <div
                 className={cl(
@@ -21,7 +21,7 @@ export default function Filters() {
                         : 'flex-col gap-2 items-start'
                 )}
             >
-                <p>Filters</p>
+                {showFilters ? <p>Filters</p> : null}
 
                 <button
                     className="flex items-center justify-center rounded-lg text-black bg-white focus:ring-0 ring-0"

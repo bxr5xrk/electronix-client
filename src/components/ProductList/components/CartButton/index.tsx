@@ -30,7 +30,7 @@ function CartButton({ product }: CartButtonProps) {
 
             setToLocalStorage('cart', newCartArr);
         },
-        [product]
+        [product, cartItems]
     );
 
     return (
