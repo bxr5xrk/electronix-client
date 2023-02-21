@@ -29,3 +29,6 @@ export const addOrRemoveItemFromArr = (
         ? [...copyArr.filter((i) => i.id !== isIncludes.id)]
         : [...copyArr, currentItem];
 };
+
+export const setToLocalStorage = <T>(key: string, value: T) =>
+    localStorage.setItem(key, JSON.stringify(value));

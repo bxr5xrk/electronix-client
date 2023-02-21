@@ -3,12 +3,16 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import type { IProduct } from '../products/products.interfaces';
 
+const watchListItemsFromLS = JSON.parse(
+    localStorage.getItem('watchList') ?? '[]'
+);
+
 export interface watchListState {
     watchListItems: IProduct[];
 }
 
 const initialState: watchListState = {
-    watchListItems: []
+    watchListItems: watchListItemsFromLS
 };
 
 export const watchListSlice = createSlice({

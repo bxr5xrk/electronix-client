@@ -1,14 +1,14 @@
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import HeartIcon from '@heroicons/react/24/outline/HeartIcon';
 import HeartIconSolid from '@heroicons/react/24/solid/HeartIcon';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../app/store';
 import type { IProduct } from '../../../../features/products/products.interfaces';
 import {
     selectWatchList,
     setWatchListItems
 } from '../../../../features/watchList/watchListSlice';
-import { addOrRemoveItemFromArr } from '../../../../utils';
+import { addOrRemoveItemFromArr, setToLocalStorage } from '../../../../utils';
 import Button from '../../../Button';
 
 interface ProductItemProps {
@@ -21,9 +21,23 @@ export default function ProductItem({ product }: ProductItemProps) {
 
     const { id, title, rating, images, price } = product;
 
-    const itemInWatchList = useMemo(
+    const isItemInWatchList = useMemo(
         () => watchListItems.map((i) => i.id).includes(id),
         [watchListItems]
+    );
+
+    const handleClickWatchList = useCallback(
+        (product: IProduct) => {
+            const newWatchListArr = addOrRemoveItemFromArr(
+                watchListItems,
+                product
+            );
+
+            dispatch(setWatchListItems(newWatchListArr));
+
+            setToLocalStorage('watchList', newWatchListArr);
+        },
+        [product]
     );
 
     return (
@@ -49,18 +63,12 @@ export default function ProductItem({ product }: ProductItemProps) {
             <div className="grid grid-cols-2 w-full h-12 place-items-end">
                 <Button
                     title="Add to watchList"
-                    onClick={() =>
-                        dispatch(
-                            setWatchListItems(
-                                addOrRemoveItemFromArr(watchListItems, product)
-                            )
-                        )
-                    }
+                    onClick={() => handleClickWatchList(product)}
                     type="white"
                     fullWidth
                     rounded="rounded-bl-lg"
                 >
-                    {itemInWatchList ? (
+                    {isItemInWatchList ? (
                         <HeartIconSolid className="w-5 h-5" aria-hidden />
                     ) : (
                         <HeartIcon className="w-5 h-5" aria-hidden />
