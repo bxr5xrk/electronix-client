@@ -1,8 +1,10 @@
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './layout';
-import CartPage from './pages/Cart';
-import MainPage from './pages/MainPage';
-import WatchListPage from './pages/WatchListPage';
+
+const MainPage = lazy(async () => await import('./pages/MainPage'));
+const CartPage = lazy(async () => await import('./pages/Cart'));
+const WatchListPage = lazy(async () => await import('./pages/WatchListPage'));
 
 export const routes = createBrowserRouter([
     {

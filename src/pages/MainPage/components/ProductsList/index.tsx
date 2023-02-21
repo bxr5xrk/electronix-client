@@ -4,13 +4,17 @@ import { useAppSelector } from '../../../../app/store';
 import CenterSpinner from '../../../../components/Spinner/CenterSpinner';
 import { useGetProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
+import { arrToSearchParams } from '../../../../utils';
 import ProductItem from './components/ProductItem';
 
 export default function ProductsList() {
-    const { currentPage, query } = useAppSelector(selectProducts);
+    const { currentPage, query, activeBrands, activeCategories } =
+        useAppSelector(selectProducts);
     const { data, isLoading, isFetching, isSuccess } = useGetProducts({
         page: currentPage,
-        query
+        query,
+        brands: arrToSearchParams(activeBrands, 'brand'),
+        categories: arrToSearchParams(activeCategories, 'category')
     });
 
     const products = useMemo(() => data?.products, [data]);
