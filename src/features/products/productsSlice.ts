@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import { MAX, MIN } from '../../data';
-import type { IPriceRange } from './products.interfaces';
+import type { IPriceRange } from './productsInterfaces';
 
 export interface productsState {
     currentPage: number;

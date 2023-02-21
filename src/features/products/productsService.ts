@@ -5,7 +5,7 @@ import type {
     IGetPaginatedProductsParams,
     IGetPaginatedProductsRes,
     IProduct
-} from './products.interfaces';
+} from './productsInterfaces';
 
 export const productsApi = createApi({
     reducerPath: 'productsService',

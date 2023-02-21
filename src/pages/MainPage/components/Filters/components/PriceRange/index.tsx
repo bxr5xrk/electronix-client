@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useAppDispatch } from '../../../../../../app/store';
 import MultiRangeSlider from '../../../../../../components/MultiRangeSlider';
 import { MAX, MIN, STEP } from '../../../../../../data';
-import type { IPriceRange } from '../../../../../../features/products/products.interfaces';
+import type { IPriceRange } from '../../../../../../features/products/productsInterfaces';
 import { setPriceRange } from '../../../../../../features/products/productsSlice';
 
 export default function PriceRange() {

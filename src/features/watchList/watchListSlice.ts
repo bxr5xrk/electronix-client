@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-import type { IProduct } from '../products/products.interfaces';
+import type { IProduct } from '../products/productsInterfaces';
 
 const watchListItemsFromLS = JSON.parse(
     localStorage.getItem('watchList') ?? '[]'
@@ -16,7 +16,7 @@ const initialState: watchListState = {
 };
 
 export const watchListSlice = createSlice({
-    name: 'watch-list',
+    name: 'watchList',
     initialState,
     reducers: {
         setWatchListItems: (state, action: PayloadAction<IProduct[]>) => {

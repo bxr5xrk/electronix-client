@@ -1,7 +1,7 @@
 import type {
     IPriceRange,
     IProduct
-} from './../features/products/products.interfaces';
+} from '../features/products/productsInterfaces';
 
 export const stringifyPriceToParam = ({ min, max }: IPriceRange) =>
     `price_gte=${min}&price_lte=${max}`;
