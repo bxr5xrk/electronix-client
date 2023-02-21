@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState, useRef, memo } from 'react';
+import type { IPriceRange } from '../../features/products/products.interfaces';
 import { useDebounce } from '../../hooks/useDebounce';
 import './multiRangeSlider.css';
 
@@ -6,7 +7,7 @@ interface MultiRangeSliderProps {
     min: number;
     max: number;
     step: number;
-    onChange: ({ min, max }: { min: number; max: number }) => void;
+    onChange: ({ min, max }: IPriceRange) => void;
 }
 
 function MultiRangeSlider({ min, max, step, onChange }: MultiRangeSliderProps) {

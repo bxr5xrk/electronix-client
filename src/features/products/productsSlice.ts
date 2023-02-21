@@ -2,13 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import { MAX, MIN } from '../../data';
+import type { IPriceRange } from './products.interfaces';
 
 export interface productsState {
     currentPage: number;
     query: string;
     activeBrands: string[];
     activeCategories: string[];
-    activePriceRange: { min: number; max: number };
+    activePriceRange: IPriceRange;
 }
 
 const initialState: productsState = {
@@ -51,6 +52,11 @@ export const productsSlice = createSlice({
             state.activeCategories = [];
 
             productsSlice.caseReducers.setDefaultPage(state);
+        },
+        setPriceRange: (state, action: PayloadAction<IPriceRange>) => {
+            state.activePriceRange = action.payload;
+
+            productsSlice.caseReducers.setDefaultPage(state);
         }
     }
 });
@@ -60,7 +66,8 @@ export const {
     setQuery,
     setActiveBrands,
     setActiveCategories,
-    setClearFilters
+    setClearFilters,
+    setPriceRange
 } = productsSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products;

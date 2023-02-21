@@ -19,3 +19,8 @@ export interface IGetPaginatedProductsParams {
     brands: string;
     categories: string;
 }
+
+export interface IPriceRange {
+    min: number;
+    max: number;
+}

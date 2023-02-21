@@ -5,6 +5,10 @@ import Brands from '../Brands';
 import Categories from '../Categories';
 import PriceRange from '../PriceRange';
 
+function Divider() {
+    return <div className="w-full h-0.5 bg-gray-200 my-10" />;
+}
+
 function FiltersList() {
     const dispatch = useAppDispatch();
 
@@ -12,11 +16,11 @@ function FiltersList() {
         <div className="flex flex-col w-80 h-full border shadow-md rounded-lg bg-white gap-7 py-2 px-4">
             <PriceRange />
 
-            <div className="w-full h-0.5 bg-gray-200" />
+            <Divider />
 
             <Categories />
 
-            <div className="w-full h-0.5 bg-gray-200" />
+            <Divider />
 
             <Brands />
 
