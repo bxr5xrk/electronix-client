@@ -1,5 +1,4 @@
 # e-commerce
----
 
 Tools:
 - React.js (Typescript)
@@ -8,7 +7,7 @@ Tools:
 - Vite
 - Prettier, EsLint
 
-Woring functionality:
+Functionality:
 - Filters (by price, category and brand)
 - Full-text search
 - Pagination
