@@ -23,22 +23,31 @@ export const productsSlice = createSlice({
         setCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload;
         },
-        setQuery: (state, action: PayloadAction<string>) => {
-            state.query = action.payload;
-
+        setDefaultPage: (state) => {
             if (state.currentPage !== 1) {
                 state.currentPage = 1;
             }
         },
+        setQuery: (state, action: PayloadAction<string>) => {
+            state.query = action.payload;
+
+            productsSlice.caseReducers.setDefaultPage(state);
+        },
         setActiveBrands: (state, action: PayloadAction<string[]>) => {
             state.activeBrands = action.payload;
+
+            productsSlice.caseReducers.setDefaultPage(state);
         },
         setActiveCategories: (state, action: PayloadAction<string[]>) => {
             state.activeCategories = action.payload;
+
+            productsSlice.caseReducers.setDefaultPage(state);
         },
         setClearFilters: (state) => {
             state.activeBrands = [];
             state.activeCategories = [];
+
+            productsSlice.caseReducers.setDefaultPage(state);
         }
     }
 });

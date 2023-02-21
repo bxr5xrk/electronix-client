@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { IProduct } from './products.interfaces';
+import type {
+    IGetPaginatedProductsParams,
+    IGetPaginatedProductsRes,
+    IProduct
+} from './products.interfaces';
 
 const API_URL = 'https://e-commerce-server-kappa.vercel.app';
 export const limit = 9;
@@ -9,11 +13,17 @@ export const productsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
     endpoints: (builder) => ({
         getPaginatedProducts: builder.query<
-            { products: IProduct[]; totalCount: number },
-            { page: number; query: string }
+            IGetPaginatedProductsRes,
+            IGetPaginatedProductsParams
         >({
-            query: ({ page, query }) =>
-                `products?q=${query ?? ''}&_page=${page}&_limit=${limit}`,
+            query: ({ page, query, brands, categories }) => {
+                const _query = `q=${query ?? ''}`;
+                const pagination = `_page=${page}&_limit=${limit}`;
+                const _brands = `&${brands}`;
+                const _categories = `&${categories}`;
+
+                return `products?${_query}&${pagination}${_brands}${_categories}`;
+            },
             transformResponse(apiResponse: IProduct[], meta) {
                 return {
                     products: apiResponse,

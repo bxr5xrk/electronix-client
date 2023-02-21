@@ -4,12 +4,16 @@ import { HeartIcon } from '@heroicons/react/24/outline';
 import { useAppSelector } from '../../../../app/store';
 import { selectProducts } from '../../../../features/products/productsSlice';
 import { useGetProducts } from '../../../../features/products/productsService';
+import { arrToSearchParams } from '../../../../utils';
 
 function Header() {
-    const { currentPage, query } = useAppSelector(selectProducts);
+    const { currentPage, query, activeBrands, activeCategories } =
+        useAppSelector(selectProducts);
     const { data } = useGetProducts({
         page: currentPage,
-        query
+        query,
+        brands: arrToSearchParams(activeBrands, 'brand'),
+        categories: arrToSearchParams(activeCategories, 'category')
     });
 
     const totalItems = useMemo(() => data?.totalCount, [data]);

@@ -1,24 +1,23 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
 import {
     limit,
     useGetProducts
 } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
+import { arrToSearchParams, getPagesArr } from '../../../../utils';
 import PageItem from './components/PageItem';
 
-const getPagesArr = (totalItems: number, limit: number) => {
-    const pagesCount = Math.floor(totalItems / limit);
-
-    const pagesArr = [...Array(pagesCount)].map((_, index) => index + 1);
-
-    return pagesArr;
-};
-
-export default function Pagination() {
-    const { currentPage, query } = useAppSelector(selectProducts);
-    const { data } = useGetProducts({ page: currentPage, query });
+function Pagination() {
+    const { currentPage, query, activeBrands, activeCategories } =
+        useAppSelector(selectProducts);
+    const { data } = useGetProducts({
+        page: currentPage,
+        query,
+        brands: arrToSearchParams(activeBrands, 'brand'),
+        categories: arrToSearchParams(activeCategories, 'category')
+    });
 
     const totalItems = useMemo(() => data?.totalCount, [data]);
 
@@ -61,3 +60,5 @@ export default function Pagination() {
         </div>
     );
 }
+
+export default memo(Pagination);
