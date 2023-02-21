@@ -28,15 +28,8 @@ function Header() {
     const totalItems = useMemo(() => data?.totalCount, [data]);
 
     return (
-        <div className="flex items-end justify-between w-full">
+        <div className="w-full pt-2">
             <p>{totalItems} results found</p>
-
-            <Link
-                className="flex items-center justify-center rounded-lg bg-primary-500 p-2"
-                to="/watch-list"
-            >
-                <HeartIcon className="w-4 h-4 text-white" aria-hidden />
-            </Link>
         </div>
     );
 }
