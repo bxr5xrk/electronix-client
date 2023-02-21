@@ -10,7 +10,7 @@ export default function Filters() {
     const [showFilters, setShowFilters] = useState(false);
 
     return (
-        <aside className="flex flex-col gap-2 h-full pt-1">
+        <aside className="sticky inset-0 top-2 left-0 h-sidebar flex flex-col gap-2 pt-1">
             {/* header */}
             <div
                 className={cl(

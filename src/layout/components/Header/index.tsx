@@ -4,7 +4,7 @@ import MainLogo from '../../../assets/logo.png';
 
 export default function Header() {
     return (
-        <header className="flex items-center justify-between">
+        <header className="w-full flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3 cursor-pointer">
                 <img src={MainLogo} alt="logo" width="60" height="60" />
 
