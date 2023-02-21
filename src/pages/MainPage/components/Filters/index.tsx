@@ -4,6 +4,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { cl } from '../../../../utils/cl';
+import ClearFiltersButton from './components/ClearFiltersButton';
 import FiltersList from './components/FiltersList';
 
 export default function Filters() {
@@ -23,7 +24,7 @@ export default function Filters() {
                 <p>Filters</p>
 
                 <button
-                    className="flex items-center justify-center rounded-lg text-black bg-white"
+                    className="flex items-center justify-center rounded-lg text-black bg-white focus:ring-0 ring-0"
                     onClick={() => setShowFilters((prev) => !prev)}
                 >
                     {showFilters ? (
@@ -40,7 +41,12 @@ export default function Filters() {
                 </button>
             </div>
 
-            {showFilters ? <FiltersList /> : null}
+            {showFilters ? (
+                <>
+                    <FiltersList />
+                    <ClearFiltersButton />
+                </>
+            ) : null}
         </aside>
     );
 }

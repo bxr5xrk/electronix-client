@@ -8,13 +8,22 @@ interface MultiRangeSliderProps {
     max: number;
     step: number;
     onChange: ({ min, max }: IPriceRange) => void;
+    savedValues: IPriceRange;
 }
 
-function MultiRangeSlider({ min, max, step, onChange }: MultiRangeSliderProps) {
-    const [minVal, setMinVal] = useState(min);
-    const [maxVal, setMaxVal] = useState(max);
-    const minValRef = useRef<number>(min);
-    const maxValRef = useRef<number>(max);
+function MultiRangeSlider({
+    min,
+    max,
+    step,
+    onChange,
+    savedValues
+}: MultiRangeSliderProps) {
+    const { min: minSaved, max: maxSaved } = savedValues;
+
+    const [minVal, setMinVal] = useState(minSaved ?? min);
+    const [maxVal, setMaxVal] = useState(maxSaved ?? max);
+    const minValRef = useRef<number>(minSaved ?? min);
+    const maxValRef = useRef<number>(maxSaved ?? max);
     const debouncedMin = useDebounce(minVal, 500);
     const debouncedMax = useDebounce(maxVal, 500);
     const range = useRef<HTMLDivElement>(null);
@@ -24,6 +33,18 @@ function MultiRangeSlider({ min, max, step, onChange }: MultiRangeSliderProps) {
         (value: number) => Math.round(((value - min) / (max - min)) * 100),
         [min, max]
     );
+
+    useEffect(() => {
+        if (minVal !== minSaved) {
+            setMinVal(minSaved);
+            minValRef.current = minSaved;
+        }
+
+        if (maxVal !== maxSaved) {
+            setMaxVal(maxSaved);
+            maxValRef.current = maxSaved;
+        }
+    }, [minSaved, maxSaved]);
 
     // Set width of the range to decrease from the left side
     useEffect(() => {

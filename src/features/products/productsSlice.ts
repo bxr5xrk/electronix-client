@@ -50,6 +50,7 @@ export const productsSlice = createSlice({
         setClearFilters: (state) => {
             state.activeBrands = [];
             state.activeCategories = [];
+            state.activePriceRange = { min: MIN, max: MAX };
 
             productsSlice.caseReducers.setDefaultPage(state);
         },

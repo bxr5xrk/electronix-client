@@ -1,6 +1,8 @@
-import { useAppDispatch } from '../../../../../../app/store';
-import Button from '../../../../../../components/Button';
-import { setClearFilters } from '../../../../../../features/products/productsSlice';
+import CenterSpinner from '../../../../../../components/Spinner/CenterSpinner';
+import {
+    useGetBrands,
+    useGetCategories
+} from '../../../../../../features/products/productsService';
 import Brands from '../Brands';
 import Categories from '../Categories';
 import PriceRange from '../PriceRange';
@@ -10,14 +12,17 @@ function Divider() {
 }
 
 function FiltersList() {
-    const dispatch = useAppDispatch();
+    const { isLoading: isLoadingCategories } = useGetCategories({});
+    const { isLoading: isLoadingBrands } = useGetBrands({});
 
     return (
-        <div className="flex h-fit overflow-y-scroll flex-col border shadow rounded-lg bg-white gap-4 py-2 px-4">
+        <div className="flex h-sidebar overflow-y-scroll flex-col border shadow rounded-lg bg-white gap-4 py-2 px-4">
             <div className="mb-5">
                 <h2 className="font-semibold mb-2">Price</h2>
                 <PriceRange />
             </div>
+
+            {isLoadingBrands || isLoadingCategories ? <CenterSpinner /> : null}
 
             <Divider />
 
@@ -26,17 +31,6 @@ function FiltersList() {
             <Divider />
 
             <Brands />
-
-            <div>
-                <Button
-                    type="primary"
-                    fullWidth
-                    rounded="rounded-lg"
-                    onClick={() => dispatch(setClearFilters())}
-                >
-                    <p>Clear all filters</p>
-                </Button>
-            </div>
         </div>
     );
 }
