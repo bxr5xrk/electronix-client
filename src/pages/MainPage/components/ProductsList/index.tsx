@@ -45,13 +45,7 @@ export default function ProductsList() {
         <section className="grid grid-cols-3 gap-3 overflow-y-scroll flex-grow">
             {isSuccess
                 ? products?.map((product) => (
-                      <ProductItem
-                          images={product.images}
-                          title={product.title}
-                          price={product.price}
-                          rating={product.rating}
-                          key={product.id}
-                      />
+                      <ProductItem product={product} key={product.id} />
                   ))
                 : null}
         </section>

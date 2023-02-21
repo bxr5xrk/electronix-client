@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_URL, limit } from '../../data';
 import type {
@@ -9,6 +10,7 @@ import type {
 export const productsApi = createApi({
     reducerPath: 'productsService',
     baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+    tagTypes: ['products'],
     endpoints: (builder) => ({
         getPaginatedProducts: builder.query<
             IGetPaginatedProductsRes,
@@ -28,6 +30,16 @@ export const productsApi = createApi({
 
                 return `products?${_query}${pagination}${_brands}${_categories}${_priceRange}`;
             },
+            providesTags: (res) =>
+                res?.products !== undefined
+                    ? [
+                          ...res.products.map(({ id }) => ({
+                              type: 'products' as const,
+                              id
+                          })),
+                          { type: 'products', id: 'LIST' }
+                      ]
+                    : [{ type: 'products', id: 'LIST' }],
             transformResponse(apiResponse: IProduct[], meta) {
                 return {
                     products: apiResponse,
