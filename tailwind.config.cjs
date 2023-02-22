@@ -15,7 +15,7 @@ module.exports = {
                 50: '12.5rem'
             },
             height: {
-                sidebar: '85vh'
+                sidebar: '75vh'
             },
             gridTemplateRows: {
                 autoFr: 'auto 1fr'
