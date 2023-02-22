@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import { MAX, MIN } from '../../data';
 import type { IPriceRange } from './productsInterfaces';
+import type { IParamsObj } from '../../utils/queryUtils';
 
 export interface productsState {
     currentPage: number;
@@ -58,6 +59,20 @@ export const productsSlice = createSlice({
             state.activePriceRange = action.payload;
 
             productsSlice.caseReducers.setDefaultPage(state);
+        },
+        setAllFilters: (state, action: PayloadAction<IParamsObj>) => {
+            const {
+                page,
+                categories,
+                brands,
+                max_price: max,
+                min_price: min
+            } = action.payload;
+
+            state.currentPage = page;
+            state.activeBrands = brands;
+            state.activeCategories = categories;
+            state.activePriceRange = { min, max };
         }
     }
 });
@@ -68,7 +83,8 @@ export const {
     setActiveBrands,
     setActiveCategories,
     setClearFilters,
-    setPriceRange
+    setPriceRange,
+    setAllFilters
 } = productsSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products;

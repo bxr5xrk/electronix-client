@@ -4,7 +4,7 @@ import Header from './components/Header';
 
 export default function Layout() {
     return (
-        <div className="font-montserrat p-3 min-w-full min-h-full w-full h-full flex flex-col gap-3">
+        <div className="font-montserrat p-3 w-screen h-screen flex flex-col gap-3">
             <Header />
 
             <Outlet />

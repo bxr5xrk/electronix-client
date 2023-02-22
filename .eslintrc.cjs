@@ -29,8 +29,8 @@ module.exports = {
         'no-multi-spaces': ['error', { ignoreEOLComments: true }],
         'no-trailing-spaces': ['error', { skipBlankLines: true }],
         'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1 }],
-        'no-whitespace-before-property': 'error',
-        indent: ['error', 4]
+        'no-whitespace-before-property': 'error'
+        // indent: ['error', 4]
     },
     settings: {
         react: {
