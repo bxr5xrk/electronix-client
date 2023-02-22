@@ -8,7 +8,7 @@ export default function FullScreenMessage({
     description
 }: FullScreenMessageProps) {
     return (
-        <div className="w-full h-full flex flex-col items-center justify-center">
+        <div className="w-full h-full flex flex-grow flex-col items-center justify-center">
             <h1 className="text-2xl">{title}</h1>
             <h3>{description}</h3>
         </div>

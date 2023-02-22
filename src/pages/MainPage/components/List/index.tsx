@@ -33,7 +33,7 @@ export default function List() {
         return <CenterSpinner />;
     }
 
-    if (query.length > 0 && isSuccess && products?.length === 0) {
+    if (isSuccess && products?.length === 0) {
         return (
             <FullScreenMessage title="Nothing found" description="Try again" />
         );
