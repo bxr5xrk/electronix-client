@@ -14,6 +14,6 @@ Functionality:
 - Adding / removing item to WatchList / Cart (stored in localStorage)
 
 Plans: 
-- Responsive design
-- Saving filters in url params (and parsing)
+- ~Responsive design~
+- ~Saving filters in url params (and parsing)~
 - Light / Dark themes
