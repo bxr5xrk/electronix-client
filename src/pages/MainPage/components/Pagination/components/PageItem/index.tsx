@@ -43,7 +43,7 @@ export default function PageItem({
             disabled={isDisabled}
             type="button"
             className={cl(
-                'flex items-center justify-center w-10 h-10 rounded-full cursor-pointer font-medium hover:z-10',
+                'flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full cursor-pointer text-xs font-medium hover:z-10',
                 isDisabled !== undefined &&
                     !!isDisabled &&
                     'opacity-50 text-opacity-50',

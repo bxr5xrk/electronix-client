@@ -47,7 +47,7 @@ export default function Header() {
             <Link to="/" className="flex items-center gap-3 cursor-pointer">
                 <img src={MainLogo} alt="logo" width="60" height="60" />
 
-                <h1 className="text-primary-500 font-semibold text-3xl">
+                <h1 className="text-primary-500 font-semibold text-xl smtext-3xl">
                     Online Store
                 </h1>
             </Link>

@@ -35,7 +35,7 @@ function Pagination() {
     );
 
     return (
-        <div className="w-full flex justify-center gap-2">
+        <div className="w-full flex flex-wrap justify-center gap-2">
             {pagesArr.length > 1 ? (
                 <>
                     {/* previous */}
@@ -48,7 +48,7 @@ function Pagination() {
                     />
 
                     {/* numbers */}
-                    <div className="flex items-center gap-2 bg-gray-100 rounded-full">
+                    <div className="hidden sm:flex items-center gap-2 bg-gray-100 rounded-full">
                         {pagesArr.map((page) => (
                             <PageItem
                                 key={page}
