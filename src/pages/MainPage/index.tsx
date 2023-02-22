@@ -6,7 +6,7 @@ import Search from './components/Search';
 
 export default function MainPage() {
     return (
-        <main className="h-full relative flex gap-4">
+        <main className="relative flex gap-4">
             <Filters />
 
             <section className="flex flex-col w-full h-full gap-4">
