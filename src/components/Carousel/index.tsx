@@ -17,10 +17,10 @@ export default function Carousel({ images }: CarouselProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const onPrevious = () =>
-        setCurrentIndex((prev) => (prev >= totalIndex ? 0 : prev + 1));
+        setCurrentIndex((prev) => (prev <= 0 ? totalIndex : prev - 1));
 
     const onNext = () =>
-        setCurrentIndex((prev) => (prev <= 0 ? totalIndex : prev - 1));
+        setCurrentIndex((prev) => (prev >= totalIndex ? 0 : prev + 1));
 
     const onClickDot = (index: number) => setCurrentIndex(index);
 
