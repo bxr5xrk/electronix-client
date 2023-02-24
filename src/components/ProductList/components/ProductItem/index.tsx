@@ -1,4 +1,5 @@
 import type { IProduct } from '../../../../features/products/productsInterfaces';
+import Carousel from '../../../Carousel';
 import CartButton from '../CartButton';
 import WatchListButton from '../WatchListButton';
 
@@ -12,11 +13,8 @@ export default function ProductItem({ product }: ProductItemProps) {
     return (
         <div className="grid rounded-lg shadow border w-full h-fit p-4 pt-2">
             <div className="flex items-center justify-center h-72 w-full">
-                <img
-                    src={images[0]}
-                    alt={title + ' image'}
-                    width={300}
-                    height={300}
+                <Carousel
+                    images={images.map((i) => ({ href: i, label: title }))}
                 />
             </div>
 
