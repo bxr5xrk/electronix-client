@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
 import FullScreenMessage from '../../../../components/FullScreenMessage';
