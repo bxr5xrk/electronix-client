@@ -18,6 +18,7 @@ export default function List() {
         activeCategories,
         activePriceRange
     } = useAppSelector(selectProducts);
+
     const { data, isLoading, isFetching, isSuccess } = useGetProducts({
         page: currentPage,
         query,
