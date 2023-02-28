@@ -2,7 +2,7 @@ import { StarIcon } from '@heroicons/react/24/solid';
 import type { IProduct } from '../../../../features/products/productsInterfaces';
 import Carousel from '../../../Carousel';
 import CartButton from '../CartButton';
-import WatchListButton from '../WatchListButton';
+import WishListButton from '../WishListButton';
 
 interface ProductItemProps {
     product: IProduct;
@@ -40,7 +40,7 @@ export default function ProductItem({ product }: ProductItemProps) {
             </h2>
 
             <div className="grid grid-cols-2 w-full h-12 place-items-end">
-                <WatchListButton product={product} />
+                <WishListButton product={product} />
 
                 <CartButton product={product} />
             </div>

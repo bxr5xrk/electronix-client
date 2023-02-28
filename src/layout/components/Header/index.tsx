@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../app/store';
 import MainLogo from '../../../assets/logo.png';
 import { selectCart } from '../../../features/cart/cartSlice';
-import { selectWatchList } from '../../../features/watchList/watchListSlice';
+import { selectWishList } from '../../../features/wishlist/wishListSlice';
 
-function WatchListLinkWithCount() {
-    const { watchListItems } = useAppSelector(selectWatchList);
+function WishListLinkWithCount() {
+    const { wishListItems } = useAppSelector(selectWishList);
 
     return (
         <div className="relative">
             <Link
                 className="flex items-center justify-center rounded-lg bg-primary-500 p-2"
-                to="/watch-list"
+                to="/wish-list"
             >
                 <HeartIcon className="w-4 h-4 text-white" aria-hidden />
             </Link>
             <span className="absolute -top-2 -right-2 flex items-center justify-center text-primary-500 w-5 h-5 border text-xs bg-white p-2 rounded-full">
-                {watchListItems.length}
+                {wishListItems.length}
             </span>
         </div>
     );
@@ -55,7 +55,7 @@ export default function Header() {
             <div className="flex items-center gap-5">
                 <CartLinkWithCount />
 
-                <WatchListLinkWithCount />
+                <WishListLinkWithCount />
             </div>
         </header>
     );

@@ -11,7 +11,7 @@ Functionality:
 - Filters (by price, category and brand)
 - Full-text search
 - Pagination
-- Adding / removing item to WatchList / Cart (stored in localStorage)
+- Adding / removing item to Wishlist / Cart (stored in localStorage)
 
 Plans: 
 - ~Responsive design~

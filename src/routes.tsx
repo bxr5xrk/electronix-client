@@ -4,7 +4,7 @@ import Layout from './layout';
 
 import MainPage from './pages/MainPage';
 const CartPage = lazy(async () => await import('./pages/CartPage'));
-const WatchListPage = lazy(async () => await import('./pages/WatchListPage'));
+const WishListPage = lazy(async () => await import('./pages/WishListPage'));
 
 export const routes = createBrowserRouter([
     {
@@ -20,8 +20,8 @@ export const routes = createBrowserRouter([
                 element: <CartPage />
             },
             {
-                path: 'watch-list',
-                element: <WatchListPage />
+                path: 'wish-list',
+                element: <WishListPage />
             }
         ]
     }

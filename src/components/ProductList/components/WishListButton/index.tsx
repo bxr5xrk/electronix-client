@@ -2,52 +2,52 @@ import { memo, useCallback, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../app/store';
 import type { IProduct } from '../../../../features/products/productsInterfaces';
 import {
-    selectWatchList,
-    setWatchListItems
-} from '../../../../features/watchList/watchListSlice';
+    selectWishList,
+    setWishListItems
+} from '../../../../features/wishlist/wishListSlice';
 import { addOrRemoveItemFromArr, setToLocalStorage } from '../../../../utils';
 import Button from '../../../Button';
 import HeartIcon from '@heroicons/react/24/outline/HeartIcon';
 import HeartIconSolid from '@heroicons/react/24/solid/HeartIcon';
 
-interface WatchListButtonProps {
+interface WishListButtonProps {
     product: IProduct;
 }
 
-function WatchListButton({ product }: WatchListButtonProps) {
+function WishListButton({ product }: WishListButtonProps) {
     const dispatch = useAppDispatch();
-    const { watchListItems } = useAppSelector(selectWatchList);
+    const { wishListItems } = useAppSelector(selectWishList);
 
     const { id } = product;
 
-    const isItemInWatchList = useMemo(
-        () => watchListItems.map((i) => i.id).includes(id),
-        [watchListItems]
+    const isItemInWishList = useMemo(
+        () => wishListItems.map((i) => i.id).includes(id),
+        [wishListItems]
     );
 
-    const handleClickWatchList = useCallback(
+    const handleClickWishList = useCallback(
         (product: IProduct) => {
-            const newWatchListArr = addOrRemoveItemFromArr(
-                watchListItems,
+            const newWishListArr = addOrRemoveItemFromArr(
+                wishListItems,
                 product
             );
 
-            dispatch(setWatchListItems(newWatchListArr));
+            dispatch(setWishListItems(newWishListArr));
 
-            setToLocalStorage('watchList', newWatchListArr);
+            setToLocalStorage('wishList', newWishListArr);
         },
-        [product, watchListItems]
+        [product, wishListItems]
     );
 
     return (
         <Button
-            title="Add to watchList"
-            onClick={() => handleClickWatchList(product)}
+            title="Add to wishList"
+            onClick={() => handleClickWishList(product)}
             type="white"
             fullWidth
             rounded="rounded-bl-lg"
         >
-            {isItemInWatchList ? (
+            {isItemInWishList ? (
                 <HeartIconSolid className="w-5 h-5" aria-hidden />
             ) : (
                 <HeartIcon className="w-5 h-5" aria-hidden />
@@ -56,4 +56,4 @@ function WatchListButton({ product }: WatchListButtonProps) {
     );
 }
 
-export default memo(WatchListButton);
+export default memo(WishListButton);
