@@ -1,24 +1,17 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { memo, useEffect, useMemo } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../../app/store';
+import { memo, useMemo } from 'react';
+import { useAppSelector } from '../../../../app/store';
 import { limit } from '../../../../data';
 import { useGetProducts } from '../../../../features/products/productsService';
-import {
-    selectProducts,
-    setAllFilters
-} from '../../../../features/products/productsSlice';
+import { selectProducts } from '../../../../features/products/productsSlice';
 import {
     getPagesArr,
     stringifyFiltersToParam,
     stringifyPriceToParam
 } from '../../../../utils';
-import { objToUrl, urlToObj } from '../../../../utils/queryUtils';
 import PageItem from './components/PageItem';
 
 function Pagination() {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
     const {
         currentPage,
         query,
@@ -26,6 +19,7 @@ function Pagination() {
         activeCategories,
         activePriceRange
     } = useAppSelector(selectProducts);
+
     const { data } = useGetProducts({
         page: currentPage,
         query,
@@ -33,30 +27,6 @@ function Pagination() {
         categories: stringifyFiltersToParam(activeCategories, 'category'),
         priceRange: stringifyPriceToParam(activePriceRange)
     });
-    const { search } = useLocation();
-
-    useEffect(() => {
-        if (search.length > 0) {
-            const obj = urlToObj(search.slice(1));
-
-            dispatch(setAllFilters(obj));
-        }
-    }, []);
-
-    useEffect(() => {
-        const { min, max } = activePriceRange;
-
-        const obj = {
-            categories: activeCategories,
-            brands: activeBrands,
-            page: currentPage,
-            min_price: min,
-            max_price: max
-        };
-        const url = objToUrl(obj);
-
-        navigate('?' + url, { replace: true });
-    }, [currentPage, activeBrands, activeCategories, activePriceRange]);
 
     const totalItems = useMemo(() => data?.totalCount, [data]);
 
