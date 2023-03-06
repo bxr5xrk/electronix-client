@@ -23,18 +23,20 @@ export function urlToObj(url: string): IParamsObj {
         switch (key) {
             case 'categories':
             case 'brands':
-                // If the key is 'categories' or 'brands', convert the value to an array and add it to the object
                 if (Object.hasOwnProperty.call(params, key)) {
                     const existingValue = params[key];
-                    params[key] = [...existingValue, value];
+
+                    params[key] = [
+                        ...existingValue,
+                        value.replaceAll('%20', ' ')
+                    ];
                 } else {
-                    params[key] = [value];
+                    params[key] = [value.replaceAll('%20', ' ')];
                 }
                 break;
             case 'min_price':
             case 'max_price':
             case 'page':
-                // If the key is 'min_price', 'max_price', or 'page', parse the value as a number and add it to the object
                 params[key] = Number(value);
                 break;
             default:

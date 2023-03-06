@@ -19,10 +19,13 @@ export const productsApi = createApi({
 
                 const pagination = `&_page=${page}&_limit=${LIMIT_ITEMS}`;
 
-                const _brands = brands.length > 0 ? `&${brands}` : '';
+                const _brands =
+                    brands.length > 0 ? `&${brands.replaceAll(' ', '_')}` : '';
 
                 const _categories =
-                    categories.length > 0 ? `&${categories}` : '';
+                    categories.length > 0
+                        ? `&${categories.replaceAll(' ', '_')}`
+                        : '';
 
                 const _priceRange = `&${priceRange}`;
 

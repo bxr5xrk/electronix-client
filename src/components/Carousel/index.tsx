@@ -36,7 +36,7 @@ export default function Carousel({ images }: CarouselProps) {
                         }}
                         className="absolute w-full h-full top-0 overflow-hidden transition ease-out duration-300 object-contain"
                         src={image.href}
-                        key={image.href}
+                        key={`${image.href}${index}`}
                         alt={image.label}
                     />
                 ))}
@@ -64,7 +64,7 @@ export default function Carousel({ images }: CarouselProps) {
                     <div className="absolute flex gap-3 bottom-2">
                         {images.map((_, index) => (
                             <button
-                                key={_.href}
+                                key={`${_.href}${index}`}
                                 onClick={() => onClickDot(index)}
                                 className="flex items-center justify-center p-1 cursor-pointer rounded-full"
                             >
