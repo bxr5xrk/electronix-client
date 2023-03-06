@@ -7,4 +7,4 @@ export const MAX = 85000;
 export const STEP = 1000;
 
 // for pagination
-export const limit = 9;
+export const LIMIT_ITEMS = 9;

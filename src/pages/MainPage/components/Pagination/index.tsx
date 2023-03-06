@@ -1,7 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { memo, useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
-import { limit } from '../../../../data';
+import { LIMIT_ITEMS } from '../../../../data';
 import { useGetProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
 import {
@@ -31,7 +31,7 @@ function Pagination() {
     const totalItems = useMemo(() => data?.totalCount, [data]);
 
     const pagesArr = useMemo(
-        () => getPagesArr(totalItems ?? 1, limit),
+        () => getPagesArr(totalItems ?? 1, LIMIT_ITEMS),
         [totalItems]
     );
 

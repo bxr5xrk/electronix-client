@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_URL, limit } from '../../data';
+import { API_URL, LIMIT_ITEMS } from '../../data';
 import type {
     IGetPaginatedProductsParams,
     IGetPaginatedProductsRes,
@@ -17,7 +17,7 @@ export const productsApi = createApi({
             query: ({ page, query, brands, categories, priceRange }) => {
                 const _query = query.length > 0 ? `q=${query ?? ''}` : '';
 
-                const pagination = `&_page=${page}&_limit=${limit}`;
+                const pagination = `&_page=${page}&_limit=${LIMIT_ITEMS}`;
 
                 const _brands = brands.length > 0 ? `&${brands}` : '';
 
