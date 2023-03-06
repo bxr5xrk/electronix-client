@@ -43,7 +43,10 @@ function CartLinkWithCount() {
 
 export default function Header() {
     return (
-        <header className="w-full flex items-center justify-between">
+        <header
+            id="header"
+            className="w-full flex items-center justify-between pt-3"
+        >
             <Link to="/" className="flex items-center gap-3 cursor-pointer">
                 <img src={MainLogo} alt="logo" width="60" height="60" />
 

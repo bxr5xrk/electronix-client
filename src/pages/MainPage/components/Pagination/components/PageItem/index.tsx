@@ -3,6 +3,7 @@ import {
     selectProducts,
     setCurrentPage
 } from '../../../../../../features/products/productsSlice';
+import { useScroll } from '../../../../../../hooks/useScroll';
 import { cl } from '../../../../../../utils';
 
 interface PageProps {
@@ -24,6 +25,7 @@ export default function PageItem({
 }: PageProps) {
     const dispatch = useAppDispatch();
     const { currentPage } = useAppSelector(selectProducts);
+    const { scrollTo } = useScroll();
 
     const handleClick = () => {
         if (page !== undefined) {
@@ -36,6 +38,8 @@ export default function PageItem({
             // if next
             dispatch(setCurrentPage(currentPage + 1));
         }
+
+        scrollTo('header');
     };
 
     return (
