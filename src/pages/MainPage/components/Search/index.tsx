@@ -1,20 +1,34 @@
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import React, { memo, useEffect, useState } from 'react';
+import { memo, useCallback, useRef } from 'react';
 import { useAppDispatch } from '../../../../app/store';
 import { setQuery } from '../../../../features/products/productsSlice';
-import { useDebounce } from '../../../../hooks/useDebounce';
+import { useThrottle } from '../../../../hooks/useThrottle';
 
 function Search() {
     const dispatch = useAppDispatch();
-    const [searchValue, setSearchValue] = useState('');
+    const searchRef = useRef<HTMLInputElement>(null);
+    const xMarkIconRef = useRef<SVGSVGElement>(null);
 
-    const debouncedValue = useDebounce(searchValue, 500);
+    const handleChange = useCallback(
+        useThrottle(() => {
+            if (searchRef.current !== null && xMarkIconRef.current !== null) {
+                const query = searchRef.current.value.trim();
+                dispatch(setQuery(query));
 
-    useEffect(() => {
-        const query = debouncedValue.trim();
+                xMarkIconRef.current.style.opacity =
+                    query.length > 0 ? '100' : '0';
+            }
+        }, 700),
+        []
+    );
 
-        dispatch(setQuery(query));
-    }, [debouncedValue]);
+    const handleClickXMark = useCallback(() => {
+        if (searchRef.current !== null) {
+            searchRef.current.value = '';
+
+            dispatch(setQuery(''));
+        }
+    }, []);
 
     return (
         <div className="flex items-center w-full relative shadow rounded-lg gap-2 p-1 px-2 border">
@@ -24,17 +38,16 @@ function Search() {
                 className="p-1 flex flex-grow"
                 type="text"
                 placeholder="Search"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
+                ref={searchRef}
+                onChange={handleChange}
             />
 
-            {debouncedValue.length > 0 ? (
-                <XMarkIcon
-                    onClick={() => setSearchValue('')}
-                    className="w-5 h-5 cursor-pointer"
-                    aria-hidden
-                />
-            ) : null}
+            <XMarkIcon
+                ref={xMarkIconRef}
+                onClick={handleClickXMark}
+                className="w-5 h-5 cursor-pointer opacity-0"
+                aria-hidden
+            />
         </div>
     );
 }
