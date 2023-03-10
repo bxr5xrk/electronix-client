@@ -18,6 +18,8 @@ module.exports = {
     plugins: ['react', 'jsx-a11y'],
     ignorePatterns: ['vite.config.ts'],
     rules: {
+        'jsx-a11y/click-events-have-key-events': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
         '@typescript-eslint/no-confusing-void-expression': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         'react/jsx-uses-react': 'off',

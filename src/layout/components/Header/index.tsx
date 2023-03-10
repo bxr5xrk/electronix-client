@@ -1,4 +1,5 @@
 import { HeartIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../app/store';
 import MainLogo from '../../../assets/logo.png';
@@ -41,7 +42,7 @@ function CartLinkWithCount() {
     );
 }
 
-export default function Header() {
+function Header() {
     return (
         <header
             id="header"
@@ -63,3 +64,5 @@ export default function Header() {
         </header>
     );
 }
+
+export default memo(Header);
