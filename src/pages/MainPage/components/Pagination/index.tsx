@@ -1,10 +1,10 @@
+import { getPagesArr } from '@/utils/index';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { memo, useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
 import { LIMIT_ITEMS } from '../../../../data';
 import { useProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
-import { getPagesArr } from '../../../../utils';
 import PageItem from './components/PageItem';
 
 function Pagination() {

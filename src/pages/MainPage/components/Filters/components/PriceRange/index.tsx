@@ -1,12 +1,12 @@
-import { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../../../app/store';
-import MultiRangeSlider from '../../../../../../components/MultiRangeSlider';
-import { MAX, MIN, STEP } from '../../../../../../data';
-import type { IPriceRange } from '../../../../../../features/products/productsInterfaces';
+import { useAppDispatch, useAppSelector } from '@/app/store';
+import MultiRangeSlider from '@/components/MultiRangeSlider';
+import type { IPriceRange } from '@/features/products/productsInterfaces';
 import {
     selectProducts,
     setPriceRange
-} from '../../../../../../features/products/productsSlice';
+} from '@/features/products/productsSlice';
+import { useCallback } from 'react';
+import { MAX, MIN, STEP } from '../../../../../../data';
 
 export default function PriceRange() {
     const dispatch = useAppDispatch();

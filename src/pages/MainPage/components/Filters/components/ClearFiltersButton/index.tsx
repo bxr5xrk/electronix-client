@@ -1,7 +1,7 @@
-import { useAppDispatch } from '../../../../../../app/store';
-import Button from '../../../../../../components/Button';
-import { setClearFilters } from '../../../../../../features/products/productsSlice';
-import { useScroll } from '../../../../../../hooks/useScroll';
+import { useAppDispatch } from '@/app/store';
+import Button from '@/components/Button';
+import { setClearFilters } from '@/features/products/productsSlice';
+import { useScroll } from '@/hooks/useScroll';
 
 export default function ClearFiltersButton() {
     const dispatch = useAppDispatch();

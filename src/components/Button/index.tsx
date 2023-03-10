@@ -1,5 +1,5 @@
+import { cl } from '@/utils/index';
 import type { ReactNode } from 'react';
-import { cl } from '../../utils';
 
 interface ButtonProps {
     children: ReactNode;

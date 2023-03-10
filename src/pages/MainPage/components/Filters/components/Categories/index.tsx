@@ -1,10 +1,10 @@
-import { useAppDispatch, useAppSelector } from '../../../../../../app/store';
-import { useGetCategories } from '../../../../../../features/products/productsService';
+import { useAppDispatch, useAppSelector } from '@/app/store';
+import { useGetCategories } from '@/features/products/productsService';
 import {
     selectProducts,
     setActiveCategories
-} from '../../../../../../features/products/productsSlice';
-import { useScroll } from '../../../../../../hooks/useScroll';
+} from '@/features/products/productsSlice';
+import { useScroll } from '@/hooks/useScroll';
 import Section from '../Section';
 
 export default function Categories() {

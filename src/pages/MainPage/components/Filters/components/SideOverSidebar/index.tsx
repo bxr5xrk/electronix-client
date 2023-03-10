@@ -1,5 +1,5 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { cl } from '../../../../../../utils';
+import { cl } from '@/utils/index';
 import ClearFiltersButton from '../ClearFiltersButton';
 import FiltersList from '../FiltersList';
 

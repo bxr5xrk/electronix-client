@@ -2,8 +2,8 @@ import {
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon
 } from '@heroicons/react/24/outline';
+import { cl } from '@/utils/index';
 import { useState } from 'react';
-import { cl } from '../../../../utils';
 import ClearFiltersButton from './components/ClearFiltersButton';
 import FiltersList from './components/FiltersList';
 import SideOverFilters from './components/SideOverSidebar';

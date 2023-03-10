@@ -1,3 +1,4 @@
+import { objToUrl, urlToObj } from '@/utils/queryUtils';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/store';
@@ -5,7 +6,6 @@ import {
     selectProducts,
     setAllFilters
 } from '../../features/products/productsSlice';
-import { objToUrl, urlToObj } from '../../utils/queryUtils';
 
 export function ParseFiltersFromQuery() {
     const dispatch = useAppDispatch();
@@ -36,7 +36,7 @@ export function ParseFiltersFromQuery() {
         };
         const url = objToUrl(obj);
 
-        navigate('?' + url, { replace: true });
+        navigate('?' + String(url), { replace: true });
     }, [currentPage, activeBrands, activeCategories, activePriceRange]);
 
     return null;

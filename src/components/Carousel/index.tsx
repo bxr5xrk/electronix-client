@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { cl } from '../../utils';
+import { cl } from '@/utils/index';
 
 interface IImage {
     href: string;
