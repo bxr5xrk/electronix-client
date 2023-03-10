@@ -1,10 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { useAppSelector } from '../../app/store';
 import { API_URL, LIMIT_ITEMS } from '../../data';
+import { stringifyFiltersToParam, stringifyPriceToParam } from '../../utils';
 import type {
     IGetPaginatedProductsParams,
     IGetPaginatedProductsRes,
     IProduct
 } from './productsInterfaces';
+import { selectProducts } from './productsSlice';
 
 export const productsApi = createApi({
     reducerPath: 'productsService',
@@ -51,8 +54,27 @@ export const productsApi = createApi({
     })
 });
 
-export const {
-    useGetPaginatedProductsQuery: useGetProducts,
+const useProducts = () => {
+    const {
+        currentPage,
+        query,
+        activeBrands,
+        activeCategories,
+        activePriceRange
+    } = useAppSelector(selectProducts);
+
+    return productsApi.useGetPaginatedProductsQuery({
+        page: currentPage,
+        query,
+        brands: stringifyFiltersToParam(activeBrands, 'brand'),
+        categories: stringifyFiltersToParam(activeCategories, 'category'),
+        priceRange: stringifyPriceToParam(activePriceRange)
+    });
+};
+
+const {
     useGetBrandsQuery: useGetBrands,
     useGetCategoriesQuery: useGetCategories
 } = productsApi;
+
+export { useProducts, useGetBrands, useGetCategories };

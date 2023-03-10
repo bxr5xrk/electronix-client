@@ -1,31 +1,11 @@
 import { useMemo } from 'react';
-import { useAppSelector } from '../../../../app/store';
 import FullScreenMessage from '../../../../components/FullScreenMessage';
 import ProductList from '../../../../components/ProductList';
 import ProductsSkeleton from '../../../../components/Skeleton/ProductsSkeleton';
-import { useGetProducts } from '../../../../features/products/productsService';
-import { selectProducts } from '../../../../features/products/productsSlice';
-import {
-    stringifyFiltersToParam,
-    stringifyPriceToParam
-} from '../../../../utils';
+import { useProducts } from '../../../../features/products/productsService';
 
 export default function List() {
-    const {
-        currentPage,
-        query,
-        activeBrands,
-        activeCategories,
-        activePriceRange
-    } = useAppSelector(selectProducts);
-
-    const { data, isLoading, isFetching, isSuccess } = useGetProducts({
-        page: currentPage,
-        query,
-        brands: stringifyFiltersToParam(activeBrands, 'brand'),
-        categories: stringifyFiltersToParam(activeCategories, 'category'),
-        priceRange: stringifyPriceToParam(activePriceRange)
-    });
+    const { data, isLoading, isFetching, isSuccess } = useProducts();
 
     const products = useMemo(() => data?.products, [data]);
 

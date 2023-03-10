@@ -2,31 +2,15 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { memo, useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
 import { LIMIT_ITEMS } from '../../../../data';
-import { useGetProducts } from '../../../../features/products/productsService';
+import { useProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
-import {
-    getPagesArr,
-    stringifyFiltersToParam,
-    stringifyPriceToParam
-} from '../../../../utils';
+import { getPagesArr } from '../../../../utils';
 import PageItem from './components/PageItem';
 
 function Pagination() {
-    const {
-        currentPage,
-        query,
-        activeBrands,
-        activeCategories,
-        activePriceRange
-    } = useAppSelector(selectProducts);
+    const { currentPage } = useAppSelector(selectProducts);
 
-    const { data } = useGetProducts({
-        page: currentPage,
-        query,
-        brands: stringifyFiltersToParam(activeBrands, 'brand'),
-        categories: stringifyFiltersToParam(activeCategories, 'category'),
-        priceRange: stringifyPriceToParam(activePriceRange)
-    });
+    const { data } = useProducts();
 
     const totalItems = useMemo(() => data?.totalCount, [data]);
 
