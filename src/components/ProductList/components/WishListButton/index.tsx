@@ -43,7 +43,7 @@ function WishListButton({ product }: WishListButtonProps) {
         <Button
             title="Add to wishList"
             onClick={() => handleClickWishList(product)}
-            type="white"
+            theme="white"
             fullWidth
             rounded="rounded-bl-lg"
         >

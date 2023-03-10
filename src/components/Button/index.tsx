@@ -1,9 +1,13 @@
 import { cl } from '@/utils/index';
-import type { ReactNode } from 'react';
+import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 
-interface ButtonProps {
+interface ButtonProps
+    extends DetailedHTMLProps<
+        ButtonHTMLAttributes<HTMLButtonElement>,
+        HTMLButtonElement
+    > {
     children: ReactNode;
-    type: 'primary' | 'white';
+    theme: 'primary' | 'white';
     fullWidth?: boolean;
     rounded?: string;
     onClick: () => void;
@@ -12,11 +16,12 @@ interface ButtonProps {
 
 export default function Button({
     children,
-    type,
+    theme,
     fullWidth,
     rounded,
     onClick,
-    title
+    title,
+    ...props
 }: ButtonProps) {
     return (
         <button
@@ -26,10 +31,11 @@ export default function Button({
                 'flex uppercase items-center justify-center p-2 gap-2 cursor-pointer border truncate',
                 fullWidth === true ? 'w-full' : 'w-fit',
                 rounded,
-                type === 'primary'
+                theme === 'primary'
                     ? 'bg-indigo-500 border-indigo-500 text-white'
                     : 'bg-white text-black'
             )}
+            {...props}
         >
             {children}
         </button>

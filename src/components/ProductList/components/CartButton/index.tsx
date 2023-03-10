@@ -1,11 +1,11 @@
 import { memo, useCallback, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../app/store';
-import type { IProduct } from '../../../../features/products/productsInterfaces';
-import { addOrRemoveItemFromArr, setToLocalStorage } from '../../../../utils';
 import Button from '../../../Button';
 import ShoppingBagIcon from '@heroicons/react/24/outline/ShoppingBagIcon';
 import ShoppingBagIconSolid from '@heroicons/react/24/solid/ShoppingBagIcon';
 import { selectCart, setCartItems } from '../../../../features/cart/cartSlice';
+import { useAppDispatch, useAppSelector } from '@/app/store';
+import type { IProduct } from '@/features/products/productsInterfaces';
+import { addOrRemoveItemFromArr, setToLocalStorage } from '@/utils/index';
 
 interface CartButtonProps {
     product: IProduct;
@@ -37,7 +37,7 @@ function CartButton({ product }: CartButtonProps) {
         <Button
             title="Add to cart"
             onClick={() => handleClickCart(product)}
-            type="primary"
+            theme="primary"
             fullWidth
             rounded="rounded-br-lg"
         >

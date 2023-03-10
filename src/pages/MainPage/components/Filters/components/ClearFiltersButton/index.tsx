@@ -15,7 +15,7 @@ export default function ClearFiltersButton() {
 
     return (
         <Button
-            type="primary"
+            theme="primary"
             fullWidth
             rounded="rounded-lg"
             onClick={handleClick}
