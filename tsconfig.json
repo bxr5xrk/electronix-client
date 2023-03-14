@@ -22,7 +22,8 @@
       "@/components/*": ["./src/components/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/features/*": ["./src/features/*"],
-      "@/app/*": ["./src/app/*"]
+      "@/app/*": ["./src/app/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src", "./.eslintrc.cjs"],
