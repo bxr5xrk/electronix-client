@@ -30,11 +30,11 @@ function CartButton({ product }: CartButtonProps) {
         (product: IProduct) => {
             const newCartArr = addOrRemoveItemFromArr(cartItems, product);
 
-            dispatch(
-                isItemInCart
-                    ? addItemToCart(product)
-                    : removeItemFromCart(product.id)
-            );
+            if (isItemInCart) {
+                dispatch(removeItemFromCart(product.id));
+            } else {
+                dispatch(addItemToCart(product));
+            }
 
             setToLocalStorage('cart', newCartArr);
         },

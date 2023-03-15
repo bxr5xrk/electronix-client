@@ -8,7 +8,7 @@ import {
     removeItem
 } from '@/utils/cartUtils';
 
-const cartItemsFromLS = JSON.parse(localStorage.getItem('cart') ?? '[]');
+// const cartItemsFromLS = JSON.parse(localStorage.getItem('cart') ?? '[]');
 
 export interface ICartItem extends IProduct {
     count: number;
@@ -19,7 +19,7 @@ interface cartState {
 }
 
 const initialState: cartState = {
-    cartItems: cartItemsFromLS
+    cartItems: []
 };
 
 export const cartSlice = createSlice({
@@ -27,10 +27,12 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addItemToCart: (state, action: PayloadAction<IProduct>) => {
-            state.cartItems = [...state.cartItems, createItem(action.payload)];
+            const newItem = createItem(action.payload);
+
+            state.cartItems = [...state.cartItems, newItem];
         },
         removeItemFromCart: (state, action: PayloadAction<string>) => {
-            state.cartItems = removeItem(state.cartItems, action.payload);
+            state.cartItems = [...removeItem(state.cartItems, action.payload)];
         },
         incrementCartItem: (state, action: PayloadAction<string>) => {
             state.cartItems = [
