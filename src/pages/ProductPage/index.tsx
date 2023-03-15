@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import PageTitle from '@/components/PageTitle';
+import DetailsSkeleton from '@/components/Skeleton/DetailsSkeleton';
 import { useGetProduct } from '@/features/products/productsService';
 import { useParams } from 'react-router-dom';
 import Details from './components/Details';
@@ -7,21 +10,25 @@ import Reviews from './components/Reviews';
 export default function ProductPage() {
     const { id } = useParams();
 
-    const { data } = useGetProduct(id, { skip: !id });
+    const { data, isSuccess } = useGetProduct(id, {
+        skip: !id
+    });
 
     return (
-        <>
-            <main className="relative flex gap-4 flex-col h-full">
+        <div className="w-full flex justify-center">
+            <main className="flex gap-4 flex-col h-full px-2 items-center w-full max-w-3xl lg:max-w-7xl">
                 <PageTitle title="Product" />
 
-                {data ? (
+                {!isSuccess ? (
+                    <DetailsSkeleton />
+                ) : (
                     <>
                         <Details product={data} />
                         <Reviews reviews={reviews} />
                     </>
-                ) : null}
+                )}
             </main>
-        </>
+        </div>
     );
 }
 

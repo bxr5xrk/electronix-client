@@ -17,7 +17,7 @@ interface ReviewsProps {
 
 export default function Reviews({ reviews }: ReviewsProps) {
     return (
-        <div className="mx-auto max-w-2xl py-16 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-3xl py-16 sm:py-20 lg:max-w-7xl">
             <h2 className="text-lg font-medium text-gray-900">
                 Recent reviews
             </h2>
@@ -30,18 +30,6 @@ export default function Reviews({ reviews }: ReviewsProps) {
                         <div className="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
                             <div className="flex items-center xl:col-span-1">
                                 <div className="flex items-center">
-                                    {/* {[0, 1, 2, 3, 4].map((rating) => (
-                                        <StarIcon
-                                            key={rating}
-                                            className={cl(
-                                                review.rating > rating
-                                                    ? 'text-yellow-400'
-                                                    : 'text-gray-200',
-                                                'h-5 w-5 flex-shrink-0'
-                                            )}
-                                            aria-hidden="true"
-                                        />
-                                    ))} */}
                                     {arrayFromNumber(5).map((i) => (
                                         <StarIcon
                                             key={i}

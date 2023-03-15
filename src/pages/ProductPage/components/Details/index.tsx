@@ -13,16 +13,21 @@ export default function Details({ product }: DetailsProps) {
     const { images, title, price, rating } = product;
 
     return (
-        <div className="grid grid-cols-2 gap-4 w-full h-full">
-            <Carousel
-                images={images.map((i) => ({
-                    href: i,
-                    label: title
-                }))}
-            />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full h-full">
+            <div className="w-full h-72 lg:h-full">
+                <Carousel
+                    images={images.map((i) => ({
+                        href: i,
+                        label: title
+                    }))}
+                />
+            </div>
 
             <div className="flex flex-col gap-3">
-                <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+                <h1
+                    title={title}
+                    className="text-2xl font-bold tracking-tight text-gray-900 truncate"
+                >
                     {title}
                 </h1>
 
