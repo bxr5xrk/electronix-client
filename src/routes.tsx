@@ -2,9 +2,10 @@ import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './layout';
 
-import MainPage from './pages/MainPage';
+import ProductsPage from './pages/ProductsPage';
 const CartPage = lazy(async () => await import('./pages/CartPage'));
 const WishListPage = lazy(async () => await import('./pages/WishListPage'));
+const ProductPage = lazy(async () => await import('./pages/ProductPage'));
 
 export const routes = createBrowserRouter([
     {
@@ -13,7 +14,7 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '',
-                element: <MainPage />
+                element: <ProductsPage />
             },
             {
                 path: 'cart',
@@ -22,6 +23,10 @@ export const routes = createBrowserRouter([
             {
                 path: 'wish-list',
                 element: <WishListPage />
+            },
+            {
+                path: 'products/:id',
+                element: <ProductPage />
             }
         ]
     }

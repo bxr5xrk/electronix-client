@@ -90,6 +90,10 @@ const useChat = () => {
             `${CHAT_WS_URL}/${id}?name=${name ?? ''}`
         );
 
+        // const isOpen = () => newWebSocket.readyState === newWebSocket.OPEN;
+
+        // if (!isOpen()) return;
+
         newWebSocket.addEventListener('message', (event) => {
             const message: Message = JSON.parse(event.data);
             setMessages((prevMessages) => [...prevMessages, message]);
@@ -203,7 +207,7 @@ function ChatApp() {
                         onClick={async () => await handleRoomIdChange(i.id)}
                         key={index}
                     >
-                        {i.title}
+                        {i.id}
                     </li>
                 ))}
             </ul>

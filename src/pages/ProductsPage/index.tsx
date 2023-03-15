@@ -5,7 +5,7 @@ import List from './components/List';
 import Search from './components/Search';
 import { ParseFiltersFromQuery } from '../../components/ParseFiltersToQuery';
 
-export default function MainPage() {
+export default function ProductsPage() {
     return (
         <>
             <main className="relative flex gap-4">
