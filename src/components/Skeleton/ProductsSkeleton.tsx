@@ -19,7 +19,10 @@ export default function ProductsSkeleton() {
 
                         <span className="bg-gray-300 rounded-md w-full h-6"></span>
 
-                        <span className="grid grid-cols-2 w-full h-12 place-items-end bg-gray-300 rounded-md"></span>
+                        <div className="grid grid-cols-2 w-full gap-3 h-12 place-items-end">
+                            <span className="w-full h-9 pt-1 bg-gray-300 rounded-md" />
+                            <span className="w-full h-9 pt-1 bg-gray-300 rounded-md" />
+                        </div>
                     </div>
                 ))}
         </section>

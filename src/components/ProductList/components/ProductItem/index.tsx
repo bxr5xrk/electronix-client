@@ -44,7 +44,7 @@ export default function ProductItem({ product }: ProductItemProps) {
                 {title}
             </Link>
 
-            <div className="grid grid-cols-2 w-full h-12 place-items-end">
+            <div className="grid grid-cols-2 w-full gap-3 h-12 place-items-end">
                 <WishListButton product={product} />
 
                 <CartButton product={product} />

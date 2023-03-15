@@ -41,11 +41,10 @@ function WishListButton({ product }: WishListButtonProps) {
 
     return (
         <Button
-            title="Add to wishList"
+            title="Add to wish list"
             onClick={() => handleClickWishList(product)}
             theme="white"
             fullWidth
-            rounded="rounded-bl-lg"
         >
             {isItemInWishList ? (
                 <HeartIconSolid className="w-5 h-5" aria-hidden />

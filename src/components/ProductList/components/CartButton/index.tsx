@@ -39,7 +39,6 @@ function CartButton({ product }: CartButtonProps) {
             onClick={() => handleClickCart(product)}
             theme="primary"
             fullWidth
-            rounded="rounded-br-lg"
         >
             {isItemInCart ? (
                 <ShoppingBagIconSolid className="w-5 h-5" aria-hidden />

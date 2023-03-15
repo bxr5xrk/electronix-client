@@ -56,7 +56,7 @@ export default function Filters() {
                     showFilters
                         ? 'translate-x-0 w-0 lg:w-fit'
                         : '-translate-x-[20rem]',
-                    'invisible w-0 lg:visible ease-in-out duration-300 z-40'
+                    'invisible space-y-2 w-0 lg:visible ease-in-out duration-300 z-40'
                 )}
             >
                 <FiltersList />

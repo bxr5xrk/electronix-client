@@ -14,12 +14,7 @@ export default function ClearFiltersButton() {
     };
 
     return (
-        <Button
-            theme="primary"
-            fullWidth
-            rounded="rounded-lg"
-            onClick={handleClick}
-        >
+        <Button theme="primary" fullWidth onClick={handleClick}>
             <p>Clear all filters</p>
         </Button>
     );
