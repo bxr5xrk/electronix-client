@@ -2,7 +2,11 @@ import { memo, useCallback, useMemo } from 'react';
 import Button from '../../../Button';
 import ShoppingBagIcon from '@heroicons/react/24/outline/ShoppingBagIcon';
 import ShoppingBagIconSolid from '@heroicons/react/24/solid/ShoppingBagIcon';
-import { selectCart, setCartItems } from '../../../../features/cart/cartSlice';
+import {
+    addItemToCart,
+    removeItemFromCart,
+    selectCart
+} from '../../../../features/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import type { IProduct } from '@/features/products/productsInterfaces';
 import { addOrRemoveItemFromArr, setToLocalStorage } from '@/utils/index';
@@ -26,7 +30,11 @@ function CartButton({ product }: CartButtonProps) {
         (product: IProduct) => {
             const newCartArr = addOrRemoveItemFromArr(cartItems, product);
 
-            dispatch(setCartItems(newCartArr));
+            dispatch(
+                isItemInCart
+                    ? addItemToCart(product)
+                    : removeItemFromCart(product.id)
+            );
 
             setToLocalStorage('cart', newCartArr);
         },
