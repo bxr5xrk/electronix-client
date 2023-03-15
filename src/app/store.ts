@@ -5,16 +5,21 @@ import { productsApi } from '../features/products/productsService';
 import productsSlice from '../features/products/productsSlice';
 import wishListSlice from '../features/wishlist/wishListSlice';
 import cartSlice from '../features/cart/cartSlice';
+import { chatApi } from '@/features/chat/chatService';
 
 export const store = configureStore({
     reducer: {
         [productsApi.reducerPath]: productsApi.reducer,
+        [chatApi.reducerPath]: chatApi.reducer,
         products: productsSlice,
         wishList: wishListSlice,
         cart: cartSlice
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(productsApi.middleware)
+        getDefaultMiddleware().concat([
+            chatApi.middleware,
+            productsApi.middleware
+        ])
 });
 
 export type AppDispatch = typeof store.dispatch;
