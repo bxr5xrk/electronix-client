@@ -1,3 +1,4 @@
+import { arrayFromNumber, cl } from '@/utils/index';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 import type { IProduct } from '../../../../features/products/productsInterfaces';
@@ -8,9 +9,6 @@ import WishListButton from '../WishListButton';
 interface ProductItemProps {
     product: IProduct;
 }
-
-const arrayFromNumber = (number: number) =>
-    [...Array(Math.round(number))].map((_, i) => i);
 
 export default function ProductItem({ product }: ProductItemProps) {
     const { title, rating, images, price, id } = product;
@@ -26,10 +24,15 @@ export default function ProductItem({ product }: ProductItemProps) {
             <div className="flex justify-between items-center w-full">
                 <p className="mt-1">$ {price}</p>
                 <div className="flex items-center">
-                    {arrayFromNumber(rating).map((i) => (
+                    {arrayFromNumber(5).map((i) => (
                         <StarIcon
                             key={i}
-                            className="w-5 h-5 text-primary-500"
+                            className={cl(
+                                rating > i
+                                    ? 'text-primary-500'
+                                    : 'text-gray-200',
+                                'h-5 w-5 flex-shrink-0'
+                            )}
                             aria-hidden
                         />
                     ))}

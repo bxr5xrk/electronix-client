@@ -42,3 +42,6 @@ export const addOrRemoveItemFromArr = (
 // set data to localStorage
 export const setToLocalStorage = <T>(key: string, value: T) =>
     localStorage.setItem(key, JSON.stringify(value));
+
+export const arrayFromNumber = (number: number) =>
+    [...Array(Math.round(number))].map((_, i) => i);
