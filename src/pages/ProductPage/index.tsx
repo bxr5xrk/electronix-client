@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import PageTitle from '@/components/PageTitle';
 import DetailsSkeleton from '@/components/Skeleton/DetailsSkeleton';
 import { useGetProduct } from '@/features/products/productsService';
-import { useParams } from 'react-router-dom';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { Link, useParams } from 'react-router-dom';
 import Details from './components/Details';
 import Reviews from './components/Reviews';
 
@@ -16,8 +15,18 @@ export default function ProductPage() {
 
     return (
         <div className="w-full flex justify-center">
-            <main className="flex gap-4 flex-col h-full px-2 items-center w-full max-w-3xl lg:max-w-7xl">
+            <main className="flex gap-6 flex-col h-full px-2 w-full max-w-3xl lg:max-w-7xl">
                 <PageTitle title="Product" />
+
+                <Link
+                    className="text-gray-600 transition hover:text-gray-800"
+                    to="/"
+                >
+                    <ArrowLeftIcon
+                        className="h-5 w-5 flex-shrink-0"
+                        aria-hidden
+                    />
+                </Link>
 
                 {!isSuccess ? (
                     <DetailsSkeleton />

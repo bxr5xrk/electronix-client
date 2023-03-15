@@ -14,7 +14,7 @@ export default function ProductItem({ product }: ProductItemProps) {
     const { title, rating, images, price, id } = product;
 
     return (
-        <div className="grid gap-2 rounded-lg shadow border w-full h-fit p-4 pt-2">
+        <div className="grid gap-2 rounded-lg border border-white hover:border-primary-400 w-full h-fit p-4 pt-2 transition">
             <div className="flex items-center justify-center h-72 w-full">
                 <Carousel
                     images={images.map((i) => ({ href: i, label: title }))}
