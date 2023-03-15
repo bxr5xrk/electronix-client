@@ -2,9 +2,11 @@ import type { ICartItem } from '@/features/cart/cartSlice';
 import type { IProduct } from '@/features/products/productsInterfaces';
 
 const createItem = (item: IProduct): ICartItem => ({ ...item, count: 1 });
+
 const removeItem = (items: ICartItem[], id: string) => [
     ...items.filter((i) => i.id !== id)
 ];
+
 const incrementOrDecrementItem = (
     items: ICartItem[],
     id: string,
