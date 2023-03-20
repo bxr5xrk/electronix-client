@@ -47,4 +47,4 @@ export const arrayFromNumber = (number: number) =>
     [...Array(Math.round(number))].map((_, i) => i);
 
 export const scroll = (enable: boolean) =>
-    (document.body.style.overflow = enable ? 'auto' : 'hidden');
+    (document.body.style.overflowY = enable ? 'auto' : 'hidden');

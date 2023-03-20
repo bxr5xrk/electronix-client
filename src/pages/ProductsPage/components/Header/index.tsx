@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useProducts } from '../../../../features/products/productsService';
 
 function Header() {
@@ -7,8 +7,10 @@ function Header() {
     const totalItems = useMemo(() => data?.totalCount, [data]);
 
     return (
-        <div className="w-full pt-2">
-            <p>{totalItems} results found</p>
+        <div className="w-full pt-2 h-6">
+            {data !== undefined ? (
+                <p className="font-medium">{totalItems} items</p>
+            ) : null}
         </div>
     );
 }
