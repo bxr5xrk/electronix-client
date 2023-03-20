@@ -13,6 +13,7 @@ const RegisterPage = lazy(
     async () => await import('./pages/AuthPage/Register')
 );
 const ManagePage = lazy(async () => await import('./pages/ManagePage'));
+const Page404 = lazy(async () => await import('./pages/Page404'));
 
 export const routes = (user: IUser | null) =>
     createBrowserRouter([
@@ -56,6 +57,10 @@ export const routes = (user: IUser | null) =>
                         { path: 'login', element: <LoginPage /> },
                         { path: 'register', element: <RegisterPage /> }
                     ]
+                },
+                {
+                    path: '*',
+                    element: <Page404 />
                 }
             ]
         }
