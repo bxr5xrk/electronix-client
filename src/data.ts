@@ -1,5 +1,6 @@
 // main url
-export const API_URL = 'https://e-commerce-server-rose.vercel.app';
+export const API_URL = 'https://electronix-server.vercel.app';
+// export const API_URL = 'https://e-commerce-server-rose.vercel.app';
 export const CHAT_URL = 'https://chat-service-dpag.onrender.com';
 export const CHAT_WS_URL = 'wss://chat-service-dpag.onrender.com';
 

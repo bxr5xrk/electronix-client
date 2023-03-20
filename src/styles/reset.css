@@ -64,9 +64,13 @@ select {
     all: unset;
 } */
 
-/* input {
-    all: unset;
-} */
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    outline: none;
+}
 
 menu {
     margin: 0;

@@ -20,7 +20,7 @@ export const productsApi = createApi({
             query: ({ page, query, brands, categories, priceRange }) => {
                 const _query = query.length > 0 ? `q=${query ?? ''}` : '';
 
-                const pagination = `&_page=${page}&_limit=${LIMIT_ITEMS}`;
+                const pagination = `&page=${page}&limit=${LIMIT_ITEMS}`;
 
                 const _brands =
                     brands.length > 0 ? `&${brands.replaceAll(' ', '_')}` : '';
@@ -34,7 +34,7 @@ export const productsApi = createApi({
 
                 return `products?${_query}${pagination}${_brands}${_categories}${_priceRange}`;
             },
-            transformResponse(apiResponse: IProduct[], meta) {
+            transformResponse: (apiResponse: IProduct[], meta) => {
                 return {
                     products: apiResponse,
                     totalCount: Number(

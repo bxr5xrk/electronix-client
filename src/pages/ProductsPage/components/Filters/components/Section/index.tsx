@@ -42,7 +42,9 @@ export default function Section({
                                 className="h-4 w-4 rounded cursor-pointer checked:bg-primary-500"
                             />
                         </div>
-                        <p>{item}</p>
+                        <p className="capitalize">
+                            {item.replaceAll('_', ' ')}
+                        </p>
                     </div>
                 ))}
             </div>
