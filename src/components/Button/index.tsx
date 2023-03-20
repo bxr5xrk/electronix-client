@@ -9,7 +9,7 @@ interface ButtonProps
     children: ReactNode;
     theme: 'primary' | 'white';
     fullWidth?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
     title?: string;
 }
 
@@ -17,7 +17,7 @@ export default function Button({
     children,
     theme,
     fullWidth,
-    onClick,
+    onClick = () => ({}),
     title,
     ...props
 }: ButtonProps) {

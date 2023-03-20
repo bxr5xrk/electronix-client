@@ -51,10 +51,8 @@ export function objToUrl(params: IParamsObj): string {
     return Object.entries(params)
         .map(([key, value]) => {
             if (Array.isArray(value)) {
-                // If the value is an array, create multiple parameters with the same key for each value
                 return value.map((v: string) => `${key}=${v}`).join('&');
             } else if (typeof value === 'number') {
-                // If the value is a number, convert it to a string
                 return `${key}=${value}`;
             } else {
                 return '';

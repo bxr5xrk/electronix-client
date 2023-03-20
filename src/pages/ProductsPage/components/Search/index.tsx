@@ -35,7 +35,7 @@ function Search() {
             <MagnifyingGlassIcon className="w-5 h-5" aria-hidden />
 
             <input
-                className="p-1 flex flex-grow"
+                className="p-1 flex flex-grow outline-none focus:ring-0"
                 type="text"
                 placeholder="Search"
                 ref={searchRef}

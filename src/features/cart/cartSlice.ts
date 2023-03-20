@@ -2,28 +2,65 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import type { IProduct } from '../products/productsInterfaces';
+import {
+    createItem,
+    incrementOrDecrementItem,
+    removeItem
+} from '@/utils/cartUtils';
 
-const cartItemsFromLS = JSON.parse(localStorage.getItem('cart') ?? '[]');
+// const cartItemsFromLS = JSON.parse(localStorage.getItem('cart') ?? '[]');
 
-export interface cartState {
-    cartItems: IProduct[];
+export interface ICartItem extends IProduct {
+    count: number;
+}
+
+interface cartState {
+    cartItems: ICartItem[];
 }
 
 const initialState: cartState = {
-    cartItems: cartItemsFromLS
+    cartItems: []
 };
 
 export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        setCartItems: (state, action: PayloadAction<IProduct[]>) => {
-            state.cartItems = [...action.payload];
+        addItemToCart: (state, action: PayloadAction<IProduct>) => {
+            const newItem = createItem(action.payload);
+
+            state.cartItems = [...state.cartItems, newItem];
+        },
+        removeItemFromCart: (state, action: PayloadAction<string>) => {
+            state.cartItems = [...removeItem(state.cartItems, action.payload)];
+        },
+        incrementCartItem: (state, action: PayloadAction<string>) => {
+            state.cartItems = [
+                ...incrementOrDecrementItem(
+                    state.cartItems,
+                    action.payload,
+                    'increment'
+                )
+            ];
+        },
+        decrementCartItem: (state, action: PayloadAction<string>) => {
+            state.cartItems = [
+                ...incrementOrDecrementItem(
+                    state.cartItems,
+                    action.payload,
+                    'decrement'
+                )
+            ];
         }
     }
 });
 
-export const { setCartItems } = cartSlice.actions;
+export const {
+    addItemToCart,
+    removeItemFromCart,
+    incrementCartItem,
+    decrementCartItem
+} = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart;
 
