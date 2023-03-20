@@ -7,6 +7,7 @@ import {
     incrementOrDecrementItem,
     removeItem
 } from '@/utils/cartUtils';
+import { logout } from '../auth/authSlice';
 
 // const cartItemsFromLS = JSON.parse(localStorage.getItem('cart') ?? '[]');
 
@@ -52,7 +53,12 @@ export const cartSlice = createSlice({
                 )
             ];
         }
-    }
+    },
+
+    extraReducers: (builder) =>
+        builder.addCase(logout, (state) => {
+            state.cartItems = [];
+        })
 });
 
 export const {

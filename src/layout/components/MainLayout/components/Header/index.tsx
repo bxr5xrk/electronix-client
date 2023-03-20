@@ -1,3 +1,4 @@
+import { logout, selectAuth } from '@/features/auth/authSlice';
 import { cl, scroll } from '@/utils/index';
 import {
     ArrowRightIcon,
@@ -6,15 +7,17 @@ import {
 } from '@heroicons/react/24/outline';
 import { memo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../../../../app/store';
+import { useAppDispatch, useAppSelector } from '../../../../../app/store';
 import MainLogo from '../../../../../assets/logo.png';
 import { selectCart } from '../../../../../features/cart/cartSlice';
 import { selectWishList } from '../../../../../features/wishlist/wishListSlice';
 
 function Header() {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { cartItems } = useAppSelector(selectCart);
     const { wishListItems } = useAppSelector(selectWishList);
+    const { user } = useAppSelector(selectAuth);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const navigation = [
@@ -37,6 +40,14 @@ function Header() {
     const handleClickNavItem = (link: string) => {
         if (mobileMenuOpen) {
             setMobileMenuOpen(false);
+        }
+
+        // logout
+        if (link === '/auth/login' && user) {
+            dispatch(logout());
+
+            localStorage.clear();
+            return null;
         }
 
         scroll(true);
@@ -77,7 +88,7 @@ function Header() {
                 <div className="hidden lg:flex lg:justify-end">
                     <NavigationItem
                         onClick={handleClickNavItem}
-                        label="Log in"
+                        label={user ? 'Log out' : 'Log in'}
                         link={'/auth/login'}
                         icon={
                             <ArrowRightIcon
