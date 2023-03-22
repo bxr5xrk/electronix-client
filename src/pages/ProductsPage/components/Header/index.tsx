@@ -7,8 +7,8 @@ function Header() {
     const totalItems = useMemo(() => data?.totalCount, [data]);
 
     return (
-        <div className="w-full pt-2 h-6">
-            {data !== undefined ? (
+        <div className="w-full mt-2 h-6">
+            {totalItems !== undefined ? (
                 <p className="font-medium">{totalItems} items</p>
             ) : null}
         </div>

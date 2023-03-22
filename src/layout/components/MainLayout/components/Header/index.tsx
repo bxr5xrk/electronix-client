@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { logout, selectAuth } from '@/features/auth/authSlice';
 import { cl, scroll } from '@/utils/index';
 import {
@@ -20,7 +21,7 @@ function Header() {
     const { user } = useAppSelector(selectAuth);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    const navigation = [
+    const publicNavigation = [
         {
             link: '/',
             label: 'Products'
@@ -36,6 +37,18 @@ function Header() {
             count: cartItems.reduce((acc, i) => acc + +i.count, 0)
         }
     ];
+
+    const privateNavigation = [
+        {
+            link: '/manage',
+            label: 'Manage',
+            count: undefined
+        }
+    ];
+
+    const navigation = user
+        ? [...publicNavigation, ...privateNavigation]
+        : [...publicNavigation];
 
     const handleClickNavItem = (link: string) => {
         if (mobileMenuOpen) {
@@ -60,7 +73,7 @@ function Header() {
     };
 
     return (
-        <header className="w-full pt-3">
+        <header id="header" className="w-full pt-3">
             <nav className="mx-auto flex items-center justify-between p-3 lg:px-4">
                 <HeaderLogo />
 
@@ -69,7 +82,11 @@ function Header() {
                         type="button"
                         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
                     >
-                        <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                        <Bars3Icon
+                            onClick={() => handleClickXMark(true)}
+                            className="h-6 w-6"
+                            aria-hidden="true"
+                        />
                     </button>
                 </div>
 
@@ -101,59 +118,63 @@ function Header() {
             </nav>
 
             {/* side over */}
-            <div className="lg:hidden ease-in-out transition-opacity">
-                <div className="fixed inset-0 z-20" />
-                <div
-                    className={cl(
-                        mobileMenuOpen
-                            ? 'opacity-100 translate-x-0'
-                            : 'opacity-0 translate-x-100',
-                        'border-l transform ease-in-out transition-opacity fixed inset-y-0 right-0 z-20 w-full h-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm'
-                    )}
-                >
-                    <div className="flex items-center justify-between">
-                        <HeaderLogo />
+            <div
+                className={cl(
+                    mobileMenuOpen ? 'visible' : 'invisible',
+                    'fixed inset-0 z-20 duration-500'
+                )}
+            />
+            <div
+                className={cl(
+                    mobileMenuOpen
+                        ? 'opacity-100 right-0'
+                        : 'opacity-50 -right-full',
+                    'border-l block transition-all duration-500 ease-in-out fixed top-0 bottom-0 z-20 w-full h-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm'
+                )}
+            >
+                <div className="flex items-center justify-between">
+                    <HeaderLogo />
 
-                        <button
-                            type="button"
-                            className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                            onClick={() => handleClickXMark(!mobileMenuOpen)}
-                        >
-                            <span className="sr-only">Close menu</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                        </button>
-                    </div>
-                    <div className="mt-6 flow-root">
-                        <div className="-my-6 divide-y divide-gray-500/10">
-                            <div className="space-y-2 py-6">
-                                {navigation.map((item) => (
-                                    <NavigationItem
-                                        onClick={handleClickNavItem}
-                                        key={item.link}
-                                        label={item.label}
-                                        count={item.count}
-                                        link={item.link}
-                                        isMobileView
-                                    />
-                                ))}
-                            </div>
-                            <div className="py-6">
+                    <button
+                        type="button"
+                        className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                        onClick={() => handleClickXMark(!mobileMenuOpen)}
+                    >
+                        <span className="sr-only">Close menu</span>
+                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    </button>
+                </div>
+                <div className="mt-6 flow-root">
+                    <div className="-my-6 divide-y divide-gray-500/10">
+                        <div className="space-y-2 py-6">
+                            {navigation.map((item) => (
                                 <NavigationItem
                                     onClick={handleClickNavItem}
-                                    label="Log in"
-                                    link={'/auth/login'}
-                                    icon={
-                                        <ArrowRightIcon
-                                            className="h-4 w-4"
-                                            aria-hidden="true"
-                                        />
-                                    }
+                                    key={item.link}
+                                    label={item.label}
+                                    count={item.count}
+                                    link={item.link}
+                                    isMobileView
                                 />
-                            </div>
+                            ))}
+                        </div>
+                        <div className="py-6">
+                            <NavigationItem
+                                onClick={handleClickNavItem}
+                                label="Log in"
+                                link={'/auth/login'}
+                                icon={
+                                    <ArrowRightIcon
+                                        className="h-4 w-4"
+                                        aria-hidden="true"
+                                    />
+                                }
+                            />
                         </div>
                     </div>
                 </div>
             </div>
+            {/* </div> */}
         </header>
     );
 }
@@ -195,10 +216,11 @@ function NavigationItem({
         <button
             onClick={() => onClick(link)}
             className={cl(
-                'relative flex items-center gap-2',
+                'relative flex items-center gap-2 hover:text-indigo-500 transition',
+                pathname === link ? 'text-indigo-600' : 'text-gray-900',
                 isMobileView
-                    ? '-mx-3 w-full block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
-                    : 'text-sm font-semibold leading-6 text-gray-900'
+                    ? '-mx-3 w-full bloc  rounded-lg py-2.5 px-3 text-base font-semibold leading-7 hover:bg-gray-50'
+                    : 'text-sm font-semibold leading-6 '
             )}
         >
             <span>{label}</span>
