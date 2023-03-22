@@ -73,7 +73,8 @@ export const productsSlice = createSlice({
             state.activeBrands = brands;
             state.activeCategories = categories;
             state.activePriceRange = { min, max };
-        }
+        },
+        resetAllFilters: () => initialState
     }
 });
 
@@ -84,7 +85,8 @@ export const {
     setActiveCategories,
     setClearFilters,
     setPriceRange,
-    setAllFilters
+    setAllFilters,
+    resetAllFilters
 } = productsSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products;
