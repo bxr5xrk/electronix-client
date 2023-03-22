@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { useAppSelector } from '../../app/store';
+import { type RootState, useAppSelector } from '../../app/store';
 import { API_URL, LIMIT_ITEMS } from '../../data';
 import { stringifyFiltersToParam, stringifyPriceToParam } from '../../utils';
 import type {
+    ICreateProductProps,
     IGetPaginatedProductsParams,
     IGetPaginatedProductsRes,
     IProduct
@@ -11,7 +12,19 @@ import { selectProducts } from './productsSlice';
 
 export const productsApi = createApi({
     reducerPath: 'productsService',
-    baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+    tagTypes: ['Products'],
+    baseQuery: fetchBaseQuery({
+        baseUrl: API_URL,
+        prepareHeaders: (headers, { getState }) => {
+            const token = (getState() as RootState).auth.accessToken;
+
+            if (token) {
+                headers.set('authorization', `Bearer ${token}`);
+            }
+
+            return headers;
+        }
+    }),
     endpoints: (builder) => ({
         getPaginatedProducts: builder.query<
             IGetPaginatedProductsRes,
@@ -41,7 +54,47 @@ export const productsApi = createApi({
                         meta?.response?.headers.get('X-Total-Count')
                     )
                 };
-            }
+            },
+            providesTags: (result) =>
+                result
+                    ? [
+                          ...result.products.map(
+                              ({ id }) => ({ type: 'Products', id } as const)
+                          ),
+                          { type: 'Products', id: 'LIST' }
+                      ]
+                    : [{ type: 'Products', id: 'LIST' }]
+        }),
+
+        createProduct: builder.mutation<unknown, ICreateProductProps>({
+            query: ({
+                title,
+                price,
+                rating,
+                categoryName,
+                brandName,
+                images
+            }) => ({
+                url: 'products',
+                method: 'POST',
+                body: {
+                    title,
+                    price,
+                    rating,
+                    categoryName,
+                    brandName,
+                    images
+                }
+            }),
+            invalidatesTags: [{ type: 'Products', id: 'LIST' }]
+        }),
+
+        deleteProduct: builder.mutation<unknown, { id: string }>({
+            query: ({ id }) => ({
+                url: `products/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: [{ type: 'Products', id: 'LIST' }]
         }),
 
         getProductById: builder.query<IProduct, string | undefined>({
@@ -79,7 +132,16 @@ const useProducts = () => {
 const {
     useGetBrandsQuery: useGetBrands,
     useGetCategoriesQuery: useGetCategories,
-    useGetProductByIdQuery: useGetProduct
+    useGetProductByIdQuery: useGetProduct,
+    useCreateProductMutation: useCreateProduct,
+    useDeleteProductMutation: useDeleteProduct
 } = productsApi;
 
-export { useProducts, useGetBrands, useGetCategories, useGetProduct };
+export {
+    useProducts,
+    useGetBrands,
+    useGetCategories,
+    useGetProduct,
+    useCreateProduct,
+    useDeleteProduct
+};
