@@ -13,6 +13,12 @@ const RegisterPage = lazy(
     async () => await import('./pages/AuthPage/Register')
 );
 const ManagePage = lazy(async () => await import('./pages/ManagePage'));
+const ManageProducts = lazy(
+    async () => await import('./pages/ManagePage/components/Products')
+);
+const ManageUsers = lazy(
+    async () => await import('./pages/ManagePage/components/Users')
+);
 const Page404 = lazy(async () => await import('./pages/Page404'));
 
 export const routes = (user: IUser | null) =>
@@ -43,7 +49,22 @@ export const routes = (user: IUser | null) =>
                         <ManagePage />
                     ) : (
                         <Navigate to="/auth/login" />
-                    )
+                    ),
+                    children: [
+                        {
+                            path: '',
+                            element: <ManageProducts />
+                        },
+                        {
+                            path: 'users',
+                            element:
+                                user?.role === 'admin' ? (
+                                    <ManageUsers />
+                                ) : (
+                                    <Navigate to="/manage" />
+                                )
+                        }
+                    ]
                 },
                 {
                     path: 'auth',
