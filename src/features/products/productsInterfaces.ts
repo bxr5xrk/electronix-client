@@ -25,3 +25,12 @@ export interface IPriceRange {
     min: number;
     max: number;
 }
+
+export interface ICreateProductProps {
+    title: string;
+    images: string[];
+    brandName: string;
+    categoryName: string;
+    price: number;
+    rating: number;
+}

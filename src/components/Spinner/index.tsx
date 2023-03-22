@@ -1,10 +1,8 @@
-import React from 'react';
-
 export default function Spinner() {
     return (
         <svg
             fill="none"
-            className="h-12 w-12 animate-spin text-indigo-600"
+            className="h-10 w-10 animate-spin text-indigo-600"
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
         >

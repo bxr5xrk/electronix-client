@@ -20,7 +20,7 @@ function Pagination() {
     );
 
     return (
-        <div className="w-full flex flex-wrap justify-center gap-2">
+        <div className="w-full flex flex-wrap justify-center gap-2 pb-4">
             {pagesArr.length > 1 ? (
                 <>
                     {/* previous */}

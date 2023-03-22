@@ -13,7 +13,10 @@ function Search() {
         useThrottle(() => {
             if (searchRef.current !== null && xMarkIconRef.current !== null) {
                 const query = searchRef.current.value.trim();
-                dispatch(setQuery(query));
+
+                if (query.length >= 3 || query.length === 0) {
+                    dispatch(setQuery(query));
+                }
 
                 xMarkIconRef.current.style.opacity =
                     query.length > 0 ? '100' : '0';
@@ -37,7 +40,7 @@ function Search() {
             <input
                 className="p-1 flex flex-grow outline-none focus:ring-0"
                 type="text"
-                placeholder="Search"
+                placeholder="Enter search query of 3 characters or more"
                 ref={searchRef}
                 onChange={handleChange}
             />

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import type { IProduct } from '../products/productsInterfaces';
+import { logout } from '../auth/authSlice';
 
 const wishListItemsFromLS = JSON.parse(
     localStorage.getItem('wishList') ?? '[]'
@@ -22,7 +23,12 @@ export const wishListSlice = createSlice({
         setWishListItems: (state, action: PayloadAction<IProduct[]>) => {
             state.wishListItems = [...action.payload];
         }
-    }
+    },
+
+    extraReducers: (builder) =>
+        builder.addCase(logout, (state) => {
+            state.wishListItems = [];
+        })
 });
 
 export const { setWishListItems } = wishListSlice.actions;

@@ -1,5 +1,6 @@
 import { arrayFromNumber, cl } from '@/utils/index';
 import { StarIcon } from '@heroicons/react/24/solid';
+import { type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import type { IProduct } from '../../../../features/products/productsInterfaces';
 import Carousel from '../../../Carousel';
@@ -8,13 +9,16 @@ import WishListButton from '../WishListButton';
 
 interface ProductItemProps {
     product: IProduct;
+    children?: ReactNode;
 }
 
-export default function ProductItem({ product }: ProductItemProps) {
+export default function ProductItem({ product, children }: ProductItemProps) {
     const { title, rating, images, price, id } = product;
 
     return (
-        <div className="grid gap-2 rounded-lg border border-white hover:border-primary-400 w-full h-fit p-4 pt-2 transition">
+        <div className="relative grid gap-2 rounded-lg border border-white hover:border-primary-400 w-full h-fit p-4 pt-2 transition">
+            {children}
+
             <div className="flex items-center justify-center h-72 w-full">
                 <Carousel
                     images={images.map((i) => ({ href: i, label: title }))}

@@ -45,3 +45,6 @@ export const setToLocalStorage = <T>(key: string, value: T) =>
 
 export const arrayFromNumber = (number: number) =>
     [...Array(Math.round(number))].map((_, i) => i);
+
+export const scroll = (enable: boolean) =>
+    (document.body.style.overflowY = enable ? 'auto' : 'hidden');
