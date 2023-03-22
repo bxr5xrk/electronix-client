@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint:check": "clear && eslint 'src/**/*.{ts,tsx,js}' --config .eslintrc.json",
+    "lint:check": "clear && eslint 'src/**/*.{ts,tsx,js}' --config .eslintrc.cjs",
     "ts:check": "clear && tsc --allowJS false --pretty --strict true",
     "format:check": "clear && prettier --check 'src/**/*.{ts,tsx,js}' --config .prettierrc.json",
     "format:fix": "clear && prettier --write 'src/**/*.{ts,tsx,js}' --config .prettierrc.json",

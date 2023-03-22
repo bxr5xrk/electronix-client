@@ -6,13 +6,11 @@ import { productsApi } from '../features/products/productsService';
 import productsSlice from '../features/products/productsSlice';
 import wishListSlice from '../features/wishlist/wishListSlice';
 import cartSlice from '../features/cart/cartSlice';
-import { chatApi } from '@/features/chat/chatService';
 import authSlice from '@/features/auth/authSlice';
 
 export const store = configureStore({
     reducer: {
         [productsApi.reducerPath]: productsApi.reducer,
-        [chatApi.reducerPath]: chatApi.reducer,
         [authApi.reducerPath]: authApi.reducer,
         products: productsSlice,
         wishList: wishListSlice,
@@ -21,7 +19,6 @@ export const store = configureStore({
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat([
-            chatApi.middleware,
             productsApi.middleware,
             authApi.middleware
         ])
