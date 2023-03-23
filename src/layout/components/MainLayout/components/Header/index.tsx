@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { logout, selectAuth } from '@/features/auth/authSlice';
+import { setNotification } from '@/features/notification/notificationSlice';
 import {
     resetAllFilters,
     selectProducts
@@ -40,6 +41,10 @@ function Header() {
             link: '/cart',
             label: 'Cart',
             count: cartItems.reduce((acc, i) => acc + +i.count, 0)
+        },
+        {
+            link: '/history',
+            label: 'History'
         }
     ];
 
