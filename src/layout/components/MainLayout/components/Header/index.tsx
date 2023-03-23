@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { logout, selectAuth } from '@/features/auth/authSlice';
-import { cl, scroll } from '@/utils/index';
+import { setNotification } from '@/features/notification/notificationSlice';
+import {
+    resetAllFilters,
+    selectProducts
+} from '@/features/products/productsSlice';
+import { cl } from '@/utils/index';
 import {
     ArrowRightIcon,
     Bars3Icon,
@@ -17,6 +22,7 @@ function Header() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { cartItems } = useAppSelector(selectCart);
+    const { query } = useAppSelector(selectProducts);
     const { wishListItems } = useAppSelector(selectWishList);
     const { user } = useAppSelector(selectAuth);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,6 +41,10 @@ function Header() {
             link: '/cart',
             label: 'Cart',
             count: cartItems.reduce((acc, i) => acc + +i.count, 0)
+        },
+        {
+            link: '/history',
+            label: 'History'
         }
     ];
 
@@ -63,13 +73,15 @@ function Header() {
             return null;
         }
 
-        scroll(true);
+        if ((link === '/' || link === '/manage') && query.length) {
+            dispatch(resetAllFilters());
+        }
+
         navigate(link);
     };
 
     const handleClickXMark = (show: boolean) => {
         setMobileMenuOpen(show);
-        scroll(!show);
     };
 
     return (

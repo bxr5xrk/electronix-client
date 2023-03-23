@@ -1,31 +1,42 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/store';
-import { type IUser } from './authInterfaces';
+import { type ShippingAddress, type IUser } from './authInterfaces';
 
 const userFromLS = JSON.parse(localStorage.getItem('user') ?? 'null') as IUser;
 const accessTokenFromLS = JSON.parse(
     localStorage.getItem('accessToken') ?? 'null'
 ) as string;
+const shippingAddressFromLS = JSON.parse(
+    localStorage.getItem('shippingAddress') ?? 'null'
+) as ShippingAddress;
 
 interface authState {
     user: IUser | null;
     accessToken: string | null;
+    shippingAddress: ShippingAddress | null;
 }
 
 const initialState: authState = {
     user: userFromLS,
-    accessToken: accessTokenFromLS
+    accessToken: accessTokenFromLS,
+    shippingAddress: shippingAddressFromLS
 };
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setCredentials: (state, action: PayloadAction<authState>) => {
+        setCredentials: (
+            state,
+            action: PayloadAction<{ user: IUser; accessToken: string }>
+        ) => {
             const { user, accessToken } = action.payload;
             state.user = user;
             state.accessToken = accessToken;
+        },
+        setShippingAddress: (state, action: PayloadAction<ShippingAddress>) => {
+            state.shippingAddress = action.payload;
         },
         logout: (state) => {
             state.accessToken = null;
@@ -34,7 +45,7 @@ const authSlice = createSlice({
     }
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setCredentials, logout, setShippingAddress } = authSlice.actions;
 
 export const selectAuth = (state: RootState) => state.auth;
 

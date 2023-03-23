@@ -7,6 +7,8 @@ import { setCredentials } from '@/features/auth/authSlice';
 import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRegister } from '@/features/auth/authService';
+import { setToLocalStorage } from '@/utils/index';
+import { setNotification } from '@/features/notification/notificationSlice';
 
 export default function Register() {
     const dispatch = useAppDispatch();
@@ -35,12 +37,15 @@ export default function Register() {
                         accessToken: token
                     })
                 );
-
-                localStorage.setItem(
-                    'user',
-                    JSON.stringify({ name, email, role })
+                dispatch(
+                    setNotification({
+                        status: 'success',
+                        message: 'Account created!'
+                    })
                 );
-                localStorage.setItem('accessToken', JSON.stringify(token));
+
+                setToLocalStorage('user', { name, email, role });
+                setToLocalStorage('accessToken', token);
 
                 navigate('/cart');
             }

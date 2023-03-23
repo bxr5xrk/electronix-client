@@ -4,12 +4,14 @@ import ShoppingBagIcon from '@heroicons/react/24/outline/ShoppingBagIcon';
 import ShoppingBagIconSolid from '@heroicons/react/24/solid/ShoppingBagIcon';
 import {
     addItemToCart,
+    CART_LS_KEY,
     removeItemFromCart,
     selectCart
 } from '../../../../features/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import type { IProduct } from '@/features/products/productsInterfaces';
-import { addOrRemoveItemFromArr, setToLocalStorage } from '@/utils/index';
+import { setToLocalStorage } from '@/utils/index';
+import { manageCartItems } from '@/utils/cartUtils';
 
 interface CartButtonProps {
     product: IProduct;
@@ -28,7 +30,12 @@ function CartButton({ product }: CartButtonProps) {
 
     const handleClickCart = useCallback(
         (product: IProduct) => {
-            const newCartArr = addOrRemoveItemFromArr(cartItems, product);
+            const newCartArr = manageCartItems(
+                cartItems,
+                isItemInCart ? 'remove' : 'add',
+                id,
+                isItemInCart ? undefined : product
+            );
 
             if (isItemInCart) {
                 dispatch(removeItemFromCart(product.id));
@@ -36,7 +43,7 @@ function CartButton({ product }: CartButtonProps) {
                 dispatch(addItemToCart(product));
             }
 
-            setToLocalStorage('cart', newCartArr);
+            setToLocalStorage(CART_LS_KEY, newCartArr);
         },
         [product, cartItems]
     );
