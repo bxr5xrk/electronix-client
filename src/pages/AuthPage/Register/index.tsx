@@ -49,6 +49,14 @@ export default function Register() {
 
                 navigate('/cart');
             }
+            if ('error' in data) {
+                dispatch(
+                    setNotification({
+                        status: 'error',
+                        message: 'Server error. Please try again later.'
+                    })
+                );
+            }
         }
     };
 
