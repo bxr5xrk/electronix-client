@@ -8,19 +8,18 @@ import {
     removeItem
 } from '@/utils/cartUtils';
 import { logout } from '../auth/authSlice';
+import { type ICartItem } from './cartInterfaces';
 
-// const cartItemsFromLS = JSON.parse(localStorage.getItem('cart') ?? '[]');
+export const CART_LS_KEY = 'cart';
 
-export interface ICartItem extends IProduct {
-    count: number;
-}
+const cartItemsFromLS = JSON.parse(localStorage.getItem(CART_LS_KEY) ?? '[]');
 
 interface cartState {
     cartItems: ICartItem[];
 }
 
 const initialState: cartState = {
-    cartItems: []
+    cartItems: cartItemsFromLS
 };
 
 export const cartSlice = createSlice({
@@ -32,10 +31,10 @@ export const cartSlice = createSlice({
 
             state.cartItems = [...state.cartItems, newItem];
         },
-        removeItemFromCart: (state, action: PayloadAction<string>) => {
+        removeItemFromCart: (state, action: PayloadAction<number>) => {
             state.cartItems = [...removeItem(state.cartItems, action.payload)];
         },
-        incrementCartItem: (state, action: PayloadAction<string>) => {
+        incrementCartItem: (state, action: PayloadAction<number>) => {
             state.cartItems = [
                 ...incrementOrDecrementItem(
                     state.cartItems,
@@ -44,7 +43,7 @@ export const cartSlice = createSlice({
                 )
             ];
         },
-        decrementCartItem: (state, action: PayloadAction<string>) => {
+        decrementCartItem: (state, action: PayloadAction<number>) => {
             state.cartItems = [
                 ...incrementOrDecrementItem(
                     state.cartItems,
@@ -52,6 +51,9 @@ export const cartSlice = createSlice({
                     'decrement'
                 )
             ];
+        },
+        resetCart: (state) => {
+            state.cartItems = [];
         }
     },
 
@@ -65,7 +67,8 @@ export const {
     addItemToCart,
     removeItemFromCart,
     incrementCartItem,
-    decrementCartItem
+    decrementCartItem,
+    resetCart
 } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart;
