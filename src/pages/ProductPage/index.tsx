@@ -14,19 +14,21 @@ export default function ProductPage() {
     });
 
     return (
-        <main className="flex gap-6 flex-col px-2 w-full max-w-3xl lg:max-w-7xl">
-            <PageTitle title="Product" />
+        <main className="w-full flex justify-center">
+            <div className="flex gap-6 flex-col max-w-3xl lg:max-w-7xl">
+                <PageTitle title="Product" />
 
-            <GoBackLink />
+                <GoBackLink />
 
-            {!isSuccess ? (
-                <DetailsSkeleton />
-            ) : (
-                <>
-                    <Details product={data} />
-                    <Reviews reviews={reviews} />
-                </>
-            )}
+                {!isSuccess ? (
+                    <DetailsSkeleton />
+                ) : (
+                    <>
+                        <Details product={data} />
+                        <Reviews reviews={reviews} />
+                    </>
+                )}
+            </div>
         </main>
     );
 }
