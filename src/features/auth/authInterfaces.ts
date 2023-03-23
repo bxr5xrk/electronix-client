@@ -23,3 +23,8 @@ export interface RegisterProps {
     password: string;
     name: string;
 }
+
+export interface ShippingAddress {
+    address: string;
+    city: string;
+}
