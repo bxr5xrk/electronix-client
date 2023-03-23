@@ -1,19 +1,20 @@
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import FullScreenMessage from '@/components/FullScreenMessage';
 import {
+    CART_LS_KEY,
     decrementCartItem,
     incrementCartItem,
     removeItemFromCart,
     selectCart
 } from '@/features/cart/cartSlice';
+import { manageCartItems } from '@/utils/cartUtils';
+import { setToLocalStorage } from '@/utils/index';
 import {
     MinusCircleIcon,
     PlusCircleIcon,
     TrashIcon
 } from '@heroicons/react/24/outline';
-import { memo, useMemo } from 'react';
-
-const SHIPPING_PRICE = 5;
+import { memo } from 'react';
 
 function Items() {
     const dispatch = useAppDispatch();
@@ -28,17 +29,26 @@ function Items() {
         );
     }
 
-    const subtotalPrice = useMemo(
-        () => cartItems.reduce((acc, i) => acc + i.price * i.count, 0),
-        [cartItems]
-    );
+    const totalPrice = cartItems.reduce((acc, i) => acc + i.price * i.count, 0);
 
-    const totalPrice = useMemo(
-        () => subtotalPrice + SHIPPING_PRICE,
-        [subtotalPrice]
-    );
+    const handleClickCartAction = (
+        id: number,
+        action: 'increment' | 'decrement' | 'remove'
+    ) => {
+        const newCartArr = manageCartItems(cartItems, action, id);
 
-    return (
+        if (action === 'increment') {
+            dispatch(incrementCartItem(id));
+        } else if (action === 'decrement') {
+            dispatch(decrementCartItem(id));
+        } else {
+            dispatch(removeItemFromCart(id));
+        }
+
+        setToLocalStorage(CART_LS_KEY, newCartArr);
+    };
+
+    return cartItems.length ? (
         <div className="w-full flex flex-col h-full space-y-6">
             <h2 className="text-xl font-medium text-gray-900">Order summary</h2>
 
@@ -77,10 +87,9 @@ function Items() {
                                     <div className="ml-4 flow-root flex-shrink-0">
                                         <button
                                             onClick={() =>
-                                                dispatch(
-                                                    removeItemFromCart(
-                                                        product.id
-                                                    )
+                                                handleClickCartAction(
+                                                    product.id,
+                                                    'remove'
                                                 )
                                             }
                                             type="button"
@@ -105,10 +114,9 @@ function Items() {
                                     <div className="flex gap-3 items-center">
                                         <button
                                             onClick={() =>
-                                                dispatch(
-                                                    decrementCartItem(
-                                                        product.id
-                                                    )
+                                                handleClickCartAction(
+                                                    product.id,
+                                                    'decrement'
                                                 )
                                             }
                                             type="button"
@@ -125,10 +133,9 @@ function Items() {
 
                                         <button
                                             onClick={() =>
-                                                dispatch(
-                                                    incrementCartItem(
-                                                        product.id
-                                                    )
+                                                handleClickCartAction(
+                                                    product.id,
+                                                    'increment'
                                                 )
                                             }
                                             type="button"
@@ -146,19 +153,7 @@ function Items() {
                 </ul>
 
                 <dl className="space-y-6 border-t border-gray-200 py-6 px-4 sm:px-6">
-                    <div className="flex items-center justify-between">
-                        <dt className="text-sm">Subtotal</dt>
-                        <dd className="text-sm font-medium text-gray-900">
-                            $ {subtotalPrice}
-                        </dd>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <dt className="text-sm">Shipping</dt>
-                        <dd className="text-sm font-medium text-gray-900">
-                            $ {SHIPPING_PRICE}
-                        </dd>
-                    </div>
-                    <div className="flex items-center justify-between border-t border-gray-200 pt-6">
+                    <div className="flex items-center justify-between border-gray-200 pt-6">
                         <dt className="text-base font-medium">Total</dt>
                         <dd className="text-base font-medium text-gray-900">
                             $ {totalPrice}
@@ -167,7 +162,7 @@ function Items() {
                 </dl>
             </div>
         </div>
-    );
+    ) : null;
 }
 
 export default memo(Items);

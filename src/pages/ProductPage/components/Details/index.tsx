@@ -14,7 +14,7 @@ export default function Details({ product }: DetailsProps) {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full h-full">
-            <div className="w-full h-72 lg:h-full">
+            <div className="w-full h-72">
                 <Carousel
                     images={images.map((i) => ({
                         href: i,

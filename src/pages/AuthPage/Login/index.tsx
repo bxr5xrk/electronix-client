@@ -4,6 +4,8 @@ import Button from '@/components/Button';
 import Input from '@/components/Input';
 import { useLogin } from '@/features/auth/authService';
 import { setCredentials } from '@/features/auth/authSlice';
+import { setNotification } from '@/features/notification/notificationSlice';
+import { setToLocalStorage } from '@/utils/index';
 import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MainLogo from '../../../assets/logo.png';
@@ -33,12 +35,15 @@ export default function Login() {
                         accessToken: token
                     })
                 );
-
-                localStorage.setItem(
-                    'user',
-                    JSON.stringify({ name, email, role })
+                dispatch(
+                    setNotification({
+                        status: 'success',
+                        message: 'Successfully logged in!'
+                    })
                 );
-                localStorage.setItem('accessToken', JSON.stringify(token));
+
+                setToLocalStorage('user', { name, email, role });
+                setToLocalStorage('accessToken', token);
 
                 navigate('/cart');
             }
