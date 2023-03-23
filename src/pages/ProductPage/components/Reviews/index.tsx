@@ -17,11 +17,11 @@ interface ReviewsProps {
 
 export default function Reviews({ reviews }: ReviewsProps) {
     return (
-        <div className="mx-auto max-w-3xl py-16 sm:py-20 lg:max-w-7xl">
-            <h2 className="text-lg font-medium text-gray-900">
+        <>
+            <h2 className="text-lg font-medium text-gray-900 mt-20">
                 Recent reviews
             </h2>
-            <div className="mt-6 space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 pb-10">
+            <div className="flex flex-col pt-6 space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 pb-10">
                 {reviews.map((review) => (
                     <div
                         key={review.id}
@@ -80,6 +80,6 @@ export default function Reviews({ reviews }: ReviewsProps) {
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     );
 }
