@@ -25,7 +25,7 @@ export default function SideOverFilters({
             <div
                 className={cl(
                     showFilters ? 'translate-x-0' : '-translate-x-[150%]',
-                    'visible overflow-y-scroll lg:invisible fixed w-fit bottom-10 top-24 left-2 p-2 sm:p-4 space-y-2 bg-white border rounded-lg ease-in-out z-50 duration-300'
+                    'visible overflow-y-scroll lg:invisible fixed w-fit bottom-2 top-2 left-2 p-2 sm:p-4 space-y-2 bg-white border rounded-lg ease-in-out z-50 duration-300'
                 )}
             >
                 <button onClick={() => setShowFilters(false)}>

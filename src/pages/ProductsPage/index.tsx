@@ -8,7 +8,7 @@ import { ParseFiltersFromQuery } from '../../components/ParseFiltersToQuery';
 export default function ProductsPage() {
     return (
         <>
-            <main className="relative flex gap-4">
+            <main className="relative h-full flex gap-4">
                 <Filters />
 
                 <section className="flex flex-col w-full h-full gap-4">

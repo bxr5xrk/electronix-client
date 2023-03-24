@@ -13,7 +13,7 @@ export default function SignInWrapper({ children, title }: SignInWrapperProps) {
 
     return (
         <>
-            <main className={cl('w-full flex-grow h-full', !user && 'blur-sm')}>
+            <main className={cl('w-full flex-grow', !user && 'blur-sm')}>
                 {children}
             </main>
 

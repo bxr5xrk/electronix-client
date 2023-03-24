@@ -23,10 +23,12 @@ export default function History() {
     }
 
     if (isSuccess && !orders.length) {
-        <FullScreenMessage
-            title="No orders yet"
-            description="Order something ;)"
-        />;
+        return (
+            <FullScreenMessage
+                title="No orders yet"
+                description="Order something ;)"
+            />
+        );
     }
 
     const sortedOrders = orders
