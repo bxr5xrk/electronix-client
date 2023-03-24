@@ -7,7 +7,7 @@ import Items from './components/Items';
 export default function CartPage() {
     return (
         <SignInWrapper title="to complete your order">
-            <div className=" min-w-full flex-grow gap-6 flex-col h-full px-2 w-full">
+            <div className="min-w-full space-y-10 flex-col h-full px-2">
                 <PageTitle title="Cart" />
 
                 <GoBackLink />

@@ -15,7 +15,7 @@ export default function ProductPage() {
 
     return (
         <main className="w-full flex justify-center">
-            <div className="flex gap-6 flex-col max-w-3xl lg:max-w-7xl">
+            <div className="flex gap-6 w-full flex-col max-w-3xl lg:max-w-7xl">
                 <PageTitle title="Product" />
 
                 <GoBackLink />

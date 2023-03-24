@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/store';
-import { type ShippingAddress, type IUser } from './authInterfaces';
+import { type ShippingAddress, type IUserAuth } from './authInterfaces';
 
-const userFromLS = JSON.parse(localStorage.getItem('user') ?? 'null') as IUser;
+const userFromLS = JSON.parse(
+    localStorage.getItem('user') ?? 'null'
+) as IUserAuth;
 const accessTokenFromLS = JSON.parse(
     localStorage.getItem('accessToken') ?? 'null'
 ) as string;
@@ -12,7 +14,7 @@ const shippingAddressFromLS = JSON.parse(
 ) as ShippingAddress;
 
 interface authState {
-    user: IUser | null;
+    user: IUserAuth | null;
     accessToken: string | null;
     shippingAddress: ShippingAddress | null;
 }
@@ -29,7 +31,7 @@ const authSlice = createSlice({
     reducers: {
         setCredentials: (
             state,
-            action: PayloadAction<{ user: IUser; accessToken: string }>
+            action: PayloadAction<{ user: IUserAuth; accessToken: string }>
         ) => {
             const { user, accessToken } = action.payload;
             state.user = user;

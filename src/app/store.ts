@@ -9,12 +9,14 @@ import cartSlice from '../features/cart/cartSlice';
 import authSlice from '@/features/auth/authSlice';
 import { orderApi } from '@/features/order/orderService';
 import notificationSlice from '@/features/notification/notificationSlice';
+import { usersApi } from '@/features/users/usersService';
 
 export const store = configureStore({
     reducer: {
         [productsApi.reducerPath]: productsApi.reducer,
         [authApi.reducerPath]: authApi.reducer,
         [orderApi.reducerPath]: orderApi.reducer,
+        [usersApi.reducerPath]: usersApi.reducer,
         products: productsSlice,
         wishList: wishListSlice,
         cart: cartSlice,
@@ -25,7 +27,8 @@ export const store = configureStore({
         getDefaultMiddleware().concat([
             productsApi.middleware,
             authApi.middleware,
-            orderApi.middleware
+            orderApi.middleware,
+            usersApi.middleware
         ])
 });
 
