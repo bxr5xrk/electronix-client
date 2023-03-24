@@ -20,9 +20,7 @@ const ManageUsers = lazy(
     async () => await import('./pages/ManagePage/components/Users')
 );
 const Page404 = lazy(async () => await import('./pages/Page404'));
-const OrderHistoryPage = lazy(
-    async () => await import('./pages/OrderHistoryPage')
-);
+const HistoryPage = lazy(async () => await import('./pages/HistoryPage'));
 
 export const routes = (user: IUser | null) =>
     createBrowserRouter([
@@ -48,13 +46,7 @@ export const routes = (user: IUser | null) =>
                 },
                 {
                     path: 'history',
-                    element: (
-                        // user ? (
-                        <OrderHistoryPage />
-                    )
-                    // ) : (
-                    // <Navigate to="/auth/login" />
-                    // )
+                    element: <HistoryPage />
                 },
                 {
                     path: 'manage',

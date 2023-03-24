@@ -49,3 +49,22 @@ export const arrayFromNumber = (number: number) =>
 
 export const createArrayFromProductIds = (products: ICartItem[]): number[] =>
     products.map((i) => [...Array(i.count)].map((_) => i.id)).flat();
+
+// split a given number into groups of three digits
+export const formatPrice = (number: number) => {
+    const split = String(number).split('.');
+    split[0] = split[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+    return `$ ${split.join('.')}`;
+};
+
+export const formatDate = (datetime: string) => {
+    const date = new Date(datetime);
+    const formattedDate = new Intl.DateTimeFormat('en-US', {
+        dateStyle: 'medium',
+        timeStyle: 'medium',
+        hourCycle: 'h24'
+    }).format(date);
+
+    return formattedDate.slice(0, -3);
+};
