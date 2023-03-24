@@ -1,4 +1,5 @@
-# e-commerce
+# Electronix
+e-commerce site
 
 Tools:
 - React.js (Typescript)
