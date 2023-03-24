@@ -16,7 +16,7 @@ function FiltersList() {
     const { isLoading: isLoadingBrands } = useGetBrands({});
 
     return (
-        <div className="flex h-sidebar overflow-y-scroll flex-col border shadow rounded-lg bg-white gap-4 py-2 px-4">
+        <div className="flex overflow-y-scroll flex-col border shadow rounded-lg bg-white gap-4 py-2 px-4">
             <div className="mb-5">
                 <h2 className="font-semibold mb-2">Price</h2>
                 <PriceRange />
