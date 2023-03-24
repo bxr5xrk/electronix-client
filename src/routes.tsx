@@ -3,15 +3,14 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { type IUser } from './features/auth/authInterfaces';
 import Layout from './layout/components/MainLayout';
 import UnauthenticatedLayout from './layout/components/UnauthenticatedLayout';
-
+import CartPage from './pages/CartPage';
+import HistoryPage from './pages/HistoryPage';
+import Page404 from './pages/Page404';
+import ProductPage from './pages/ProductPage';
 import ProductsPage from './pages/ProductsPage';
-const CartPage = lazy(async () => await import('./pages/CartPage'));
-const WishListPage = lazy(async () => await import('./pages/WishListPage'));
-const ProductPage = lazy(async () => await import('./pages/ProductPage'));
-const LoginPage = lazy(async () => await import('./pages/AuthPage/Login'));
-const RegisterPage = lazy(
-    async () => await import('./pages/AuthPage/Register')
-);
+import LoginPage from './pages/AuthPage/Login';
+import RegisterPage from './pages/AuthPage/Register';
+import WishlistPage from './pages/WishListPage';
 const ManagePage = lazy(async () => await import('./pages/ManagePage'));
 const ManageProducts = lazy(
     async () => await import('./pages/ManagePage/components/Products')
@@ -19,8 +18,6 @@ const ManageProducts = lazy(
 const ManageUsers = lazy(
     async () => await import('./pages/ManagePage/components/Users')
 );
-const Page404 = lazy(async () => await import('./pages/Page404'));
-const HistoryPage = lazy(async () => await import('./pages/HistoryPage'));
 
 export const routes = (user: IUser | null) =>
     createBrowserRouter([
@@ -38,7 +35,7 @@ export const routes = (user: IUser | null) =>
                 },
                 {
                     path: 'wish-list',
-                    element: <WishListPage />
+                    element: <WishlistPage />
                 },
                 {
                     path: 'products/:id',
