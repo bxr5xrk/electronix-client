@@ -19,7 +19,7 @@ export const stringifyFiltersToParam = (arr: string[], label: string) =>
 
 // create array with page numbers
 export const getPagesArr = (totalItems: number, limit: number) => {
-    const pagesCount = Math.floor(totalItems / limit);
+    const pagesCount = Math.ceil(totalItems / limit);
 
     const pagesArr = [...Array(pagesCount)].map((_, index) => index + 1);
 

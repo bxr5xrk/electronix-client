@@ -20,7 +20,7 @@ function Pagination() {
     );
 
     return (
-        <div className="w-full flex flex-wrap justify-center gap-2 pb-2">
+        <div className="w-full flex flex-wrap justify-center gap-2 pb-4">
             {pagesArr.length > 1 ? (
                 <>
                     {/* previous */}
@@ -45,7 +45,7 @@ function Pagination() {
 
                     {/* next */}
                     <PageItem
-                        isDisabled={currentPage === totalItems}
+                        isDisabled={currentPage === pagesArr.length}
                         toNext
                         icon={
                             <ChevronRightIcon className="w-5 h-5" aria-hidden />
