@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { type IUser } from './features/auth/authInterfaces';
+import { type IUserAuth } from './features/auth/authInterfaces';
 import Layout from './layout/components/MainLayout';
 import UnauthenticatedLayout from './layout/components/UnauthenticatedLayout';
 import CartPage from './pages/CartPage';
@@ -19,7 +19,7 @@ const ManageUsers = lazy(
     async () => await import('./pages/ManagePage/components/Users')
 );
 
-export const routes = (user: IUser | null) =>
+export const routes = (user: IUserAuth | null) =>
     createBrowserRouter([
         {
             path: '/',
