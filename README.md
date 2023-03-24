@@ -7,13 +7,13 @@ Tools:
 - Vite
 - Prettier, EsLint
 
-Functionality:
-- Filters (by price, category and brand)
-- Full-text search
-- Pagination
-- Adding / removing item to Wishlist / Cart (stored in localStorage)
-
-Plans: 
-- ~Responsive design~
-- ~Saving filters in url params (and parsing)~
-- Light / Dark themes
+Features:
+- Responsible design.
+- Filters (by price, category and brand).
+- Full-text search.
+- Pagination.
+- Adding / removing item to Wishlist / Cart (stored in localStorage).
+- Orders history.
+- LogIn / Register.
+- Manage products (add new, delete) if user has 'manager' role.
+- Manage user roles (make manager, remove manager rights) if user has 'admin' role.
