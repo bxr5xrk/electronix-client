@@ -14,7 +14,11 @@ export default function ToggleTheme() {
     };
 
     return (
-        <button type="button" onClick={handleToggleTheme}>
+        <button
+            type="button"
+            onClick={handleToggleTheme}
+            className="text-normal-900 dark:text-normal-200 transition hover:text-primary-600 dark:hover:text-primary-600"
+        >
             {isDarkTheme ? (
                 <MoonIcon className="h-6 w-6" aria-hidden="true" />
             ) : (

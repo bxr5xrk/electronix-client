@@ -1,18 +1,16 @@
 import { cl } from '@/utils/index';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import type { ReactNode } from 'react';
 import Logo from '../Logo';
+import MainNavigationItems from '../MainNavigationItems';
 
 interface SideOverProps {
     mobileMenuOpen: boolean;
     setMobileMenuOpen: (i: boolean) => void;
-    children: ReactNode;
 }
 
 export default function SideOver({
     mobileMenuOpen,
-    setMobileMenuOpen,
-    children
+    setMobileMenuOpen
 }: SideOverProps) {
     return (
         <>
@@ -27,7 +25,7 @@ export default function SideOver({
                     mobileMenuOpen
                         ? 'opacity-100 right-0'
                         : 'opacity-50 -right-full',
-                    'border-l block transition-all duration-500 ease-in-out fixed top-0 bottom-0 z-20 w-full h-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm'
+                    'border-l dark:border-l-normal-800 block transition-all duration-500 ease-in-out fixed top-0 bottom-0 z-20 w-full h-full overflow-y-auto px-6 py-6 sm:max-w-sm bg-normal-50 dark:bg-normal-900'
                 )}
             >
                 <div className="flex items-center justify-between">
@@ -35,7 +33,7 @@ export default function SideOver({
 
                     <button
                         type="button"
-                        className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                        className="-m-2.5 rounded-md p-2.5"
                         onClick={() => setMobileMenuOpen(false)}
                     >
                         <span className="sr-only">Close menu</span>
@@ -44,7 +42,11 @@ export default function SideOver({
                 </div>
                 <div className="mt-6 flow-root">
                     <div className="-my-6 divide-y divide-gray-500/10">
-                        {children}
+                        <MainNavigationItems
+                            mobileMenuOpen={mobileMenuOpen}
+                            setMobileMenuOpen={setMobileMenuOpen}
+                            isSideOver
+                        />
                     </div>
                 </div>
             </div>

@@ -25,11 +25,13 @@ function NavigationItem({
         <button
             onClick={() => onClick(link)}
             className={cl(
-                'relative flex items-center gap-2 hover:text-indigo-500 transition',
-                pathname === link ? 'text-indigo-600' : 'text-gray-900',
+                'relative flex items-center gap-2 hover:text-primary-500 transition text-normal-900 dark:text-normal-200 whitespace-nowrap',
+                pathname === link
+                    ? 'text-primary-600 dark:text-primary-600'
+                    : 'hover:text-primary-600 dark:hover:text-primary-600',
                 isMobileView
-                    ? '-mx-3 w-full bloc  rounded-lg py-2.5 px-3 text-base font-semibold leading-7 hover:bg-gray-50'
-                    : 'text-sm font-semibold leading-6 '
+                    ? '-mx-3 w-full rounded-lg py-2.5 px-3 text-base font-semibold leading-7 hover:bg-normal-100 dark:hover:bg-normal-800'
+                    : 'text-sm font-semibold leading-6'
             )}
         >
             <span>{label}</span>
@@ -39,9 +41,9 @@ function NavigationItem({
                 <span
                     className={cl(
                         pathname === link
-                            ? 'bg-indigo-100 text-indigo-600'
-                            : 'bg-gray-100 text-gray-900',
-                        'rounded-full p-0.5 w-6 h-6 flex items-center justify-center text-xs font-medium'
+                            ? 'bg-primary-100 text-primary-600'
+                            : 'bg-normal-200 dark:bg-normal-700',
+                        'rounded-full p-0.5 w-6 h-6 flex items-center justify-center text-xs font-medium dark:text-normal-200'
                     )}
                 >
                     {count}
