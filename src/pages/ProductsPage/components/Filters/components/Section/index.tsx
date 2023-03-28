@@ -30,7 +30,7 @@ export default function Section({
             <div className="flex flex-col gap-1">
                 {items?.map((item) => (
                     <div className="flex items-center gap-2" key={item}>
-                        <div className="w-fit rounded border flex items-center justify-center">
+                        <div className="w-fit rounded border dark:border-normal-700 flex items-center justify-center">
                             <input
                                 id={item}
                                 name={item}

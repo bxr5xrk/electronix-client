@@ -8,7 +8,9 @@ import Categories from '../Categories';
 import PriceRange from '../PriceRange';
 
 function Divider() {
-    return <div className="w-full pt-0.5 bg-gray-200 my-1" />;
+    return (
+        <div className="w-full pt-0.5 bg-normal-200 dark:bg-normal-700 my-1" />
+    );
 }
 
 function FiltersList() {
@@ -16,7 +18,7 @@ function FiltersList() {
     const { isLoading: isLoadingBrands } = useGetBrands({});
 
     return (
-        <div className="flex overflow-y-scroll flex-col border dark:border-normal-800 shadow rounded-lg gap-4 py-2 px-4">
+        <div className="flex flex-col gap-4 py-2 px-4">
             <div className="mb-5">
                 <h2 className="font-semibold mb-2">Price</h2>
                 <PriceRange />
