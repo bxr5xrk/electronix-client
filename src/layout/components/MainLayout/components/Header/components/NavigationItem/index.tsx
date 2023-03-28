@@ -41,9 +41,9 @@ function NavigationItem({
                 <span
                     className={cl(
                         pathname === link
-                            ? 'bg-primary-100 text-primary-600'
+                            ? 'dark:bg-normal-700 bg-normal-200'
                             : 'bg-normal-200 dark:bg-normal-700',
-                        'rounded-full p-0.5 w-6 h-6 flex items-center justify-center text-xs font-medium dark:text-normal-200'
+                        'rounded-full p-0.5 w-6 h-6 flex items-center justify-center text-xs font-medium dark:text-normal-200 text-normal-800'
                     )}
                 >
                     {count}

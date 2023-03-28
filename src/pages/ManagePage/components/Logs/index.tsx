@@ -12,15 +12,15 @@ export default function LogsPage() {
 
                 {data?.map((log) => (
                     <div key={log.id} className="w-full">
-                        <div className="rounded-lg bg-gray-50 px-4 flex text-sm font-medium text-gray-900 flex-col justify-between py-5">
+                        <div className="rounded-lg bg-gray-50 dark:bg-normal-700 px-4 flex text-sm font-medium flex-col justify-between py-5">
                             <h3>Log date</h3>
-                            <p className="text-gray-600 whitespace-nowrap">
+                            <p className="text-gray-600 dark:text-normal-300 whitespace-nowrap">
                                 {formatDate(log.datetime)}
                             </p>
                         </div>
 
                         <div className="flex flex-col w-full divide-y border-b pt-5">
-                            <div className="md:grid hidden grid-cols-5 text-left text-sm text-gray-500 pb-4">
+                            <div className="md:grid hidden grid-cols-5 text-left text-sm text-gray-500 dark:text-normal-300 pb-4">
                                 <p className="pl-2 font-normal px-3 col-span-2">
                                     User
                                 </p>
@@ -30,7 +30,7 @@ export default function LogsPage() {
                                 <p className="font-normal px-3">Action</p>
                             </div>
 
-                            <div className="text-left text-sm text-gray-500 grid grid-rows-3 md:grid-rows-1 md:grid-cols-5 items-center">
+                            <div className="text-left text-sm text-gray-500 dark:text-normal-300 grid grid-rows-3 md:grid-rows-1 md:grid-cols-5 items-center">
                                 <p className="py-3 px-3 truncate text-primary-500 capitalize font-semibold col-span-2">
                                     {log.user_name}
                                 </p>

@@ -1,13 +1,26 @@
-import { toggleTheme } from '@/utils/index';
+import { THEME_LS_KEY } from '@/config';
+import { setToLocalStorage, toggleTheme } from '@/utils/index';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const themeFromLS = JSON.parse(localStorage.getItem(THEME_LS_KEY) ?? 'null') as
+    | 'light'
+    | 'dark';
 
 export default function ToggleTheme() {
     const [isDarkTheme, setIsDarkTheme] = useState(false);
 
+    useEffect(() => {
+        if (themeFromLS) {
+            setIsDarkTheme(themeFromLS === 'dark');
+            toggleTheme(themeFromLS);
+        }
+    }, []);
+
     const handleToggleTheme = () => {
         setIsDarkTheme((prev) => {
             toggleTheme(isDarkTheme ? 'light' : 'dark');
+            setToLocalStorage(THEME_LS_KEY, isDarkTheme ? 'light' : 'dark');
 
             return !prev;
         });

@@ -15,6 +15,7 @@ import {
     TrashIcon
 } from '@heroicons/react/24/outline';
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
 
 function Items() {
     const dispatch = useAppDispatch();
@@ -50,11 +51,11 @@ function Items() {
 
     return cartItems.length ? (
         <div className="w-full flex flex-col h-full space-y-6">
-            <h2 className="text-xl font-medium text-gray-900">Order summary</h2>
+            <h2 className="text-xl font-medium">Order summary</h2>
 
-            <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
+            <div className="mt-4 rounded-lg border dark:border-normal-700 shadow-sm">
                 <h3 className="sr-only">Items in your cart</h3>
-                <ul className="divide-y divide-gray-200">
+                <ul className="divide-y">
                     {cartItems.map((product) => (
                         <li key={product.id} className="flex py-6 px-4 sm:px-6">
                             <div className="flex-shrink-0 flex items-center justify-center">
@@ -69,17 +70,17 @@ function Items() {
                                 <div className="flex">
                                     <div className="min-w-0 flex-1">
                                         <h4 className="text-sm">
-                                            <a
-                                                href={product.title}
-                                                className="font-medium text-gray-700 hover:text-gray-800"
+                                            <Link
+                                                to={product.id.toString()}
+                                                className="font-medium text-normal-700 hover:text-normal-800 dark:text-normal-300"
                                             >
                                                 {product.title}
-                                            </a>
+                                            </Link>
                                         </h4>
-                                        <p className="capitalize mt-1 text-sm text-gray-500">
+                                        <p className="capitalize mt-1 text-sm text-gray-500 dark:text-normal-400">
                                             {product.brand}
                                         </p>
-                                        <p className="capitalize mt-1 text-sm text-gray-500">
+                                        <p className="capitalize mt-1 text-sm text-gray-500 dark:text-normal-400">
                                             {product.category}
                                         </p>
                                     </div>
@@ -93,7 +94,7 @@ function Items() {
                                                 )
                                             }
                                             type="button"
-                                            className="-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500"
+                                            className="-m-2.5 flex items-center justify-center p-2.5 text-gray-400 hover:text-gray-500"
                                         >
                                             <span className="sr-only">
                                                 Remove
@@ -107,7 +108,7 @@ function Items() {
                                 </div>
 
                                 <div className="flex flex-1 items-end justify-between pt-2">
-                                    <p className="mt-1 text-sm font-medium text-gray-900">
+                                    <p className="mt-1 text-sm font-medium">
                                         $ {product.price}
                                     </p>
 
@@ -127,7 +128,7 @@ function Items() {
                                             />
                                         </button>
 
-                                        <span className="w-5 text-center text-sm font-medium text-gray-900">
+                                        <span className="w-5 text-center text-sm font-medium">
                                             {product.count}
                                         </span>
 
@@ -152,10 +153,10 @@ function Items() {
                     ))}
                 </ul>
 
-                <dl className="space-y-6 border-t border-gray-200 py-6 px-4 sm:px-6">
-                    <div className="flex items-center justify-between border-gray-200 pt-6">
+                <dl className="space-y-6 border-t dark:border-normal-700 py-6 px-4 sm:px-6">
+                    <div className="flex items-center justify-between pt-6">
                         <dt className="text-base font-medium">Total</dt>
-                        <dd className="text-base font-medium text-gray-900">
+                        <dd className="text-base font-medium">
                             $ {totalPrice}
                         </dd>
                     </div>

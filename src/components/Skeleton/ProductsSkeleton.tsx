@@ -8,7 +8,7 @@ export default function ProductsSkeleton() {
                 .map((i) => (
                     <div
                         key={i}
-                        className="grid gap-2 rounded-lg border border-white w-full h-fit p-4 pt-2"
+                        className="grid gap-2 rounded-lg border border-normal-50 dark:border-normal-900 w-full h-fit p-4 pt-2"
                     >
                         <div className="flex items-center justify-center h-72 w-full bg-gray-300 rounded-md"></div>
 

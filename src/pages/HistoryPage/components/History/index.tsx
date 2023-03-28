@@ -22,7 +22,7 @@ export default function History() {
         );
     }
 
-    if (isSuccess && !orders.length) {
+    if (isSuccess && orders.length === 0) {
         return (
             <FullScreenMessage
                 title="No orders yet"
@@ -40,33 +40,33 @@ export default function History() {
             {sortedOrders.map((order) => (
                 <div key={order.id}>
                     {/* header */}
-                    <div className="rounded-lg bg-gray-50 px-4 flex flex-col divide-y md:grid md:grid-cols-4 text-sm md:space-x-3 md:divide-y-0">
-                        <div className="font-medium text-gray-900 flex justify-between md:block py-5">
+                    <div className="rounded-lg bg-gray-50 dark:bg-normal-700 px-4 flex flex-col divide-y md:grid md:grid-cols-4 text-sm md:space-x-3 md:divide-y-0">
+                        <div className="font-medium flex justify-between md:block py-5">
                             <h3> Order date</h3>
-                            <p className="text-gray-600 whitespace-nowrap">
+                            <p className="text-gray-600 dark:text-normal-300 whitespace-nowrap">
                                 {formatDate(order.datetime)}
                             </p>
                         </div>
-                        <div className="font-medium text-gray-900 flex justify-between md:block py-5">
+                        <div className="font-medium flex justify-between md:block py-5">
                             <h3>Total amount</h3>
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 dark:text-normal-300">
                                 {formatPrice(order.totalprice)}
                             </p>
                         </div>
-                        <div className="font-medium text-gray-900 flex justify-between md:block py-5">
+                        <div className="font-medium flex justify-between md:block py-5">
                             <h3>City</h3>
                             <p
                                 title={order.city}
-                                className="text-gray-600 truncate"
+                                className="text-gray-600 dark:text-normal-300 truncate"
                             >
                                 {order.city}
                             </p>
                         </div>
-                        <div className="font-medium text-gray-900 flex justify-between md:block py-5">
+                        <div className="font-medium flex justify-between md:block py-5">
                             <h3>Address</h3>
                             <p
                                 title={order.address}
-                                className="text-gray-600 truncate"
+                                className="text-gray-600 dark:text-normal-300 truncate"
                             >
                                 {order.address}
                             </p>
@@ -74,8 +74,8 @@ export default function History() {
                     </div>
 
                     {/* table */}
-                    <div className="flex flex-col w-full divide-y border-b pt-10">
-                        <div className="grid grid-cols-4 md:grid-cols-7 text-left text-sm text-gray-500 pb-4">
+                    <div className="flex flex-col w-full divide-y dark:divide-normal-700 dark:border-normal-700 border-b pt-10">
+                        <div className="grid grid-cols-4 md:grid-cols-7 text-left text-sm text-gray-500 dark:text-normal-300 pb-4">
                             <p className="pl-2 font-normal pr-8 col-span-3">
                                 Product
                             </p>
@@ -94,9 +94,9 @@ export default function History() {
                         {order.products.map((product) => (
                             <div
                                 key={product.id}
-                                className="text-left text-sm text-gray-500 grid grid-cols-4 md:grid-cols-7 items-center"
+                                className="text-left text-sm text-gray-500 dark:text-normal-300 grid grid-cols-4 md:grid-cols-7 items-center"
                             >
-                                <div className="pl-2 flex items-center gap-5 font-medium text-gray-900 pr-8 py-5 col-span-3">
+                                <div className="pl-2 flex items-center gap-5 font-medium pr-8 py-5 col-span-3">
                                     <img
                                         src={product.images[0]}
                                         alt={product.title}
@@ -110,7 +110,7 @@ export default function History() {
                                         >
                                             {product.title}
                                         </Link>
-                                        <span className="font-normal text-sm text-gray-500 md:hidden">
+                                        <span className="font-normal text-sm text-gray-500 dark:text-normal-300 md:hidden">
                                             {formatPrice(product.price)}
                                         </span>
                                     </div>

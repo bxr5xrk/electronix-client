@@ -49,17 +49,15 @@ export default function ManageUsers() {
                 {sortedUsers.map((user) => (
                     <li
                         key={user.id}
-                        className="flex py-4 border rounded-md p-4 gap-2 w-full"
+                        className="flex py-4 border dark:border-normal-700 rounded-md p-4 gap-2 w-full"
                     >
-                        <div className="flex items-center w-10 h-10 justify-center p-2 rounded-full uppercase border">
+                        <div className="flex items-center w-10 h-10 justify-center p-2 rounded-full uppercase border dark:border-normal-700">
                             {user.name.slice(0, 2)}
                         </div>
 
                         <div className="truncate flex-grow">
-                            <p className="text-sm font-medium text-gray-900">
-                                {user.name}
-                            </p>
-                            <p className="text-sm text-gray-500 truncate">
+                            <p className="text-sm font-medium">{user.name}</p>
+                            <p className="text-sm text-gray-500 dark:text-normal-400 truncate">
                                 {user.email}
                             </p>
                         </div>
@@ -71,7 +69,7 @@ export default function ManageUsers() {
                             }
                             id="role"
                             name="role"
-                            className="bg-white w-28 capitalize outline-none h-10 border rounded-md block py-1.5 pl-3 text-gray-90 sm:text-sm"
+                            className="w-28 dark:bg-normal-900 bg-white dark:border-normal-700 capitalize outline-none h-10 border rounded-md block py-1.5 pl-3 text-gray-90 sm:text-sm"
                         >
                             {roles.map((option) => (
                                 <option

@@ -76,9 +76,7 @@ function Form() {
             className="w-full flex flex-col space-y-10"
         >
             <section className="space-y-6">
-                <h2 className="text-xl font-medium text-gray-900">
-                    Shipping address
-                </h2>
+                <h2 className="text-xl font-medium">Shipping address</h2>
                 <Input
                     type="text"
                     ref={addressRef}
@@ -99,24 +97,21 @@ function Form() {
                     required
                 />
 
-                <div className="flex items-center justify-end gap-2">
+                <div className="flex items-center justify-end gap-2 dark:border-normal-700">
                     <input
                         defaultChecked
                         ref={saveAddressRef}
                         id="save-shipping-info"
                         type="checkbox"
-                        className="h-4 w-4 border rounded cursor-pointer checked:bg-primary-500"
+                        className="h-4 w-4 border dark:border-normal-700 rounded cursor-pointer checked:bg-primary-500"
                     />
-                    <label
-                        className="text-sm text-gray-700"
-                        htmlFor="save-shipping-info"
-                    >
+                    <label className="text-sm" htmlFor="save-shipping-info">
                         Save Shipping address
                     </label>
                 </div>
             </section>
 
-            <div className="pt-6 mt-6 border-t flex flex-col items-end gap-6">
+            <div className="pt-6 mt-6 border-t dark:border-normal-700 flex flex-col items-end gap-6">
                 <Button theme="primary" type="submit">
                     {isLoading ? 'Loading...' : 'Confirm order'}
                 </Button>
