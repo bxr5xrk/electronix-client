@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
+import { useAppDispatch } from '@/app/store';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import { setNotification } from '@/features/notification/notificationSlice';
 import {
     useCreateProduct,
     useGetBrands,
@@ -15,6 +17,7 @@ interface FormProps {
 }
 
 export default function Form({ setShowModal }: FormProps) {
+    const dispatch = useAppDispatch();
     const { data: brands } = useGetBrands({});
     const { data: categories } = useGetCategories({});
     const [rating, setRating] = useState(1);
@@ -50,6 +53,19 @@ export default function Form({ setShowModal }: FormProps) {
 
             if (createProduct) {
                 setShowModal(false);
+                dispatch(
+                    setNotification({
+                        status: 'success',
+                        message: 'Product created!'
+                    })
+                );
+            } else {
+                dispatch(
+                    setNotification({
+                        status: 'error',
+                        message: 'Product uncreated:('
+                    })
+                );
             }
         }
     };
