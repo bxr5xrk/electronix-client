@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import FullScreenMessage from '@/components/FullScreenMessage';
+import { CART_LS_KEY } from '@/config';
 import {
-    CART_LS_KEY,
     decrementCartItem,
     incrementCartItem,
     removeItemFromCart,

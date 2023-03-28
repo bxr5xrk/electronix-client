@@ -2,15 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/store';
 import { type ShippingAddress, type IUserAuth } from './authInterfaces';
+import { SHIPPING_LS_KEY, TOKEN_LS_KEY, USER_LS_KEY } from '@/config';
 
 const userFromLS = JSON.parse(
-    localStorage.getItem('user') ?? 'null'
+    localStorage.getItem(USER_LS_KEY) ?? 'null'
 ) as IUserAuth;
 const accessTokenFromLS = JSON.parse(
-    localStorage.getItem('accessToken') ?? 'null'
+    localStorage.getItem(TOKEN_LS_KEY) ?? 'null'
 ) as string;
 const shippingAddressFromLS = JSON.parse(
-    localStorage.getItem('shippingAddress') ?? 'null'
+    localStorage.getItem(SHIPPING_LS_KEY) ?? 'null'
 ) as ShippingAddress;
 
 interface authState {

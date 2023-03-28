@@ -9,8 +9,7 @@ import {
 } from '@/utils/cartUtils';
 import { logout } from '../auth/authSlice';
 import { type ICartItem } from './cartInterfaces';
-
-export const CART_LS_KEY = 'cart';
+import { CART_LS_KEY } from '@/config';
 
 const cartItemsFromLS = JSON.parse(localStorage.getItem(CART_LS_KEY) ?? '[]');
 

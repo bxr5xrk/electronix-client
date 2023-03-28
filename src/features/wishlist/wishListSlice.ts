@@ -3,9 +3,10 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import type { IProduct } from '../products/productsInterfaces';
 import { logout } from '../auth/authSlice';
+import { WISHLIST_LS_KEY } from '@/config';
 
 const wishListItemsFromLS = JSON.parse(
-    localStorage.getItem('wishList') ?? '[]'
+    localStorage.getItem(WISHLIST_LS_KEY) ?? '[]'
 );
 
 export interface wishListState {

@@ -2,6 +2,7 @@
 import { useAppDispatch } from '@/app/store';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import { TOKEN_LS_KEY, USER_LS_KEY } from '@/config';
 import { useLogin } from '@/features/auth/authService';
 import { setCredentials } from '@/features/auth/authSlice';
 import { setNotification } from '@/features/notification/notificationSlice';
@@ -42,8 +43,8 @@ export default function Login() {
                     })
                 );
 
-                setToLocalStorage('user', { name, email, role });
-                setToLocalStorage('accessToken', token);
+                setToLocalStorage(USER_LS_KEY, { name, email, role });
+                setToLocalStorage(TOKEN_LS_KEY, token);
 
                 navigate('/cart');
             }

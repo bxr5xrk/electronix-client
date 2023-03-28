@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRegister } from '@/features/auth/authService';
 import { setToLocalStorage } from '@/utils/index';
 import { setNotification } from '@/features/notification/notificationSlice';
+import { TOKEN_LS_KEY, USER_LS_KEY } from '@/config';
 
 export default function Register() {
     const dispatch = useAppDispatch();
@@ -44,8 +45,8 @@ export default function Register() {
                     })
                 );
 
-                setToLocalStorage('user', { name, email, role });
-                setToLocalStorage('accessToken', token);
+                setToLocalStorage(USER_LS_KEY, { name, email, role });
+                setToLocalStorage(TOKEN_LS_KEY, token);
 
                 navigate('/cart');
             }

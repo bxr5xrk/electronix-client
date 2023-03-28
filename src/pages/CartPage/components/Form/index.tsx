@@ -2,8 +2,9 @@
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import { SHIPPING_LS_KEY, CART_LS_KEY } from '@/config';
 import { selectAuth, setShippingAddress } from '@/features/auth/authSlice';
-import { selectCart, resetCart, CART_LS_KEY } from '@/features/cart/cartSlice';
+import { selectCart, resetCart } from '@/features/cart/cartSlice';
 import { setNotification } from '@/features/notification/notificationSlice';
 import { useCreateOrder } from '@/features/order/orderService';
 import { createArrayFromProductIds, setToLocalStorage } from '@/utils/index';
@@ -42,7 +43,7 @@ function Form() {
             if (saveAddressRef.current.checked) {
                 dispatch(setShippingAddress({ address, city }));
 
-                setToLocalStorage('shippingAddress', { address, city });
+                setToLocalStorage(SHIPPING_LS_KEY, { address, city });
             }
 
             const productIds = createArrayFromProductIds(cartItems);
