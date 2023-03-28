@@ -29,8 +29,8 @@ function Notification() {
             className={cl(
                 notification
                     ? 'opacity-100 translate-x-0'
-                    : 'opacity-50 translate-x-[110%]',
-                'fixed transition-all top-2 sm:top-5 shadow-md rounded-lg border bg-white flex items-start justify-start space-x-4 p-2 max-w-xs sm:max-w-sm w-full right-2 sm:right-5'
+                    : 'opacity-100 translate-x-[110%]',
+                'fixed transition-all top-2 sm:top-5 shadow-md rounded-lg border dark:border-normal-800 bg-normal-50 dark:bg-normal-800 flex items-start justify-start space-x-4 p-2 max-w-xs sm:max-w-sm w-full right-2 sm:right-5'
             )}
         >
             <div className="flex-shrink-0 h-6 w-6 mt-0.5">
@@ -50,14 +50,14 @@ function Notification() {
             </div>
 
             <div className="flex w-full flex-col h-10 flex-grow">
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-sm font-medium text-normal-900 dark:text-normal-100">
                     {notification
                         ? notification.status === 'success'
                             ? 'Success!'
                             : 'Error('
                         : ''}
                 </p>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm text-normal-500 dark:text-normal-100">
                     {notification ? notification.message : ''}
                 </p>
             </div>
@@ -65,7 +65,7 @@ function Notification() {
             <button
                 onClick={() => dispatch(resetNotification())}
                 type="button"
-                className="flex-shrink-0 inline-flex rounded-md text-gray-500 hover:text-gray-500 focus:outline-none"
+                className="flex-shrink-0 inline-flex rounded-md text-normal-500 dark:text-normal-200 dark:hover:text-normal-600 hover:text-normal-800 focus:outline-none"
             >
                 <XMarkIcon className="h-5 w-5" aria-hidden="true" />
             </button>

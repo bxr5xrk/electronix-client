@@ -33,7 +33,7 @@ function Pagination() {
                     />
 
                     {/* numbers */}
-                    <div className="hidden sm:flex items-center gap-2 bg-gray-100 rounded-full">
+                    <div className="hidden sm:flex items-center gap-2 bg-normal-100 dark:bg-normal-800 rounded-full">
                         {pagesArr.map((page) => (
                             <PageItem
                                 key={page}

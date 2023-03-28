@@ -27,7 +27,7 @@ export default function Filters() {
                 ) : null}
 
                 <button
-                    className="flex items-center justify-center rounded-lg text-black bg-white focus:ring-0 ring-0"
+                    className="flex items-center justify-center rounded-lg focus:ring-0 ring-0"
                     onClick={() => setShowFilters((prev) => !prev)}
                 >
                     {showFilters ? (

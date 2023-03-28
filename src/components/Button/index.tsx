@@ -26,11 +26,11 @@ export default function Button({
             title={title}
             onClick={onClick}
             className={cl(
-                'relative flex transition items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200 whitespace-nowrap',
+                'relative flex transition items-center justify-center rounded-md border border-transparent py-2 px-8 text-sm font-medium whitespace-nowrap',
                 fullWidth === true ? 'w-full' : 'w-fit',
                 theme === 'primary'
-                    ? 'bg-indigo-100 text-indigo-800 hover:bg-indigo-200'
-                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                    ? 'bg-primary-100 dark:bg-primary-300 dark:text-primary-800 dark:hover:bg-primary-400 text-primary-800 hover:bg-primary-200'
+                    : 'bg-normal-100 text-normal-800 hover:bg-normal-200 dark:bg-normal-300 dark:text-normal-800 dark:hover:bg-normal-400'
             )}
             {...props}
         >

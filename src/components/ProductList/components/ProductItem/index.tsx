@@ -16,7 +16,7 @@ export default function ProductItem({ product, children }: ProductItemProps) {
     const { title, rating, images, price, id } = product;
 
     return (
-        <div className="relative grid gap-2 rounded-lg border border-white hover:border-primary-400 w-full h-fit p-4 pt-2 transition">
+        <div className="relative grid gap-2 rounded-lg border border-normal-50 dark:border-normal-900 dark:hover:border-primary-400 hover:border-primary-400 w-full h-fit p-4 pt-2 transition">
             {children}
 
             <div className="flex items-center justify-center h-72 w-full">
@@ -34,7 +34,7 @@ export default function ProductItem({ product, children }: ProductItemProps) {
                             className={cl(
                                 rating > i
                                     ? 'text-primary-500'
-                                    : 'text-gray-200',
+                                    : 'text-normal-200 dark:text-normal-700',
                                 'h-5 w-5 flex-shrink-0'
                             )}
                             aria-hidden
