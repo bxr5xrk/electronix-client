@@ -7,20 +7,18 @@ import { selectWishList } from '../../features/wishlist/wishListSlice';
 export default function WishlistPage() {
     const { wishListItems } = useAppSelector(selectWishList);
 
-    if (wishListItems.length === 0) {
-        return (
-            <FullScreenMessage
-                title="No items in your wish list"
-                description="Add one"
-            />
-        );
-    }
-
     return (
         <>
             <PageTitle title="Wish list" />
 
-            {wishListItems !== undefined ? (
+            {wishListItems.length === 0 ? (
+                <FullScreenMessage
+                    title="No items in your wish list"
+                    description="Add one"
+                />
+            ) : null}
+
+            {wishListItems.length ? (
                 <ProductList items={wishListItems} />
             ) : null}
         </>

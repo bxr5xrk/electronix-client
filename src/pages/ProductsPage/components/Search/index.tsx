@@ -34,7 +34,7 @@ function Search() {
     }, []);
 
     return (
-        <div className="flex items-center w-full relative shadow rounded-lg gap-2 p-1 px-2 border dark:border-normal-800">
+        <div className="flex items-center w-full relative shadow rounded-lg gap-2 p-1 px-2 border dark:border-normal-700">
             <MagnifyingGlassIcon className="w-5 h-5" aria-hidden />
 
             <input
