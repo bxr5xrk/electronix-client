@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 const tabs = [
     { name: 'Products', href: '/manage' },
-    { name: 'Users', href: '/manage/users' }
+    { name: 'Users', href: '/manage/users' },
+    { name: 'Logs', href: '/manage/logs' }
 ];
 
 export default function Header() {

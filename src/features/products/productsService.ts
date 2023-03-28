@@ -12,7 +12,7 @@ import { selectProducts } from './productsSlice';
 
 export const productsApi = createApi({
     reducerPath: 'productsService',
-    tagTypes: ['Products'],
+    tagTypes: ['Products', 'Logs'],
     baseQuery: fetchBaseQuery({
         baseUrl: API_URL,
         prepareHeaders: (headers, { getState }) => {
@@ -86,7 +86,11 @@ export const productsApi = createApi({
                     images
                 }
             }),
-            invalidatesTags: [{ type: 'Products', id: 'LIST' }]
+
+            invalidatesTags: [
+                { type: 'Products', id: 'LIST' },
+                { type: 'Logs', id: 'LIST' }
+            ]
         }),
 
         deleteProduct: builder.mutation<unknown, { id: number }>({
@@ -94,7 +98,11 @@ export const productsApi = createApi({
                 url: `products/${id}`,
                 method: 'DELETE'
             }),
-            invalidatesTags: [{ type: 'Products', id: 'LIST' }]
+
+            invalidatesTags: [
+                { type: 'Products', id: 'LIST' },
+                { type: 'Logs', id: 'LIST' }
+            ]
         }),
 
         getProductById: builder.query<IProduct, string | undefined>({

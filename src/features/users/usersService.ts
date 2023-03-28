@@ -1,13 +1,17 @@
 import { type RootState } from '@/app/store';
 import { API_URL } from '@/data';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { type IUpdateUserRoleProps, type IUser } from './usersInterface';
+import {
+    type ILog,
+    type IUpdateUserRoleProps,
+    type IUser
+} from './usersInterface';
 
 export const usersApi = createApi({
     reducerPath: 'usersService',
-    tagTypes: ['Users'],
+    tagTypes: ['Users', 'Logs'],
     baseQuery: fetchBaseQuery({
-        baseUrl: `${API_URL}/users`,
+        baseUrl: `${API_URL}`,
         prepareHeaders: (headers, { getState }) => {
             const token = (getState() as RootState).auth.accessToken;
 
@@ -22,7 +26,7 @@ export const usersApi = createApi({
     endpoints: (builder) => ({
         updateUserRole: builder.mutation<unknown, IUpdateUserRoleProps>({
             query: ({ id, role }) => ({
-                url: `${id}`,
+                url: `users/${id}`,
                 method: 'PUT',
                 body: {
                     role
@@ -32,7 +36,7 @@ export const usersApi = createApi({
         }),
 
         getUsers: builder.query<IUser[], unknown>({
-            query: () => '',
+            query: () => 'users',
             providesTags: (result) =>
                 result
                     ? [
@@ -42,13 +46,19 @@ export const usersApi = createApi({
                           { type: 'Users', id: 'LIST' }
                       ]
                     : [{ type: 'Users', id: 'LIST' }]
+        }),
+
+        getLogs: builder.query<ILog[], unknown>({
+            query: () => 'logs',
+            providesTags: () => [{ type: 'Logs', id: 'LIST' }]
         })
     })
 });
 
 const {
     useGetUsersQuery: useGetUsers,
-    useUpdateUserRoleMutation: useUpdateRole
+    useUpdateUserRoleMutation: useUpdateRole,
+    useGetLogsQuery: useGetLogs
 } = usersApi;
 
-export { useGetUsers, useUpdateRole };
+export { useGetUsers, useUpdateRole, useGetLogs };

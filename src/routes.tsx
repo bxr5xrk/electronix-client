@@ -18,6 +18,9 @@ const ManageProducts = lazy(
 const ManageUsers = lazy(
     async () => await import('./pages/ManagePage/components/Users')
 );
+const LogsPage = lazy(
+    async () => await import('./pages/ManagePage/components/Logs')
+);
 
 export const routes = (user: IUserAuth | null) =>
     createBrowserRouter([
@@ -62,6 +65,15 @@ export const routes = (user: IUserAuth | null) =>
                             element:
                                 user?.role === 'admin' ? (
                                     <ManageUsers />
+                                ) : (
+                                    <Navigate to="/manage" />
+                                )
+                        },
+                        {
+                            path: 'logs',
+                            element:
+                                user?.role === 'admin' ? (
+                                    <LogsPage />
                                 ) : (
                                     <Navigate to="/manage" />
                                 )
