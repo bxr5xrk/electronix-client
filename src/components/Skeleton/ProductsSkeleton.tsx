@@ -1,4 +1,4 @@
-import { LIMIT_ITEMS } from '../../data';
+import { LIMIT_ITEMS } from '../../config';
 
 export default function ProductsSkeleton() {
     return (

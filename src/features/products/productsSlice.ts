@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-import { MAX, MIN } from '../../data';
+import { MAX, MIN } from '../../config';
 import type { IPriceRange } from './productsInterfaces';
 import type { IParamsObj } from '../../utils/queryUtils';
 

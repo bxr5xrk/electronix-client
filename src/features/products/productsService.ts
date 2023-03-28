@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { type RootState, useAppSelector } from '../../app/store';
-import { API_URL, LIMIT_ITEMS } from '../../data';
+import { API_URL, LIMIT_ITEMS } from '../../config';
 import { stringifyFiltersToParam, stringifyPriceToParam } from '../../utils';
 import type {
     ICreateProductProps,

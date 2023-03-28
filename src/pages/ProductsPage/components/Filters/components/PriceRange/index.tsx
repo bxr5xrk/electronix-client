@@ -6,7 +6,7 @@ import {
     setPriceRange
 } from '@/features/products/productsSlice';
 import { useCallback } from 'react';
-import { MAX, MIN, STEP } from '../../../../../../data';
+import { MAX, MIN, STEP } from '../../../../../../config';
 
 export default function PriceRange() {
     const dispatch = useAppDispatch();

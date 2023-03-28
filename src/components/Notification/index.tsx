@@ -29,7 +29,7 @@ function Notification() {
             className={cl(
                 notification
                     ? 'opacity-100 translate-x-0'
-                    : 'opacity-50 translate-x-[105%]',
+                    : 'opacity-50 translate-x-[110%]',
                 'fixed transition-all top-2 sm:top-5 shadow-md rounded-lg border bg-white flex items-start justify-start space-x-4 p-2 max-w-xs sm:max-w-sm w-full right-2 sm:right-5'
             )}
         >
