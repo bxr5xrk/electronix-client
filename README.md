@@ -10,6 +10,7 @@ Tools:
 
 Features:
 - Responsible design.
+- Dark / Light theme.
 - Filters (by price, category and brand).
 - Full-text search.
 - Pagination.
@@ -18,3 +19,4 @@ Features:
 - LogIn / Register.
 - Manage products (add new, delete) if user has 'manager' role.
 - Manage user roles (make manager, remove manager rights) if user has 'admin' role.
+- View logs (creation / deleting product) if user has 'admin' role.
