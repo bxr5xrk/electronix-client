@@ -12,7 +12,7 @@ export default function Filters() {
     const [showFilters, setShowFilters] = useState(false);
 
     return (
-        <aside className="sticky inset-0 top-2 left-0 h-sidebar flex flex-col gap-2 pt-2 z-10">
+        <aside className="sticky h-sidebar top-2 left-2 bottom-2 flex flex-col gap-2 pt-2 z-10">
             {/* header */}
             <div
                 className={cl(
@@ -27,7 +27,7 @@ export default function Filters() {
                 ) : null}
 
                 <button
-                    className="flex items-center justify-center rounded-lg text-black bg-white focus:ring-0 ring-0"
+                    className="flex items-center justify-center rounded-lg focus:ring-0 ring-0"
                     onClick={() => setShowFilters((prev) => !prev)}
                 >
                     {showFilters ? (
@@ -55,8 +55,8 @@ export default function Filters() {
                 className={cl(
                     showFilters
                         ? 'translate-x-0 w-0 lg:w-fit'
-                        : '-translate-x-[20rem]',
-                    'invisible space-y-2 w-0 lg:visible ease-in-out duration-300 z-40'
+                        : '-translate-x-[20rem] w-0',
+                    'invisible space-y-2 lg:visible ease-in-out duration-300 z-40 overflow-y-scroll border dark:border-normal-800 shadow rounded-lg'
                 )}
             >
                 <FiltersList />

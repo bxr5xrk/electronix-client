@@ -1,5 +1,5 @@
 import { type RootState } from '@/app/store';
-import { API_URL } from '@/data';
+import { API_URL } from '@/config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type {
     ICreateOrderRes,

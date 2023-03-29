@@ -14,10 +14,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ({ label, id, ...props }, ref: Ref<HTMLInputElement>) => {
         return (
             <div>
-                <label
-                    htmlFor={id}
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor={id} className="block text-sm font-medium mb-1">
                     {label}
                 </label>
 
@@ -25,7 +22,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                     ref={ref}
                     {...props}
                     id={id}
-                    className="block w-full border-2 rounded-md shadow-sm p-2 focus:border-primary-500 text-sm outline-none"
+                    className="block w-full dark:border-normal-700 dark:bg-normal-900 border-2 rounded-md shadow-sm p-2 dark:focus:border-primary-500 focus:border-primary-500 text-sm outline-none"
                 />
             </div>
         );

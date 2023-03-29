@@ -147,10 +147,7 @@ interface SelectProps {
 function Select({ values, value, setValue, id }: SelectProps) {
     return (
         <div>
-            <label
-                htmlFor={id}
-                className="block text-sm font-medium leading-6 text-gray-900"
-            >
+            <label htmlFor={id} className="block text-sm font-medium leading-6">
                 Category
             </label>
             <select
@@ -158,7 +155,7 @@ function Select({ values, value, setValue, id }: SelectProps) {
                 onChange={(e) => setValue(e.target.value)}
                 id={id}
                 name={id}
-                className="bg-white capitalize outline-none h-10 border-2 rounded-md shadow-sm mt-2 block w-full py-1.5 pl-3 pr-10 text-gray-90 sm:text-sm"
+                className="capitalize bg-white dark:bg-normal-900 dark:border-normal-700 outline-none h-10 border-2 rounded-md shadow-sm mt-2 block w-full py-1.5 pl-3 pr-10 text-gray-90 sm:text-sm"
             >
                 {values?.map((option) => (
                     <option className="capitalize" key={option} value={option}>

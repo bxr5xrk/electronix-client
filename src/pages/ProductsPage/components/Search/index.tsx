@@ -34,11 +34,11 @@ function Search() {
     }, []);
 
     return (
-        <div className="flex items-center w-full relative shadow rounded-lg gap-2 p-1 px-2 border">
+        <div className="flex items-center w-full relative shadow rounded-lg gap-2 p-1 px-2 border dark:border-normal-700">
             <MagnifyingGlassIcon className="w-5 h-5" aria-hidden />
 
             <input
-                className="p-1 flex flex-grow outline-none focus:ring-0"
+                className="p-1 flex flex-grow outline-none focus:ring-0 dark:bg-normal-900"
                 type="text"
                 placeholder="Enter search query of 3 characters or more"
                 ref={searchRef}

@@ -1,4 +1,4 @@
-import { MAX } from '../data';
+import { MAX } from '../config';
 
 export interface IParamsObj {
     categories: string[];

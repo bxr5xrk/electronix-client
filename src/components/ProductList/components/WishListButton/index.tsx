@@ -9,6 +9,7 @@ import { addOrRemoveItemFromArr, setToLocalStorage } from '../../../../utils';
 import Button from '../../../Button';
 import HeartIcon from '@heroicons/react/24/outline/HeartIcon';
 import HeartIconSolid from '@heroicons/react/24/solid/HeartIcon';
+import { WISHLIST_LS_KEY } from '@/config';
 
 interface WishListButtonProps {
     product: IProduct;
@@ -34,7 +35,7 @@ function WishListButton({ product }: WishListButtonProps) {
 
             dispatch(setWishListItems(newWishListArr));
 
-            setToLocalStorage('wishList', newWishListArr);
+            setToLocalStorage(WISHLIST_LS_KEY, newWishListArr);
         },
         [product, wishListItems]
     );

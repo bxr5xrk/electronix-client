@@ -115,12 +115,8 @@ function MultiRangeSlider({
             <div className="relative w-50">
                 <div className="slider__track" />
                 <div ref={range} className="slider__range  bg-primary-500" />
-                <div className="slider__left-value text-black font-medium">
-                    {minVal}
-                </div>
-                <div className="slider__right-value text-black font-medium">
-                    {maxVal}
-                </div>
+                <div className="slider__left-value font-medium">{minVal}</div>
+                <div className="slider__right-value font-medium">{maxVal}</div>
             </div>
         </div>
     );

@@ -2,7 +2,7 @@ import { getPagesArr } from '@/utils/index';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { memo, useMemo } from 'react';
 import { useAppSelector } from '../../../../app/store';
-import { LIMIT_ITEMS } from '../../../../data';
+import { LIMIT_ITEMS } from '../../../../config';
 import { useProducts } from '../../../../features/products/productsService';
 import { selectProducts } from '../../../../features/products/productsSlice';
 import PageItem from './components/PageItem';
@@ -33,7 +33,7 @@ function Pagination() {
                     />
 
                     {/* numbers */}
-                    <div className="hidden sm:flex items-center gap-2 bg-gray-100 rounded-full">
+                    <div className="hidden sm:flex items-center gap-2 bg-normal-100 dark:bg-normal-800 rounded-full">
                         {pagesArr.map((page) => (
                             <PageItem
                                 key={page}

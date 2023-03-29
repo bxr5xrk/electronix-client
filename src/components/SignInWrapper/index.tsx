@@ -19,7 +19,7 @@ export default function SignInWrapper({ children, title }: SignInWrapperProps) {
 
             {!user ? (
                 <div className="z-1 fixed inset-0 top-20 flex items-center justify-center pb-20">
-                    <h1 className="text-center xs:text-xl sm:text-3xl font-bold tracking-tight text-gray-900">
+                    <h1 className="text-center xs:text-xl sm:text-3xl font-bold tracking-tight">
                         <Link className="underline" to="/auth/login">
                             Sign in
                         </Link>{' '}

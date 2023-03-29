@@ -48,12 +48,10 @@ export default function PageItem({
             type="button"
             className={cl(
                 'flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full cursor-pointer text-xs font-medium hover:z-10',
-                isDisabled !== undefined &&
-                    !!isDisabled &&
-                    'opacity-50 text-opacity-50',
-                isActive !== undefined && !!isActive
-                    ? 'bg-primary-500 text-white hover:bg-primary-600'
-                    : 'bg-gray-100 text-black hover:bg-gray-200'
+                isDisabled && 'opacity-50 text-opacity-50',
+                isActive
+                    ? 'bg-primary-500 text-normal-50 hover:bg-primary-600'
+                    : 'bg-normal-100 dark:bg-normal-800 dark:hover:bg-normal-700 hover:bg-normal-200'
             )}
             onClick={handleClick}
         >

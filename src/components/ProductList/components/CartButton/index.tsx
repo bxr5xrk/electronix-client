@@ -4,7 +4,6 @@ import ShoppingBagIcon from '@heroicons/react/24/outline/ShoppingBagIcon';
 import ShoppingBagIconSolid from '@heroicons/react/24/solid/ShoppingBagIcon';
 import {
     addItemToCart,
-    CART_LS_KEY,
     removeItemFromCart,
     selectCart
 } from '../../../../features/cart/cartSlice';
@@ -12,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '@/app/store';
 import type { IProduct } from '@/features/products/productsInterfaces';
 import { setToLocalStorage } from '@/utils/index';
 import { manageCartItems } from '@/utils/cartUtils';
+import { CART_LS_KEY } from '@/config';
 
 interface CartButtonProps {
     product: IProduct;

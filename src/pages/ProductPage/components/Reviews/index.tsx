@@ -17,11 +17,9 @@ interface ReviewsProps {
 
 export default function Reviews({ reviews }: ReviewsProps) {
     return (
-        <>
-            <h2 className="text-lg font-medium text-gray-900 mt-20">
-                Recent reviews
-            </h2>
-            <div className="flex flex-col pt-6 space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 pb-10">
+        <div className="flex flex-col gap-6 py-10">
+            <h2 className="text-lg font-medium">Recent reviews</h2>
+            <div className="flex flex-col space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 dark:border-normal-700 dark:divide-normal-700">
                 {reviews.map((review) => (
                     <div
                         key={review.id}
@@ -36,24 +34,20 @@ export default function Reviews({ reviews }: ReviewsProps) {
                                             className={cl(
                                                 review.rating > i
                                                     ? 'text-primary-500'
-                                                    : 'text-gray-200',
+                                                    : 'text-gray-200 dark:text-normal-700',
                                                 'h-5 w-5 flex-shrink-0'
                                             )}
                                             aria-hidden
                                         />
                                     ))}
                                 </div>
-                                <p className="ml-3 text-sm text-gray-700">
+                                <p className="ml-3 text-sm text-gray-700 dark:text-normal-400">
                                     {review.rating}
-                                    <span className="sr-only">
-                                        {' '}
-                                        out of 5 stars
-                                    </span>
                                 </p>
                             </div>
 
                             <div className="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
-                                <h3 className="text-sm font-medium text-gray-900">
+                                <h3 className="text-sm font-medium">
                                     {review.title}
                                 </h3>
 
@@ -67,12 +61,10 @@ export default function Reviews({ reviews }: ReviewsProps) {
                         </div>
 
                         <div className="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-                            <p className="font-medium text-gray-900">
-                                {review.author}
-                            </p>
+                            <p className="font-medium">{review.author}</p>
                             <time
                                 dateTime={review.datetime}
-                                className="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:ml-0 lg:mt-2 lg:border-0 lg:pl-0"
+                                className="ml-4 border-l border-gray-200 dark:border-normal-700 pl-4 text-gray-500 lg:ml-0 lg:mt-2 lg:border-0 lg:pl-0"
                             >
                                 {review.date}
                             </time>
@@ -80,6 +72,6 @@ export default function Reviews({ reviews }: ReviewsProps) {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     );
 }

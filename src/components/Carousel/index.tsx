@@ -47,7 +47,7 @@ export default function Carousel({ images }: CarouselProps) {
                     {/* previous chevron */}
                     <button
                         onClick={onPrevious}
-                        className="opacity-0 -left-20 hover:left-2 group-hover:left-2 group-hover:opacity-100 absolute bg-white hover:bg-gray-100 transition-all z-1 p-2 border rounded-full w-8 h-8 flex items-center justify-center"
+                        className="opacity-0 -left-20 hover:left-2 group-hover:left-2 group-hover:opacity-100 absolute hover:bg-gray-100 dark:hover:bg-normal-800 transition-all z-1 p-2 border rounded-full w-8 h-8 flex items-center justify-center"
                     >
                         <ChevronLeftIcon className="w-5 h-5" aria-hidden />
                     </button>
@@ -55,7 +55,7 @@ export default function Carousel({ images }: CarouselProps) {
                     {/* next chevron */}
                     <button
                         onClick={onNext}
-                        className="opacity-0 -right-20 group-hover:right-2 hover:right-2 group-hover:opacity-100 absolute bg-white hover:bg-gray-100 transition-all z-1 p-2 border rounded-full w-8 h-8 flex items-center justify-center"
+                        className="opacity-0 -right-20 group-hover:right-2 hover:right-2 group-hover:opacity-100 absolute hover:bg-gray-100 dark:hover:bg-normal-800 transition-all z-1 p-2 border rounded-full w-8 h-8 flex items-center justify-center"
                     >
                         <ChevronRightIcon className="w-5 h-5" aria-hidden />
                     </button>

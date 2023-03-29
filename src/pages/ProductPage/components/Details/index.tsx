@@ -13,7 +13,7 @@ export default function Details({ product }: DetailsProps) {
     const { images, title, price, rating } = product;
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
             <div className="w-full h-72">
                 <Carousel
                     images={images.map((i) => ({
@@ -26,14 +26,12 @@ export default function Details({ product }: DetailsProps) {
             <div className="flex flex-col gap-3">
                 <h1
                     title={title}
-                    className="text-2xl font-bold tracking-tight text-gray-900 truncate"
+                    className="text-2xl font-bold tracking-tight truncate"
                 >
                     {title}
                 </h1>
 
-                <p className="text-2xl tracking-tight text-gray-900">
-                    $ {price}
-                </p>
+                <p className="text-2xl tracking-tight">$ {price}</p>
 
                 <div className="flex items-center">
                     {arrayFromNumber(5).map((i) => (
@@ -42,7 +40,7 @@ export default function Details({ product }: DetailsProps) {
                             className={cl(
                                 rating > i
                                     ? 'text-primary-500'
-                                    : 'text-gray-200',
+                                    : 'text-gray-200 dark:text-normal-700',
                                 'h-5 w-5 flex-shrink-0'
                             )}
                             aria-hidden
@@ -50,7 +48,7 @@ export default function Details({ product }: DetailsProps) {
                     ))}
                 </div>
 
-                <p className="text-base text-gray-700">
+                <p className="text-base text-gray-700 dark:text-normal-400">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     Eligendi incidunt odio quis sit, nam aperiam earum maxime
                     velit. In repudiandae rem dicta, saepe numquam culpa

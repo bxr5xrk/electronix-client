@@ -68,3 +68,13 @@ export const formatDate = (datetime: string) => {
 
     return formattedDate.slice(0, -3);
 };
+
+export const toggleTheme = (theme: 'dark' | 'light') => {
+    const root = document.getElementById('root');
+
+    if (root) {
+        theme === 'dark'
+            ? root.classList.add('dark')
+            : root.classList.remove('dark');
+    }
+};
