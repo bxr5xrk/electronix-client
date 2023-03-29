@@ -14,21 +14,20 @@ export default function ProductPage() {
     });
 
     return (
-        <main className="w-full flex justify-center">
-            <div className="flex gap-6 w-full flex-col max-w-3xl lg:max-w-7xl">
-                <PageTitle title="Product" />
+        <main className="flex flex-col w-full h-full gap-6">
+            <PageTitle title="Product" />
 
-                <GoBackLink />
+            <GoBackLink />
 
-                {!isSuccess ? (
-                    <DetailsSkeleton />
-                ) : (
-                    <>
-                        <Details product={data} />
-                        <Reviews reviews={reviews} />
-                    </>
-                )}
-            </div>
+            {!isSuccess ? (
+                <DetailsSkeleton />
+            ) : (
+                <>
+                    <Details product={data} />
+
+                    <Reviews reviews={reviews} />
+                </>
+            )}
         </main>
     );
 }

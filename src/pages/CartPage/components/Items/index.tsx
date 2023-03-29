@@ -71,7 +71,7 @@ function Items() {
                                     <div className="min-w-0 flex-1">
                                         <h4 className="text-sm">
                                             <Link
-                                                to={product.id.toString()}
+                                                to={`/products/${product.id}`}
                                                 className="font-medium text-normal-700 hover:text-normal-800 dark:text-normal-300"
                                             >
                                                 {product.title}

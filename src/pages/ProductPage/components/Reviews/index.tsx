@@ -17,9 +17,9 @@ interface ReviewsProps {
 
 export default function Reviews({ reviews }: ReviewsProps) {
     return (
-        <>
-            <h2 className="text-lg font-medium mt-20">Recent reviews</h2>
-            <div className="flex flex-col pt-6 space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 dark:border-normal-700 dark:divide-normal-700 pb-10">
+        <div className="flex flex-col gap-6 py-10">
+            <h2 className="text-lg font-medium">Recent reviews</h2>
+            <div className="flex flex-col space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 dark:border-normal-700 dark:divide-normal-700">
                 {reviews.map((review) => (
                     <div
                         key={review.id}
@@ -43,10 +43,6 @@ export default function Reviews({ reviews }: ReviewsProps) {
                                 </div>
                                 <p className="ml-3 text-sm text-gray-700 dark:text-normal-400">
                                     {review.rating}
-                                    <span className="sr-only">
-                                        {' '}
-                                        out of 5 stars
-                                    </span>
                                 </p>
                             </div>
 
@@ -76,6 +72,6 @@ export default function Reviews({ reviews }: ReviewsProps) {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     );
 }
