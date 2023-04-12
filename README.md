@@ -9,14 +9,15 @@ Tools:
 - Prettier, EsLint
 
 Features:
-- Responsible design.
+- Responsive Design.
 - Dark / Light theme.
 - Filters (by price, category and brand).
 - Full-text search.
 - Pagination.
-- Adding / removing item to Wishlist / Cart (stored in localStorage).
-- Orders history.
+- Adding / removing item to Wishlist / Cart.
+- Order's history.
 - LogIn / Register.
-- Manage products (add new, delete) if user has 'manager' role.
+- Manage products (add new, delete) if user has 'manager' or 'admin' role.
+- Manage order's status if user has 'manager' or 'admin' role.
 - Manage user roles (make manager, remove manager rights) if user has 'admin' role.
 - View logs (creation / deleting product) if user has 'admin' role.
