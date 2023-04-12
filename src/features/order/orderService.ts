@@ -42,7 +42,7 @@ export const orderApi = createApi({
             UpdateOrderStatusProps
         >({
             query: ({ orderId, status }) => ({
-                url: orderId,
+                url: String(orderId),
                 method: 'PUT',
                 body: {
                     status
@@ -68,7 +68,8 @@ export const orderApi = createApi({
 
 const {
     useCreateOrderMutation: useCreateOrder,
-    useGetOrdersQuery: useGetOrders
+    useGetOrdersQuery: useGetOrders,
+    useUpdateOrderStatusMutation: useUpdateStatus
 } = orderApi;
 
-export { useCreateOrder, useGetOrders };
+export { useCreateOrder, useGetOrders, useUpdateStatus };

@@ -7,7 +7,7 @@ export interface ICreateOrderProps {
 }
 
 export interface UpdateOrderStatusProps {
-    orderId: string;
+    orderId: number;
     status: Status;
 }
 

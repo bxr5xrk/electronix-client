@@ -2,6 +2,7 @@
 import { useAppDispatch } from '@/app/store';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import Select from '@/components/Select';
 import { setNotification } from '@/features/notification/notificationSlice';
 import {
     useCreateProduct,
@@ -134,36 +135,6 @@ export default function Form({ setShowModal }: FormProps) {
                 </Button>
             </div>
         </form>
-    );
-}
-
-interface SelectProps {
-    values?: string[];
-    value: string;
-    setValue: (i: string) => void;
-    id: string;
-}
-
-function Select({ values, value, setValue, id }: SelectProps) {
-    return (
-        <div>
-            <label htmlFor={id} className="block text-sm font-medium leading-6">
-                Category
-            </label>
-            <select
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                id={id}
-                name={id}
-                className="capitalize bg-white dark:bg-normal-900 dark:border-normal-700 outline-none h-10 border-2 rounded-md shadow-sm mt-2 block w-full py-1.5 pl-3 pr-10 text-gray-90 sm:text-sm"
-            >
-                {values?.map((option) => (
-                    <option className="capitalize" key={option} value={option}>
-                        {option.replaceAll('_', ' ')}
-                    </option>
-                ))}
-            </select>
-        </div>
     );
 }
 
