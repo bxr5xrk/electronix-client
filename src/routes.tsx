@@ -15,6 +15,9 @@ const ManagePage = lazy(async () => await import('./pages/ManagePage'));
 const ManageProducts = lazy(
     async () => await import('./pages/ManagePage/components/Products')
 );
+const ManageOrders = lazy(
+    async () => await import('./pages/ManagePage/components/Orders')
+);
 const ManageUsers = lazy(
     async () => await import('./pages/ManagePage/components/Users')
 );
@@ -59,6 +62,15 @@ export const routes = (user: IUserAuth | null) =>
                         {
                             path: '',
                             element: <ManageProducts />
+                        },
+                        {
+                            path: 'orders',
+                            element:
+                                user?.role !== 'client' ? (
+                                    <ManageOrders />
+                                ) : (
+                                    <Navigate to="/manage" />
+                                )
                         },
                         {
                             path: 'users',
