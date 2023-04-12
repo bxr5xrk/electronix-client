@@ -40,7 +40,7 @@ function Search() {
             <input
                 className="p-1 flex flex-grow outline-none focus:ring-0 dark:bg-normal-900"
                 type="text"
-                placeholder="Enter search query of 3 characters or more"
+                placeholder="Enter at least 3 characters"
                 ref={searchRef}
                 onChange={handleChange}
             />

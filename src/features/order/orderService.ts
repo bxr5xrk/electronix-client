@@ -4,7 +4,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type {
     ICreateOrderRes,
     ICreateOrderProps,
-    IOrder
+    IOrder,
+    UpdateOrderStatusProps
 } from './orderInterfaces';
 
 export const orderApi = createApi({
@@ -36,6 +37,20 @@ export const orderApi = createApi({
             invalidatesTags: [{ type: 'Orders', id: 'LIST' }]
         }),
 
+        updateOrderStatus: builder.mutation<
+            ICreateOrderRes,
+            UpdateOrderStatusProps
+        >({
+            query: ({ orderId, status }) => ({
+                url: String(orderId),
+                method: 'PUT',
+                body: {
+                    status
+                }
+            }),
+            invalidatesTags: [{ type: 'Orders', id: 'LIST' }]
+        }),
+
         getOrders: builder.query<IOrder[], unknown>({
             query: () => '',
             providesTags: (result) =>
@@ -53,7 +68,8 @@ export const orderApi = createApi({
 
 const {
     useCreateOrderMutation: useCreateOrder,
-    useGetOrdersQuery: useGetOrders
+    useGetOrdersQuery: useGetOrders,
+    useUpdateOrderStatusMutation: useUpdateStatus
 } = orderApi;
 
-export { useCreateOrder, useGetOrders };
+export { useCreateOrder, useGetOrders, useUpdateStatus };

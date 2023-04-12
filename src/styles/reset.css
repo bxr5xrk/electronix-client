@@ -1,4 +1,4 @@
-*,
+/* *,
 *::before,
 *::after {
     box-sizing: border-box;
@@ -60,10 +60,6 @@ select {
     font: inherit;
 }
 
-/* select {
-    all: unset;
-} */
-
 input {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -75,7 +71,7 @@ input {
 menu {
     margin: 0;
     padding: 0;
-}
+} */
 
 ::-webkit-scrollbar {
     width: 4px;

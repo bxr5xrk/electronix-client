@@ -28,7 +28,7 @@ export default function SideOverFilters({
                     'visible overflow-y-scroll lg:invisible fixed inset-0 w-fit bottom-2 top-2 left-2 p-2 sm:p-4 space-y-2 border bg-normal-50 dark:bg-normal-900 dark:border-normal-700 rounded-lg ease-in-out z-50 duration-300'
                 )}
             >
-                <button onClick={() => setShowFilters(false)}>
+                <button className="p-2" onClick={() => setShowFilters(false)}>
                     <XMarkIcon className="w-5 h-5" aria-hidden />
                 </button>
 

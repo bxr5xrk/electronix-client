@@ -6,6 +6,13 @@ export interface ICreateOrderProps {
     address: string;
 }
 
+export interface UpdateOrderStatusProps {
+    orderId: number;
+    status: Status;
+}
+
+export type Status = 'processing' | 'shipped' | 'delivered';
+
 export interface ICreateOrderRes {
     id: number;
 }
@@ -17,4 +24,5 @@ export interface IOrder {
     address: string;
     city: string;
     products: ICartItem[];
+    status: Status;
 }

@@ -20,12 +20,12 @@ export default function CreateProductModal({
         >
             <div
                 onClick={() => setShowModal(false)}
-                className="opacity-70 fixed inset-0 bg-black"
+                className="opacity-80 fixed inset-0 bg-black"
             />
             <div
                 className={cl(
                     showModal ? 'opacity-100' : 'opacity-0',
-                    'relative w-1/2 dark:bg-normal-900 bg-white rounded-lg block ease-in-out transition-all duration-500 bf-white z-20 p-3'
+                    'relative md:w-1/2 m-3 dark:bg-normal-900 bg-white rounded-lg block ease-in-out transition-all duration-500 z-20 p-3'
                 )}
             >
                 <button
