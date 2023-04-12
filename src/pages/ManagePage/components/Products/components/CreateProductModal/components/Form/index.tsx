@@ -115,6 +115,7 @@ export default function Form({ setShowModal }: FormProps) {
 
             <div className="grid grid-cols-2 gap-8">
                 <Select
+                    label="Brand"
                     id="product-brand"
                     value={brand}
                     setValue={setBrand}
@@ -122,6 +123,7 @@ export default function Form({ setShowModal }: FormProps) {
                 />
 
                 <Select
+                    label="Category"
                     id="product-category"
                     value={category}
                     setValue={setCategory}

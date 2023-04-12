@@ -25,7 +25,7 @@ export default function Select({
             {!hideLabel ? (
                 <label
                     htmlFor={id}
-                    className="block text-sm font-medium leading-6"
+                    className="ml-0.5 block text-sm font-medium leading-6"
                 >
                     {label}
                 </label>
